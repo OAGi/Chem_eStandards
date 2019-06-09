@@ -735,7 +735,6 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:appinfo>may_be_message_element</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
-	<!-- ERROR: missing version attribute -->
 	<xs:complexType name="FertilizerTonnageReportType">
 		<xs:sequence>
 			<xs:element ref="Header"/>
