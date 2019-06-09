@@ -3273,10 +3273,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="CityName" type="CityNameType"/>
 	<xs:element name="Comment" type="CommentType"/>
 	<xs:complexType name="CommentType">
-		<xs:choice>
-			<xs:element ref="Content"/>
-			<xs:element ref="ExternalReference"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="Content" minOccurs="0"/>
+			<xs:element ref="ExternalReference" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Company" type="CompanyType"/>
 	<xs:element name="CompatibilityGroupCode" type="CompatibilityGroupCodeType"/>
