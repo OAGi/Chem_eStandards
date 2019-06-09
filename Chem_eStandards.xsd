@@ -10511,10 +10511,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="CharacteristicDescription" type="CharacteristicDescriptionType"/>
 	<xs:element name="EventDateTime" type="EventDateTimeType"/>
 	<xs:complexType name="EventDateTimeType">
-		<xs:choice>
-			<xs:element ref="DateTime"/>
-			<xs:element ref="DateTimeRange"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="DateTime" minOccurs="0"/>
+			<xs:element ref="DateTimeRange" minOccurs="0"/>
+		</xs:sequence>
 		<xs:attribute name="EventDateType" type="cidxListEventDateType" use="required"/>
 	</xs:complexType>
 	<xs:element name="ProductMovementProductLineItem" type="ProductMovementProductLineItemType"/>
