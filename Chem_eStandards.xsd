@@ -1,57 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-This file last updated 2008-08-31T12:00:00Z.
+Schema agency: Open Applications Group 
+Chem eStandards� Revision: 5.1 
+Date: 18 August 2010 
 
-Copyright © 2004-2008 Chemical Industry Data Exchange (CIDX).
-All rights reserved.
+Copyright � Open Applications Group (1996-2010). All Rights Reserved.
+  
+This is an OAGIS� Chem eStandards XML Schema (XSD) Definition.
 
-CIDX Chem eStandards v5.0 License
+License information for this file is provided in the file **OAGi_Chem_eStandards_LicenseAgreement.txt** that is provided with this download package.
 
-IMPORTANT: The Chemical Industry Data Exchange (“CIDX”) is a
-nonprofit corporation, incorporated in the State of New Jersey, which
-is exempt from federal taxation under Section 501(c)(6) of the
-Internal Revenue Code. The Chem eStandards and other publications of
-CIDX have been developed in furtherance of CIDX’s nonprofit and tax-
-exempt purposes. CIDX has taken reasonable measures to develop the
-Chem eStandards and other CIDX publications in a fair, reasonable,
-open, unbiased, and objective manner for the purpose of enhancing the
-ease, speed and cost aspects of securely conducting business
-electronically in the Chemical Sector. The Chem eStandards and other
-CIDX publications are developed in compliance with all applicable laws,
-including antitrust laws, and pursuant to the CIDX Antitrust and
-Intellectual Property Policies ensuring open access and use, while at
-the same time preserving contributing companies' individual rights to
-their own intellectual property. The Chem eStandards may be copied
-and distributed in the form published and copyrighted in accordance
-with the license agreed to upon download, but no permission is
-granted for any change or modification to the Chem eStandards. The
-nature of appropriate practices or guidance is likely to change over
-time and with developments in technology. CIDX cannot guarantee the
-accuracy, completeness, efficacy, timeliness, or correct sequencing
-of the Chem eStandards or other publications. Use of the Chem
-eStandards and any CIDX guidance document or other publication is
-voluntary, and reliance on them should be undertaken only after an
-independent review by the user. Inclusion of material in the Chem
-eStandards or other publications does not constitute a guarabntee,
-warranty, or endorsement by CIDX regarding any guidance,
-methodologies, or preferences for conducting business, implementing
-any CIDX standards, or enhancing computer security. Further, neither
-CIDX nor its officers, directors, members, employees, or agents shall
-be liable for any loss, damage, or claim with respect to any such
-documents, work, or services; all such liabilities, including direct,
-special, indirect, or consequential damages, are expressly
-disclaimed.  Information provided in the Chem eStandards is “as is”
-without warranty of any kind, either express or implied, including
-but not limited to the implied warranties of merchantability, fitness
-for a particular purpose, or freedom from infringement. The Chem
-eStandards and related trademarks are the property of CIDX.
-
-Copyright © 2004-2008 Chemical Industry Data Exchange (CIDX).
-All rights reserved.
+For support, more information, or to report implementation bugs, please contact the Open Applications Group at oagis@openapplications.org.
 
 -->
-<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:5:0" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cidx:names:specification:ces:schema:all:5:0">
+<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:5:1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cidx:names:specification:ces:schema:all:5:1">
 	<xs:simpleType name="cidxBoolean">
 		<xs:restriction base="cidxToken">
 			<xs:enumeration value="0"/>
@@ -89,6 +52,15 @@ All rights reserved.
 			<xs:enumeration value="Add"/>
 			<xs:enumeration value="Delete"/>
 			<xs:enumeration value="Replace"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cidxListAvailabilityClassification">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Blanket"/>
+			<xs:enumeration value="Committed"/>
+			<xs:enumeration value="Consignment"/>
+			<xs:enumeration value="General"/>
+			<xs:enumeration value="Other"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="cidxListBarCodeSymbology">
@@ -219,6 +191,7 @@ All rights reserved.
 			<xs:enumeration value="Mail"/>
 			<xs:enumeration value="Print"/>
 			<xs:enumeration value="Telex"/>
+			<xs:enumeration value="TextMessage"/>
 			<xs:enumeration value="WithDriver"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -319,6 +292,15 @@ All rights reserved.
 			<xs:enumeration value="StockSale"/>
 		</xs:restriction>
 	</xs:simpleType>
+	<xs:simpleType name="cidxListFreightServiceLevelAgency">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="AssignedByBuyer"/>
+			<xs:enumeration value="AssignedByCarrier"/>
+			<xs:enumeration value="AssignedBySeller"/>
+			<xs:enumeration value="AssignedByShipper"/>
+			<xs:enumeration value="Other"/>
+		</xs:restriction>
+	</xs:simpleType>
 	<xs:simpleType name="cidxListGeographicType">
 		<xs:restriction base="xs:NMTOKEN">
 			<xs:enumeration value="CanadianFreightRegionCode"/>
@@ -348,6 +330,12 @@ All rights reserved.
 			<xs:enumeration value="Hazchem"/>
 			<xs:enumeration value="Kemler"/>
 			<xs:enumeration value="USDOT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cidxListIncludeExclude">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Exclude"/>
+			<xs:enumeration value="Include"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="cidxListInstructionType">
@@ -388,6 +376,7 @@ All rights reserved.
 			<xs:enumeration value="PaymentInstructions"/>
 			<xs:enumeration value="PriceConditions"/>
 			<xs:enumeration value="PostingInstructions"/>
+			<xs:enumeration value="RefillInstructions"/>
 			<xs:enumeration value="RequiredNotice"/>
 			<xs:enumeration value="RoutingInstructions"/>
 			<xs:enumeration value="ShipperInstructions"/>
@@ -517,9 +506,11 @@ All rights reserved.
 			<xs:enumeration value="CustomsClearance"/>
 			<xs:enumeration value="Distributor"/>
 			<xs:enumeration value="EndUseCustomer"/>
+			<xs:enumeration value="Exporter"/>
 			<xs:enumeration value="FinancialInstitution"/>
 			<xs:enumeration value="FreightForwarder"/>
 			<xs:enumeration value="HazmatOfficer"/>
+			<xs:enumeration value="Importer"/>
 			<xs:enumeration value="IntermediateCarrier"/>
 			<xs:enumeration value="Inspection"/>
 			<xs:enumeration value="LetterOfCreditBank"/>
@@ -549,6 +540,15 @@ All rights reserved.
 			<xs:enumeration value="ThirdPartyLogistics"/>
 			<xs:enumeration value="TransportationBroker"/>
 			<xs:enumeration value="UltimateConsignee"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cidxListPaymentIndicator">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="ACHTransfer"/>
+			<xs:enumeration value="CompanyCheck"/>
+			<xs:enumeration value="CreditCard"/>
+			<xs:enumeration value="WireTransfer"/>
+			<xs:enumeration value="Other"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="cidxListPostingType">
@@ -725,6 +725,7 @@ All rights reserved.
 			<xs:enumeration value="RequestForQuoteNumber"/>
 			<xs:enumeration value="RequisitionNumber"/>
 			<xs:enumeration value="SalesOrderReference"/>
+			<xs:enumeration value="SalesRepresentative"/>
 			<xs:enumeration value="ScaleTicket"/>
 			<xs:enumeration value="SellerContractNumber"/>
 			<xs:enumeration value="SellerCreditMemoNumber"/>
@@ -734,10 +735,12 @@ All rights reserved.
 			<xs:enumeration value="ShippersLetterOfInstruction"/>
 			<xs:enumeration value="SupplierARNumber"/>
 			<xs:enumeration value="SupplierOrderNumber"/>
+			<xs:enumeration value="Telemarketer"/>
 			<xs:enumeration value="ThirdPartyPurchaseOrderNumber"/>
 			<xs:enumeration value="TransportEmergencyCard"/>
 			<xs:enumeration value="VehicleID"/>
 			<xs:enumeration value="VeterinaryFeedDirective"/>
+			<xs:enumeration value="VeterinaryLicenseNumber"/>
 			<xs:enumeration value="WaybillNumber"/>
 		</xs:restriction>
 	</xs:simpleType>
@@ -917,6 +920,19 @@ All rights reserved.
 			<xs:enumeration value="Main"/>
 			<xs:enumeration value="Primary"/>
 			<xs:enumeration value="Secondary"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cidxListVarianceCode">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Over"/>
+			<xs:enumeration value="Under"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cidxListVolumeDeterminationDateType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="InvoiceDate"/>
+			<xs:enumeration value="OrderDate"/>
+			<xs:enumeration value="ShipDate"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="cidxListVoyageTripNumberAgency">
@@ -2506,7 +2522,7 @@ All rights reserved.
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
 			<xs:element ref="LineItemType" minOccurs="0"/>
-			<xs:element ref="PurchaseOrderLineItemNumber"/>
+			<xs:element ref="PurchaseOrderLineItemNumber" minOccurs="0"/>
 			<xs:element ref="ReleaseNumber" minOccurs="0"/>
 			<xs:element ref="ProductIdentification" maxOccurs="unbounded"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
@@ -2529,15 +2545,17 @@ All rights reserved.
 			<xs:element ref="DeliveryGroup" minOccurs="0"/>
 			<xs:element ref="Pricing" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element ref="ChangesAllowed"/>
+			<xs:element ref="ChangesAllowed" minOccurs="0"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0"/>
+			<xs:element ref="SalesOrderIdentifier" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationProperties" type="DeliveryConfirmationPropertiesType"/>
 	<xs:complexType name="DeliveryConfirmationPropertiesType">
 		<xs:sequence>
-			<xs:element ref="PurchaseOrderNumber"/>
-			<xs:element ref="PurchaseOrderTypeCode"/>
-			<xs:element ref="PurchaseOrderIssuedDate"/>
+			<xs:element ref="PurchaseOrderNumber" minOccurs="0"/>
+			<xs:element ref="PurchaseOrderTypeCode" minOccurs="0"/>
+			<xs:element ref="PurchaseOrderIssuedDate" minOccurs="0"/>
 			<xs:element ref="LanguageCode"/>
 			<xs:element ref="CurrencyCode"/>
 			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
@@ -2550,6 +2568,8 @@ All rights reserved.
 			<xs:element ref="ShipWithPurchaseOrder" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0"/>
+			<xs:element ref="SalesOrderIdentifier" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DeliveryContent" type="DeliveryContentType"/>
@@ -4111,6 +4131,7 @@ All rights reserved.
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 			<xs:element ref="MarketingName" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ManufacturerInformation" minOccurs="0"/>
+			<xs:element ref="ProductComponent" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ProductLabel" type="ProductLabelType"/>
@@ -5562,8 +5583,8 @@ All rights reserved.
 			<xs:element ref="PackagingQuantity" minOccurs="0"/>
 			<xs:element ref="BatchNumber" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
-			<xs:element ref="ScheduleDateTimeInformation" maxOccurs="unbounded"/>
-			<xs:element ref="TransportMethodCode"/>
+			<xs:element ref="ScheduleDateTimeInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="TransportMethodCode" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="DeliveryTolerances" minOccurs="0"/>
 			<xs:element ref="DeliveryTerms" minOccurs="0"/>
@@ -6089,7 +6110,7 @@ All rights reserved.
 		<xs:sequence>
 			<xs:element ref="DeliveryConfirmationResponseProperties"/>
 			<xs:element ref="DeliveryConfirmationResponsePartners"/>
-			<xs:element ref="DeliveryConfirmationResponseDetails"/>
+			<xs:element ref="DeliveryConfirmationResponseDetails" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationResponseDetails" type="DeliveryConfirmationResponseDetailsType"/>
@@ -6111,9 +6132,9 @@ All rights reserved.
 	<xs:complexType name="DeliveryConfirmationResponseProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
-			<xs:element ref="PurchaseOrderLineItemNumber"/>
-			<xs:element ref="PurchaseOrderNumber"/>
-			<xs:element ref="DeliveryConfirmationAcceptance"/>
+			<xs:element ref="PurchaseOrderLineItemNumber" minOccurs="0"/>
+			<xs:element ref="PurchaseOrderNumber" minOccurs="0"/>
+			<xs:element ref="DeliveryConfirmationAcceptance" minOccurs="0"/>
 			<xs:element ref="DeliveryConfirmationRejectionDescription" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ProductIdentification" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
@@ -6135,6 +6156,7 @@ All rights reserved.
 			<xs:element ref="LanguageCode"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0"/>
 			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
+			<xs:element ref="SalesOrderIdentifier" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DeliveryReceipt" type="DeliveryReceiptType">
@@ -7953,8 +7975,8 @@ All rights reserved.
 			<xs:element ref="InvoiceType" minOccurs="0"/>
 			<xs:element ref="LineItemDebitCreditIndicator" minOccurs="0"/>
 			<xs:element ref="ProductIdentification" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element ref="ProductQuantity"/>
-			<xs:element ref="Pricing"/>
+			<xs:element ref="ProductQuantity" minOccurs="0"/>
+			<xs:element ref="Pricing" minOccurs="0"/>
 			<xs:element ref="PurchaseOrderNumber" minOccurs="0"/>
 			<xs:element ref="TaxableFlag" minOccurs="0"/>
 			<xs:element ref="DeliveryTerms" minOccurs="0"/>
@@ -7964,6 +7986,7 @@ All rights reserved.
 			<xs:element ref="Adjustment" minOccurs="0"/>
 			<xs:element ref="DiscountAmount" minOccurs="0"/>
 			<xs:element ref="LineItemTotal"/>
+			<xs:element ref="VarianceReason" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PaymentDetailPartners" type="PaymentDetailPartnersType"/>
@@ -7985,6 +8008,7 @@ All rights reserved.
 			<xs:element ref="MarketPlaceInformation" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="DiscountAmount" minOccurs="0"/>
 			<xs:element ref="TotalAmountPaid"/>
+			<xs:element ref="PaymentIndicatorType" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ReferenceIdentifier" type="ReferenceIdentifierType"/>
@@ -8695,7 +8719,7 @@ All rights reserved.
 			<xs:element ref="TaxOrDuty" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="AllowanceChargeCode"/>
 			<xs:element ref="AllowanceChargeDescription"/>
-			<xs:element ref="AllowanceChargeAmount"/>
+			<xs:element ref="PriceSheetAllowanceChargeAmount"/>
 			<xs:element ref="PriceApplicabilityCriteria" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -8724,6 +8748,7 @@ All rights reserved.
 		<xs:sequence>
 			<xs:element ref="County" maxOccurs="unbounded"/>
 		</xs:sequence>
+		<xs:attribute name="GeographyQualifier" type="cidxListIncludeExclude" use="required"/>
 	</xs:complexType>
 	<xs:element name="DayOfMonth">
 		<xs:simpleType>
@@ -8794,7 +8819,10 @@ All rights reserved.
 	<xs:element name="OrderFeatures" type="OrderFeaturesType"/>
 	<xs:complexType name="OrderFeaturesType">
 		<xs:sequence>
-			<xs:element ref="PriceSheetEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:choice>
+				<xs:element ref="PriceSheetEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="PriceSheetRelativeDays" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
 			<xs:element ref="SalesVolume" minOccurs="0"/>
 			<xs:element ref="UnitVolume" minOccurs="0"/>
 		</xs:sequence>
@@ -8835,9 +8863,11 @@ All rights reserved.
 	</xs:element>
 	<xs:element name="PostalCodes" type="PostalCodesType"/>
 	<xs:complexType name="PostalCodesType">
-		<xs:sequence>
+		<xs:choice>
 			<xs:element ref="PostalCode" maxOccurs="unbounded"/>
-		</xs:sequence>
+			<xs:element ref="PostalCodeRange" maxOccurs="unbounded"/>
+		</xs:choice>
+		<xs:attribute name="GeographyQualifier" type="cidxListIncludeExclude" use="required"/>
 	</xs:complexType>
 	<xs:element name="PriceApplicabilityCriteria" type="PriceApplicabilityCriteriaType"/>
 	<xs:complexType name="PriceApplicabilityCriteriaType">
@@ -8891,7 +8921,11 @@ All rights reserved.
 		<xs:sequence>
 			<xs:element ref="PriceSheetIdentifier" minOccurs="0"/>
 			<xs:element ref="PriceSheetDescription" minOccurs="0"/>
-			<xs:element ref="PriceSheetEffectiveDate"/>
+			<xs:choice>
+				<xs:element ref="PriceSheetEffectiveDate"/>
+				<xs:element ref="PriceSheetRelativeDays" minOccurs="0"/>
+			</xs:choice>
+			<xs:element ref="VolumeDeterminationMethod" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PriceSheetPartners" type="PriceSheetPartnersType"/>
@@ -8907,14 +8941,14 @@ All rights reserved.
 			<xs:element ref="PriceApplicabilityCriteria"/>
 			<xs:element ref="ListPrice"/>
 			<xs:element ref="PaymentTermsID" minOccurs="0"/>
-			<xs:element ref="SpecialInstructions" minOccurs="0"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PriceSheetProductLineItem" type="PriceSheetProductLineItemType"/>
 	<xs:complexType name="PriceSheetProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
-			<xs:element ref="ProductInformation"/>
+			<xs:element ref="ProductInformation" maxOccurs="unbounded"/>
 			<xs:element ref="PriceSheetPriceData" maxOccurs="unbounded"/>
 			<xs:element ref="AllowanceChargeList" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
@@ -8932,6 +8966,7 @@ All rights reserved.
 			<xs:element ref="ReferencedPriceSheet" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="OrderingInformation" minOccurs="0"/>
+			<xs:element ref="PriceSheetFreightCondition" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -9009,6 +9044,7 @@ All rights reserved.
 		<xs:sequence>
 			<xs:element ref="State" maxOccurs="unbounded"/>
 		</xs:sequence>
+		<xs:attribute name="GeographyQualifier" type="cidxListIncludeExclude" use="required"/>
 	</xs:complexType>
 	<xs:element name="TermsOfSale" type="TermsOfSaleType"/>
 	<xs:complexType name="TermsOfSaleType">
@@ -9027,6 +9063,8 @@ All rights reserved.
 	<xs:element name="UnitVolume" type="UnitVolumeType"/>
 	<xs:complexType name="UnitVolumeType">
 		<xs:sequence>
+			<xs:element ref="UnitVolumeIdentifier" minOccurs="0"/>
+			<xs:element ref="UnitVolumeDescription" minOccurs="0"/>
 			<xs:element ref="MinimumMeasurement" minOccurs="0"/>
 			<xs:element ref="MaximumMeasurement" minOccurs="0"/>
 		</xs:sequence>
@@ -9197,14 +9235,6 @@ All rights reserved.
 		</xs:simpleContent>
 	</xs:complexType>
 	<xs:element name="CharacteristicDescription" type="CharacteristicDescriptionType"/>
-	<xs:element name="CountryOfOrginCode" type="CountryOfOrginCodeType"/>
-	<xs:complexType name="CountryOfOrginCodeType">
-		<xs:simpleContent>
-			<xs:extension base="cidxToken">
-				<xs:attribute name="Domain" type="cidxToken" fixed="ISO-3166-1"/>
-			</xs:extension>
-		</xs:simpleContent>
-	</xs:complexType>
 	<xs:element name="EventDateTime" type="EventDateTimeType"/>
 	<xs:complexType name="EventDateTimeType">
 		<xs:sequence>
@@ -9226,8 +9256,10 @@ All rights reserved.
 			<xs:element ref="BatchNumbers" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SerialNumbers" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="PackagingContainerInformation" minOccurs="0"/>
-			<xs:element ref="CountryOfOrginCode" minOccurs="0"/>
+			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ReturnReason" minOccurs="0"/>
+			<xs:element ref="ZoneGeography" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ProductMovementReport" type="ProductMovementReportType">
@@ -10487,7 +10519,7 @@ All rights reserved.
 			<xs:element ref="BatchNumbers" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SerialNumbers" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="PackagingContainerInformation" minOccurs="0"/>
-			<xs:element ref="CountryOfOrginCode" minOccurs="0"/>
+			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -10677,5 +10709,313 @@ All rights reserved.
 				<xs:attribute name="Agency" type="cidxListTestMethodAgency" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="InvoiceList" type="InvoiceListType"/>
+	<xs:complexType name="InvoiceListType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="InvoiceListBody" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" use="required" fixed="5.0"/>
+	</xs:complexType>
+	<xs:element name="InvoiceListBody" type="InvoiceListBodyType"/>
+	<xs:complexType name="InvoiceListBodyType">
+		<xs:sequence>
+			<xs:element ref="InvoiceListProperties"/>
+			<xs:element ref="InvoiceListDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InvoiceListProperties" type="InvoiceListPropertiesType"/>
+	<xs:complexType name="InvoiceListPropertiesType">
+		<xs:sequence>
+			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InvoiceListDetails" type="InvoiceListDetailsType"/>
+	<xs:complexType name="InvoiceListDetailsType">
+		<xs:sequence>
+			<xs:element ref="InvoiceBody" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InvoiceListRequest" type="InvoiceListRequestType"/>
+	<xs:complexType name="InvoiceListRequestType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="InvoiceListRequestBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" use="required" fixed="4.1_DRAFT_0009"/>
+	</xs:complexType>
+	<xs:element name="InvoiceListRequestBody" type="InvoiceListRequestBodyType"/>
+	<xs:complexType name="InvoiceListRequestBodyType">
+		<xs:sequence>
+			<xs:element ref="InvoiceListRequestProperties"/>
+			<xs:element ref="InvoiceListRequestPartners"/>
+			<xs:element ref="InvoiceListRequestDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InvoiceListRequestProperties" type="InvoiceListRequestPropertiesType"/>
+	<xs:complexType name="InvoiceListRequestPropertiesType">
+		<xs:sequence>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InvoiceListRequestPartners" type="InvoiceListRequestPartnersType"/>
+	<xs:complexType name="InvoiceListRequestPartnersType">
+		<xs:sequence>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InvoiceListRequestDetails" type="InvoiceListRequestDetailsType"/>
+	<xs:complexType name="InvoiceListRequestDetailsType">
+		<xs:sequence>
+			<xs:element ref="InvoiceNumber" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="InvoiceDateTimeInformation" minOccurs="0"/>
+			<xs:element ref="DocumentReference" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="InvoiceDateTimeInformation" type="InvoiceDateTimeInformationType"/>
+	<xs:complexType name="InvoiceDateTimeInformationType">
+		<xs:choice>
+			<xs:element ref="DateTime"/>
+			<xs:element ref="DateTimeRange"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="ProductStageStatusIdentifier" type="ProductStageStatusIdentifierType"/>
+	<xs:complexType name="ProductStageStatusIdentifierType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Agency" type="cidxListPartnerAgencyAttribute" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="ProductStageDescription" type="cidxToken"/>
+	<xs:element name="PriceSheetRelativeDays" type="PriceSheetRelativeDaysType"/>
+	<xs:complexType name="PriceSheetRelativeDaysType">
+		<xs:simpleContent>
+			<xs:extension base="xs:integer">
+				<xs:attribute name="PriceSheetDateType" type="cidxListPriceSheetDateType" use="required"/>
+				<xs:attribute name="DateTimeQualifier" type="cidxListDateQualifier" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="VolumeDeterminationIdentifier" type="cidxToken"/>
+	<xs:element name="VolumeDeterminationDescription" type="cidxToken"/>
+	<xs:element name="FreightMethodIdentifier" type="FreightMethodIdentifierType"/>
+	<xs:complexType name="FreightMethodIdentifierType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Agency" type="cidxToken"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="FreightMethodDescription" type="cidxToken"/>
+	<xs:element name="FreightMethodPaymentType" type="FreightMethodPaymentTypeType"/>
+	<xs:complexType name="FreightMethodPaymentTypeType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Domain" type="cidxToken"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="FreightMethodPaymentTypeLocation" type="cidxToken"/>
+	<xs:element name="UnitVolumeIdentifier" type="cidxToken"/>
+	<xs:element name="UnitVolumeDescription" type="cidxToken"/>
+	<xs:element name="ProductTagRatio" type="cidxToken"/>
+	<xs:element name="RoyaltyApplied" type="cidxToken"/>
+	<xs:element name="PricingDiscountIdentifier" type="PricingDiscountIdentifierType"/>
+	<xs:complexType name="PricingDiscountIdentifierType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Domain" type="cidxToken"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="PricingDiscountDescription" type="cidxToken"/>
+	<xs:element name="SupplyForecast" type="SupplyForecastType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SupplyForecastType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="SupplyForecastBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.0"/>
+	</xs:complexType>
+	<xs:element name="SupplyForecastBody" type="SupplyForecastBodyType"/>
+	<xs:complexType name="SupplyForecastBodyType">
+		<xs:sequence>
+			<xs:element ref="SupplyForecastProperties"/>
+			<xs:element ref="SupplyForecastPartners"/>
+			<xs:element ref="SupplyForecastDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SupplyForecastProperties" type="SupplyForecastPropertiesType"/>
+	<xs:complexType name="SupplyForecastPropertiesType">
+		<xs:sequence>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="CurrencyCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SupplyForecastPartners" type="SupplyForecastPartnersType"/>
+	<xs:complexType name="SupplyForecastPartnersType">
+		<xs:sequence>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SupplyForecastDetails" type="SupplyForecastDetailsType"/>
+	<xs:complexType name="SupplyForecastDetailsType">
+		<xs:sequence>
+			<xs:element ref="SupplyForecastProductLineItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AvailabilityClassification" type="AvailabilityClassificationType"/>
+	<xs:complexType name="AvailabilityClassificationType">
+		<xs:sequence>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="ScheduleDateTimeInformation"/>
+			<xs:element ref="ProductStage" minOccurs="0"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="AvailabilityClassificationType" type="cidxListVolumeDeterminationDateType"/>
+	</xs:complexType>
+	<xs:element name="ProductStage" type="ProductStageType"/>
+	<xs:complexType name="ProductStageType">
+		<xs:sequence>
+			<xs:element ref="ProductStageStatusIdentifier" minOccurs="0"/>
+			<xs:element ref="ProductStageDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="VolumeDeterminationMethod" type="VolumeDeterminationMethodType"/>
+	<xs:complexType name="VolumeDeterminationMethodType">
+		<xs:sequence>
+			<xs:element ref="VolumeDeterminationIdentifier"/>
+			<xs:element ref="VolumeDeterminationDescription"/>
+			<xs:element ref="DateTimeInformation" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="VolumeDeterminationDateType" type="cidxListVolumeDeterminationDateType"/>
+	</xs:complexType>
+	<xs:element name="PriceSheetFreightCondition" type="PriceSheetFreightConditionType"/>
+	<xs:complexType name="PriceSheetFreightConditionType">
+		<xs:sequence>
+			<xs:element ref="FreightMethodIdentifier"/>
+			<xs:element ref="FreightMethodDescription"/>
+			<xs:element ref="FreightMethodServiceLevel" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="FreightMethodPaymentType"/>
+			<xs:element ref="FreightMethodPaymentTypeLocation" minOccurs="0"/>
+			<xs:element ref="OrderingInformation" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FreightMethodServiceLevel" type="FreightMethodServiceLevelType"/>
+	<xs:complexType name="FreightMethodServiceLevelType">
+		<xs:sequence>
+			<xs:element ref="FreightMethodServiceLevelIdentifier"/>
+			<xs:element ref="FreightMethodServiceLevelDescription"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FreightMethodServiceLevelIdentifier" type="FreightMethodServiceLevelIdentifierType"/>
+	<xs:complexType name="FreightMethodServiceLevelIdentifierType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Agency" type="cidxListFreightServiceLevelAgency"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="FreightMethodServiceLevelDescription" type="cidxToken"/>
+	<xs:element name="PostalCodeRangeStart" type="cidxToken"/>
+	<xs:element name="PostalCodeRangeEnd" type="cidxToken"/>
+	<xs:element name="PostalCodeRange" type="PostalCodeRangeType"/>
+	<xs:complexType name="PostalCodeRangeType">
+		<xs:sequence>
+			<xs:element ref="PostalCodeRangeStart"/>
+			<xs:element ref="PostalCodeRangeEnd"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductComponent" type="ProductComponentType"/>
+	<xs:complexType name="ProductComponentType">
+		<xs:sequence>
+			<xs:element ref="ProductTagRatio"/>
+			<xs:element ref="RoyaltyApplied"/>
+			<xs:element ref="OtherComponent" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="OtherComponent" type="OtherComponentType"/>
+	<xs:complexType name="OtherComponentType">
+		<xs:sequence>
+			<xs:element ref="OtherComponentIdentifier"/>
+			<xs:element ref="OtherComponentValue"/>
+			<xs:element ref="UnitOfMeasureCode"/>
+			<xs:element ref="OtherComponentDescription"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="OtherComponentIdentifier" type="OtherComponentIdentifierType"/>
+	<xs:complexType name="OtherComponentIdentifierType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Agency" type="cidxListProductIDAgency" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="OtherComponentValue" type="cidxToken"/>
+	<xs:element name="OtherComponentDescription" type="cidxToken"/>
+	<xs:element name="PriceSheetAllowanceChargeAmount" type="PriceSheetAllowanceChargeAmountType"/>
+	<xs:complexType name="PriceSheetAllowanceChargeAmountType">
+		<xs:choice>
+			<xs:element ref="PricingLumpSum"/>
+			<xs:element ref="PricingPerUnit"/>
+			<xs:element ref="PricingPercentage"/>
+			<xs:element ref="PricingDiscountLevel"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="PricingDiscountLevel" type="PricingDiscountLevelType"/>
+	<xs:complexType name="PricingDiscountLevelType">
+		<xs:sequence>
+			<xs:element ref="PricingDiscountIdentifier"/>
+			<xs:element ref="PricingDiscountDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SupplyForecastProductLineItem" type="SupplyForecastProductLineItemType"/>
+	<xs:complexType name="SupplyForecastProductLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ProductIdentification" maxOccurs="unbounded"/>
+			<xs:element ref="AvailabilityClassification" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReturnReasonIdentifier" type="ReturnReasonIdentifierType"/>
+	<xs:complexType name="ReturnReasonIdentifierType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Agency" type="cidxToken" use="required"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="ReturnReasonDescription" type="cidxToken"/>
+	<xs:element name="ReturnReason" type="ReturnReasonType"/>
+	<xs:complexType name="ReturnReasonType">
+		<xs:sequence>
+			<xs:element ref="ReturnReasonIdentifier" minOccurs="0"/>
+			<xs:element ref="ReturnReasonDescription"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PaymentIndicatorType" type="cidxListPaymentIndicator"/>
+	<xs:element name="VarianceReasonCode" type="cidxListVarianceCode"/>
+	<xs:element name="VarianceReasonDescription" type="cidxToken"/>
+	<xs:element name="VarianceReason" type="VarianceReasonType"/>
+	<xs:complexType name="VarianceReasonType">
+		<xs:sequence>
+			<xs:element ref="VarianceReasonCode"/>
+			<xs:element ref="VarianceReasonDescription"/>
+		</xs:sequence>
 	</xs:complexType>
 </xs:schema>
