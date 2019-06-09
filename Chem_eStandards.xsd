@@ -3091,10 +3091,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:complexType name="AccountInformationType">
 		<xs:sequence>
 			<xs:element ref="AccountHolderName" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element ref="FinancialInstitutionIdentification" minOccurs="0"/>
-				<xs:element ref="CreditCardInformation" minOccurs="0"/>
-			</xs:choice>
+			<xs:element ref="FinancialInstitutionIdentification" minOccurs="0"/>
+			<xs:element ref="CreditCardInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="AccountNumber" type="AccountNumberType"/>
