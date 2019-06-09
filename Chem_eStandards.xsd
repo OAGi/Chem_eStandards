@@ -6992,10 +6992,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="CostSupportDuration"/>
 			<xs:element ref="ReviewDate" minOccurs="0"/>
 			<xs:element ref="UnitConversions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element ref="BidInformation"/>
-				<xs:element ref="CompetitiveInformation"/>
-			</xs:choice>
+			<xs:element ref="BidInformation" minOccurs="0"/>
+			<xs:element ref="CompetitiveInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestPartners" type="CostSupportRequestPartnersType"/>
