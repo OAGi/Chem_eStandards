@@ -953,12 +953,12 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:appinfo>may_be_message_element</xs:appinfo>
 		</xs:annotation>
 	</xs:element>
-	<!-- ERROR: missing version attribute -->
 	<xs:complexType name="FeedTonnageReportType">
 		<xs:sequence>
 			<xs:element ref="Header"/>
 			<xs:element ref="FeedTonnageReportBody"/>
 		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="FeedTonnageReportBody" type="FeedTonnageReportBodyType"/>
 	<xs:complexType name="FeedTonnageReportBodyType">
