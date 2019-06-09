@@ -10132,10 +10132,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:simpleType>
 	<xs:element name="PostalCodes" type="PostalCodesType"/>
 	<xs:complexType name="PostalCodesType">
-		<xs:choice>
-			<xs:element ref="PostalCode" maxOccurs="unbounded"/>
-			<xs:element ref="PostalCodeRange" maxOccurs="unbounded"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PostalCode" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PostalCodeRange" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
 		<xs:attribute name="GeographyQualifier" type="cidxListIncludeExclude" use="required"/>
 	</xs:complexType>
 	<xs:element name="PriceApplicabilityCriteria" type="PriceApplicabilityCriteriaType"/>
