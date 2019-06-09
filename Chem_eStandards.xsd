@@ -3379,12 +3379,12 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="Content" type="ContentType"/>
 	<xs:element name="ContractAmount" type="ContractAmountType"/>
 	<xs:complexType name="ContractAmountType">
-		<xs:choice>
-			<xs:element ref="PricingLumpSum"/>
-			<xs:element ref="PricingPerUnit"/>
-			<xs:element ref="PricingPercentage"/>
-			<xs:element ref="PercentageBasis"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PricingLumpSum" minOccurs="0"/>
+			<xs:element ref="PricingPerUnit" minOccurs="0"/>
+			<xs:element ref="PricingPercentage" minOccurs="0"/>
+			<xs:element ref="PercentageBasis" minOccurs="0"/>
+		</xs:sequence>
 		<xs:attribute name="PriceType" type="cidxListPriceType" use="required"/>
 	</xs:complexType>
 	<xs:element name="ContractDateRanges" type="ContractDateRangesType"/>
