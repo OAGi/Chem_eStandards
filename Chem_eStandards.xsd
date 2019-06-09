@@ -3101,8 +3101,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="AddressInformation" type="AddressInformationType"/>
 	<xs:complexType name="AddressInformationType">
 		<xs:sequence>
-			<xs:element ref="AddressLine" maxOccurs="unbounded"/>
-			<xs:element ref="PostBoxNumber"/>
+			<xs:element ref="AddressLine" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PostBoxNumber" minOccurs="0"/>
 			<xs:element ref="CityName"/>
 			<xs:element ref="StateOrProvince" minOccurs="0"/>
 			<xs:element ref="PostalCode" minOccurs="0"/>
