@@ -12096,10 +12096,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="InvoiceDateTimeInformation" type="InvoiceDateTimeInformationType"/>
 	<xs:complexType name="InvoiceDateTimeInformationType">
-		<xs:choice>
-			<xs:element ref="DateTime"/>
-			<xs:element ref="DateTimeRange"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="DateTime" minOccurs="0"/>
+			<xs:element ref="DateTimeRange" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ProductStageStatusIdentifier" type="ProductStageStatusIdentifierType"/>
 	<xs:complexType name="ProductStageStatusIdentifierType">
