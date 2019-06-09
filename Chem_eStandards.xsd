@@ -5520,10 +5520,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:complexType name="ReplenishmentSummaryType">
 		<xs:sequence>
 			<xs:element ref="ReceiptQuantity"/>
-			<xs:choice>
-				<xs:element ref="ShipDate"/>
-				<xs:element ref="DeliveryDateTime"/>
-			</xs:choice>
+			<xs:element ref="ShipDate" minOccurs="0"/>
+			<xs:element ref="DeliveryDateTime" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="RequestedCostSupport" type="RequestedCostSupportType"/>
