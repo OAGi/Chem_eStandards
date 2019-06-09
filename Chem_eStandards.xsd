@@ -3174,10 +3174,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="Audience" type="AudienceType"/>
 	<xs:complexType name="AudienceType">
-		<xs:choice>
-			<xs:element ref="Include"/>
-			<xs:element ref="Exclude"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="Include" minOccurs="0"/>
+			<xs:element ref="Exclude" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="BalanceItemFlag" type="BalanceItemFlagType"/>
 	<xs:element name="BarCodeDataIdentifier" type="BarCodeDataIdentifierType"/>
