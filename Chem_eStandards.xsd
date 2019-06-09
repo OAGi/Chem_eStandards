@@ -741,6 +741,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="FertilizerTonnageReportBody"/>
 		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="FertilizerTonnageReportBody" type="FertilizerTonnageReportBodyType"/>
 	<xs:complexType name="FertilizerTonnageReportBodyType">
