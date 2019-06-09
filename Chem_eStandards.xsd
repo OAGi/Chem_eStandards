@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XMLSpy v2010 rel. 2 (x64) (http://www.altova.com) by Open Applications Group (Open Applications Group) -->
 <!--
 
 Schema agency: Open Applications Group 
-Chem eStandards Revision: 5.1.1
-Date: 15 October 2010
+Chem eStandards Revision: 5.2
+Date: 17 August 2012
 
-Copyright Open Applications Group (1996-2010). All Rights Reserved.
+Copyright Open Applications Group (1996-2012). All Rights Reserved.
   
 This is an OAGIS Chem eStandards XML Schema (XSD) Definition.
 
@@ -15,7 +14,9 @@ License information for this file is provided in the file **OAGi_Chem_eStandards
 For support, more information, or to report implementation bugs, please contact the Open Applications Group at oagis@openapplications.org.
 
 -->
-<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:5:1:1" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:cidx:names:specification:ces:schema:all:5:1:1">
+<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:5:2"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:cidx:names:specification:ces:schema:all:5:2">
 	<xs:simpleType name="cidxBoolean">
 		<xs:restriction base="cidxToken">
 			<xs:enumeration value="0"/>
@@ -267,6 +268,19 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:enumeration value="OrderDate"/>
 			<xs:enumeration value="ReturnDate"/>
 			<xs:enumeration value="ShipDate"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="cidxListIndustrySegment">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Chemical"/>
+			<xs:enumeration value="CropNutrition"/>
+			<xs:enumeration value="CropProtection"/>
+			<xs:enumeration value="Energy"/>
+			<xs:enumeration value="Feed"/>
+			<xs:enumeration value="Grain"/>
+			<xs:enumeration value="OrnamentalHorticulture"/>
+			<xs:enumeration value="Paper"/>
+			<xs:enumeration value="Seed"/>
 		</xs:restriction>
 	</xs:simpleType>
 	<xs:simpleType name="cidxListFlammableLiquidsFireClass">
@@ -525,6 +539,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:enumeration value="RebateReceiver"/>
 			<xs:enumeration value="Receiver"/>
 			<xs:enumeration value="RemitTo"/>
+			<xs:enumeration value="Reporter"/>
 			<xs:enumeration value="Scales"/>
 			<xs:enumeration value="Seller"/>
 			<xs:enumeration value="SellingPartner"/>
@@ -583,6 +598,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:simpleType name="cidxListPriceType">
 		<xs:restriction base="xs:NMTOKEN">
 			<xs:enumeration value="DiscountPerUnit"/>
+			<xs:enumeration value="FOBDestinationPrice"/>
+			<xs:enumeration value="FOBOriginPrice"/>
 			<xs:enumeration value="FOBPrice"/>
 			<xs:enumeration value="FreightAllowance"/>
 			<xs:enumeration value="FreightCost"/>
@@ -739,6 +756,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:enumeration value="SupplierOrderNumber"/>
 			<xs:enumeration value="Telemarketer"/>
 			<xs:enumeration value="ThirdPartyPurchaseOrderNumber"/>
+			<xs:enumeration value="TransferNumber"/>
 			<xs:enumeration value="TransportEmergencyCard"/>
 			<xs:enumeration value="VehicleID"/>
 			<xs:enumeration value="VeterinaryFeedDirective"/>
@@ -787,7 +805,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:enumeration value="Glass fibre with NBR binder (Selecta Blue)"/>
 			<xs:enumeration value="Graphite fibre with NBR binder (G9900)"/>
 			<xs:enumeration value="Graphite with Kevlar fibre (Novatec Premium)"/>
-			<xs:enumeration value="Aramid fibre with specifiied NBR binder (AFM 34) - with interior crimping"/>
+			<xs:enumeration
+				value="Aramid fibre with specifiied NBR binder (AFM 34) - with interior crimping"/>
 			<xs:enumeration value="ridged profile gasket 1.4571/PTFE"/>
 			<xs:enumeration value="ridged profile soft iron/graphite gasket"/>
 			<xs:enumeration value="ridged profile gasket 1.4541/graphite"/>
@@ -801,25 +820,36 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:enumeration value="NBR/St packed, type G-St-P/S"/>
 			<xs:enumeration value="NBR/ST-packed, type WG"/>
 			<xs:enumeration value="spiral wound PTFE gasket/1.4541 (N+F-flange)"/>
-			<xs:enumeration value="spiral wound PTFE gasket/1.4541/St 33 galvanised - inner ring (V+R flange)"/>
-			<xs:enumeration value="spiral wound gasket PTFE/PTFE/ 1.4541/1.4541 - inner ring (V+R flanges)"/>
-			<xs:enumeration value="spiral wound PTFE gsket/1.4541/1.4541/St 33 galvanised - inner ring/centre ring (smooth sealing)"/>
-			<xs:enumeration value="spiral wound PTFE/1.4541/1.4541 - inner ring/centre rind (smooth sealing)"/>
+			<xs:enumeration
+				value="spiral wound PTFE gasket/1.4541/St 33 galvanised - inner ring (V+R flange)"/>
+			<xs:enumeration
+				value="spiral wound gasket PTFE/PTFE/ 1.4541/1.4541 - inner ring (V+R flanges)"/>
+			<xs:enumeration
+				value="spiral wound PTFE gsket/1.4541/1.4541/St 33 galvanised - inner ring/centre ring (smooth sealing)"/>
+			<xs:enumeration
+				value="spiral wound PTFE/1.4541/1.4541 - inner ring/centre rind (smooth sealing)"/>
 			<xs:enumeration value="spiral wound graphite gasket/1.4541 (N+F-flange)"/>
-			<xs:enumeration value="spiral wound graphite gasket/104541/St 33 galvanised - inner ring (V+R-flange)"/>
-			<xs:enumeration value="spiral wound graphite gasket /1.4541/1.4541 inner ring (V+R-flange)"/>
-			<xs:enumeration value="spiral wound graphite gasket /1.4541/1.4541/St 33 galvanised - inner ring/centre ring (smooth sealing)"/>
-			<xs:enumeration value="spiral wound graphite seal/1.4541/1.4541/1.4541 - inner ring/entre ring (smooth selling)"/>
-			<xs:enumeration value="spiral wound graphite seal/1.4559.4539/1.4539 - (inner ring/entre ring smooth selling)"/>
+			<xs:enumeration
+				value="spiral wound graphite gasket/104541/St 33 galvanised - inner ring (V+R-flange)"/>
+			<xs:enumeration
+				value="spiral wound graphite gasket /1.4541/1.4541 inner ring (V+R-flange)"/>
+			<xs:enumeration
+				value="spiral wound graphite gasket /1.4541/1.4541/St 33 galvanised - inner ring/centre ring (smooth sealing)"/>
+			<xs:enumeration
+				value="spiral wound graphite seal/1.4541/1.4541/1.4541 - inner ring/entre ring (smooth selling)"/>
+			<xs:enumeration
+				value="spiral wound graphite seal/1.4559.4539/1.4539 - (inner ring/entre ring smooth selling)"/>
 			<xs:enumeration value="pure PTFE"/>
 			<xs:enumeration value="PTFE with approx. 40% quartz (Gylon Standard 3501E)"/>
 			<xs:enumeration value="PTFE with approx. 45% quartz (Sigma 511)"/>
 			<xs:enumeration value="PTFE with approx. 25% glass fibre (TFM 4105)"/>
 			<xs:enumeration value="PTFE with less than10% spherical quartz (Gylon blue)"/>
 			<xs:enumeration value="PTFE with 50% silicon carbide (Klinger Top-Chem 2000)"/>
-			<xs:enumeration value="PTFE/Aramid fibre - with NBR/1.4571 (sealing gasket with compression ring)"/>
+			<xs:enumeration
+				value="PTFE/Aramid fibre - with NBR/1.4571 (sealing gasket with compression ring)"/>
 			<xs:enumeration value="FTPE/Graphite enamel (sealing gasket)"/>
-			<xs:enumeration value="FTPE/Graphite enamel/1.4571 (sealing gasket with compression ring)"/>
+			<xs:enumeration
+				value="FTPE/Graphite enamel/1.4571 (sealing gasket with compression ring)"/>
 			<xs:enumeration value="PTFE/Aramid fibre with special NBR binder (sealing gasket)"/>
 			<xs:enumeration value="Gore-Tex GR"/>
 			<xs:enumeration value="PVC/BASF-610 Grade"/>
@@ -1879,7 +1909,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="AcceptanceNotificationBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="AcceptanceNotificationBody" type="AcceptanceNotificationBodyType"/>
 	<xs:complexType name="AcceptanceNotificationBodyType">
@@ -2041,7 +2071,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="AlternativeCommunicationMethodType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="CommunicationMethodType" type="cidxListCommunicationMethodType" use="required"/>
+				<xs:attribute name="CommunicationMethodType" type="cidxListCommunicationMethodType"
+					use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -2074,7 +2105,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="BatchNumberType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="BatchNumberCreator" type="cidxListBatchNumberCreator" use="required"/>
+				<xs:attribute name="BatchNumberCreator" type="cidxListBatchNumberCreator"
+					use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -2134,7 +2166,8 @@ For support, more information, or to report implementation bugs, please contact 
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ChangesAllowed" type="ChangesAllowedType"/>
-	<xs:element name="ChemicalAbstractsServiceRegistryNumber" type="ChemicalAbstractsServiceRegistryNumberType"/>
+	<xs:element name="ChemicalAbstractsServiceRegistryNumber"
+		type="ChemicalAbstractsServiceRegistryNumberType"/>
 	<xs:element name="CHRISCode" type="CHRISCodeType"/>
 	<xs:complexType name="CHRISCodeType">
 		<xs:simpleContent>
@@ -2250,7 +2283,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="ContainerSerialNumberType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="BarCodeSymbology" type="cidxListBarCodeSymbology" use="required"/>
+				<xs:attribute name="BarCodeSymbology" type="cidxListBarCodeSymbology" use="required"
+				/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -2271,7 +2305,8 @@ For support, more information, or to report implementation bugs, please contact 
 		<xs:sequence>
 			<xs:element ref="DateTimeRange"/>
 		</xs:sequence>
-		<xs:attribute name="ContractDateRangesType" type="cidxListContractDateRangesType" use="required"/>
+		<xs:attribute name="ContractDateRangesType" type="cidxListContractDateRangesType"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="ContractExpirationDate" type="ContractExpirationDateType"/>
 	<xs:complexType name="ContractExpirationDateType">
@@ -2307,7 +2342,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Deferred" minOccurs="0"/>
 			<xs:element ref="Penalty" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="ContractPaymentTermsType" type="cidxListContractPaymentTermsType" use="required"/>
+		<xs:attribute name="ContractPaymentTermsType" type="cidxListContractPaymentTermsType"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="ContractProductInformation" type="ContractProductInformationType"/>
 	<xs:complexType name="ContractProductInformationType">
@@ -2413,7 +2449,8 @@ For support, more information, or to report implementation bugs, please contact 
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="CurrencyUnit" type="CurrencyUnitType"/>
-	<xs:element name="CustomerRequestedDeliveryHoldFlag" type="CustomerRequestedDeliveryHoldFlagType"/>
+	<xs:element name="CustomerRequestedDeliveryHoldFlag"
+		type="CustomerRequestedDeliveryHoldFlagType"/>
 	<xs:element name="CustomsInformation" type="CustomsInformationType"/>
 	<xs:complexType name="CustomsInformationType">
 		<xs:sequence>
@@ -2519,7 +2556,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="DeliveryConfirmationProductLineItem" type="DeliveryConfirmationProductLineItemType"/>
+	<xs:element name="DeliveryConfirmationProductLineItem"
+		type="DeliveryConfirmationProductLineItemType"/>
 	<xs:complexType name="DeliveryConfirmationProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -2700,7 +2738,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="NumberOfOriginals" minOccurs="0"/>
 			<xs:element ref="NumberOfCopies" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="DeliveryMethodQualifier" type="cidxListDocumentDeliveryCode" use="required"/>
+		<xs:attribute name="DeliveryMethodQualifier" type="cidxListDocumentDeliveryCode"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="DocumentRecipientPartner" type="DocumentRecipientPartnerType"/>
 	<xs:complexType name="DocumentRecipientPartnerType">
@@ -2734,7 +2773,8 @@ For support, more information, or to report implementation bugs, please contact 
 		<xs:sequence>
 			<xs:element ref="ContactInformation"/>
 		</xs:sequence>
-		<xs:attribute name="ContactType" type="cidxListEmergencyResponseContactType" use="required"/>
+		<xs:attribute name="ContactType" type="cidxListEmergencyResponseContactType" use="required"
+		/>
 	</xs:complexType>
 	<xs:element name="EmergencyResponsePlanNumber" type="EmergencyResponsePlanNumberType"/>
 	<xs:element name="EmergencyScheduleCode" type="EmergencyScheduleCodeType"/>
@@ -2876,7 +2916,8 @@ For support, more information, or to report implementation bugs, please contact 
 	</xs:complexType>
 	<xs:element name="ExternalReference" type="ExternalReferenceType"/>
 	<xs:element name="FinancialInstitutionDFINumber" type="FinancialInstitutionDFINumberType"/>
-	<xs:element name="FinancialInstitutionIdentification" type="FinancialInstitutionIdentificationType"/>
+	<xs:element name="FinancialInstitutionIdentification"
+		type="FinancialInstitutionIdentificationType"/>
 	<xs:complexType name="FinancialInstitutionIdentificationType">
 		<xs:sequence>
 			<xs:element ref="FinancialInstitutionName"/>
@@ -3004,7 +3045,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="CHRISCode" minOccurs="0"/>
 			<xs:element ref="NFPACode" minOccurs="0"/>
 			<xs:element ref="EUSubstanceNumber" minOccurs="0"/>
-			<xs:element ref="ChemicalAbstractsServiceRegistryNumber" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ChemicalAbstractsServiceRegistryNumber" minOccurs="0"
+				maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="HazardousMarkingNotation" type="HazardousMarkingNotationType"/>
@@ -3027,7 +3069,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="SpecifiedMeasurement"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="HazardousReportableQuantityIndicator" type="HazardousReportableQuantityIndicatorType"/>
+	<xs:element name="HazardousReportableQuantityIndicator"
+		type="HazardousReportableQuantityIndicatorType"/>
 	<xs:element name="HazardousShipment" type="HazardousShipmentType"/>
 	<xs:complexType name="HazardousShipmentType">
 		<xs:sequence>
@@ -3236,7 +3279,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="InvoiceTypeType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="InvoiceQualifier" type="cidxListInvoiceQualifier" use="required"/>
+				<xs:attribute name="InvoiceQualifier" type="cidxListInvoiceQualifier" use="required"
+				/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -3463,7 +3507,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="LowerLimitType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="Assignment" type="cidxListQuantativeResultLimitAssignment" use="required"/>
+				<xs:attribute name="Assignment" type="cidxListQuantativeResultLimitAssignment"
+					use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -3481,7 +3526,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ProductIdentification" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ManufacturingIdentificationDetails" type="ManufacturingIdentificationDetailsType"/>
+	<xs:element name="ManufacturingIdentificationDetails"
+		type="ManufacturingIdentificationDetailsType"/>
 	<xs:complexType name="ManufacturingIdentificationDetailsType">
 		<xs:sequence minOccurs="0">
 			<xs:element ref="ManufacturingIdentificationType"/>
@@ -3489,7 +3535,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ParentManufacturingIdentificationNumber" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ManufacturingIdentificationNumber" type="ManufacturingIdentificationNumberType"/>
+	<xs:element name="ManufacturingIdentificationNumber"
+		type="ManufacturingIdentificationNumberType"/>
 	<xs:element name="ManufacturingIdentificationType" type="ManufacturingIdentificationTypeType"/>
 	<xs:element name="MarinePollutantCode" type="MarinePollutantCodeType"/>
 	<xs:complexType name="MarinePollutantCodeType">
@@ -3696,7 +3743,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="OrderStatusResponseProductLineItem" type="OrderStatusResponseProductLineItemType"/>
+	<xs:element name="OrderStatusResponseProductLineItem"
+		type="OrderStatusResponseProductLineItemType"/>
 	<xs:complexType name="OrderStatusResponseProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -3724,7 +3772,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0"/>
 			<xs:element ref="DeliveryGroup" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element ref="ProprietaryShipmentTrackingIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ProprietaryShipmentTrackingIdentifier" minOccurs="0"
+				maxOccurs="unbounded"/>
 			<xs:element ref="ChangesAllowed"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -3851,7 +3900,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="LoosePackageCountQuantity" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ParentManufacturingIdentificationNumber" type="ParentManufacturingIdentificationNumberType"/>
+	<xs:element name="ParentManufacturingIdentificationNumber"
+		type="ParentManufacturingIdentificationNumberType"/>
 	<xs:element name="PartnerIdentifier" type="PartnerIdentifierType"/>
 	<xs:complexType name="PartnerIdentifierType">
 		<xs:simpleContent>
@@ -4129,7 +4179,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ProductIdentification"/>
 			<xs:element ref="ProductSpecification" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ProductClassification" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element ref="PackagingInformation" minOccurs="0"/>
+			<xs:element ref="PackagingInformation" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 			<xs:element ref="MarketingName" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ManufacturerInformation" minOccurs="0"/>
@@ -4169,6 +4219,18 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="NetWeight" minOccurs="0"/>
 			<xs:element ref="InventoryLocation" minOccurs="0"/>
 			<xs:element ref="BatchExpirationDate" minOccurs="0"/>
+			<xs:element ref="SeedCountPerPound" minOccurs="0"/>
+			<xs:element ref="LotQuantity" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedCountPerPound" type="SeedCountPerPoundType"/>
+	<xs:simpleType name="SeedCountPerPoundType">
+		<xs:restriction base="xs:positiveInteger"/>
+	</xs:simpleType>
+	<xs:element name="LotQuantity" type="LotQuantityType"/>
+	<xs:complexType name="LotQuantityType">
+		<xs:sequence>
+			<xs:element ref="SpecifiedMeasurement"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ProjectedVolume" type="ProjectedVolumeType"/>
@@ -4188,7 +4250,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="PackagingContainerInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ProprietaryShipmentTrackingIdentifier" type="ProprietaryShipmentTrackingIdentifierType"/>
+	<xs:element name="ProprietaryShipmentTrackingIdentifier"
+		type="ProprietaryShipmentTrackingIdentifierType"/>
 	<xs:element name="PSNSupplement" type="PSNSupplementType"/>
 	<xs:element name="PurchaseOrderInformation" type="PurchaseOrderInformationType"/>
 	<xs:complexType name="PurchaseOrderInformationType">
@@ -4709,7 +4772,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="ShippingLabelNumberType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="BarCodeSymbology" type="cidxListBarCodeSymbology" use="required"/>
+				<xs:attribute name="BarCodeSymbology" type="cidxListBarCodeSymbology" use="required"
+				/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -4769,7 +4833,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="SourceContainerType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="SourceContainerType" type="cidxListSourceContainer" use="required"/>
+				<xs:attribute name="SourceContainerType" type="cidxListSourceContainer"
+					use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -4784,7 +4849,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="SpecialFulfillmentRequestCodeType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="Domain" type="cidxToken" fixed="RosettaNetGlobalSpecialFulfillmentRequestCode"/>
+				<xs:attribute name="Domain" type="cidxToken"
+					fixed="RosettaNetGlobalSpecialFulfillmentRequestCode"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -4810,7 +4876,8 @@ For support, more information, or to report implementation bugs, please contact 
 		<xs:sequence>
 			<xs:element ref="Measurement"/>
 		</xs:sequence>
-		<xs:attribute name="MeasurementQualifier" type="cidxListSpecifiedMeasurementQualifier" use="required"/>
+		<xs:attribute name="MeasurementQualifier" type="cidxListSpecifiedMeasurementQualifier"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="StandardOrderQuantity" type="StandardOrderQuantityType"/>
 	<xs:complexType name="StandardOrderQuantityType">
@@ -5107,7 +5174,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ConfirmedPrice" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="StageIdentifier" type="cidxListTransportationInformationStageIdentifier" use="required"/>
+		<xs:attribute name="StageIdentifier" type="cidxListTransportationInformationStageIdentifier"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="TransportMethodCode" type="TransportMethodCodeType"/>
 	<xs:complexType name="TransportMethodCodeType">
@@ -5200,7 +5268,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="UpperLimitType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="Assignment" type="cidxListQuantativeResultLimitAssignment" use="required"/>
+				<xs:attribute name="Assignment" type="cidxListQuantativeResultLimitAssignment"
+					use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -5217,7 +5286,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="VoyageTripNumberType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
-				<xs:attribute name="SelectionQualifier" type="cidxListVoyageTripNumberAgency" use="required"/>
+				<xs:attribute name="SelectionQualifier" type="cidxListVoyageTripNumberAgency"
+					use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
@@ -5331,7 +5401,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CarrierWeightsBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="CarrierWeightsBody" type="CarrierWeightsBodyType"/>
 	<xs:complexType name="CarrierWeightsBodyType">
@@ -5400,7 +5470,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CertificateOfAnalysisBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="CertificateOfAnalysisBatchDetail" type="CertificateOfAnalysisBatchDetailType"/>
 	<xs:complexType name="CertificateOfAnalysisBatchDetailType">
@@ -5458,7 +5528,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ContractBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ContractBody" type="ContractBodyType"/>
 	<xs:complexType name="ContractBodyType">
@@ -5548,7 +5618,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ContractResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ContractResponseBody" type="ContractResponseBodyType"/>
 	<xs:complexType name="ContractResponseBodyType">
@@ -5639,7 +5709,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportCreditRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="CostSupportCreditRequestBody" type="CostSupportCreditRequestBodyType"/>
 	<xs:complexType name="CostSupportCreditRequestBodyType">
@@ -5666,7 +5736,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CostSupportCreditRequestProperties" type="CostSupportCreditRequestPropertiesType"/>
+	<xs:element name="CostSupportCreditRequestProperties"
+		type="CostSupportCreditRequestPropertiesType"/>
 	<xs:complexType name="CostSupportCreditRequestPropertiesType">
 		<xs:sequence>
 			<xs:element ref="CostSupportAgreementNumber"/>
@@ -5724,7 +5795,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportCreditResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="CostSupportCreditResponseBody" type="CostSupportCreditResponseBodyType"/>
 	<xs:complexType name="CostSupportCreditResponseBodyType">
@@ -5740,7 +5811,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="CreditResponseStatusInformation"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CostSupportCreditResponsePartners" type="CostSupportCreditResponsePartnersType"/>
+	<xs:element name="CostSupportCreditResponsePartners"
+		type="CostSupportCreditResponsePartnersType"/>
 	<xs:complexType name="CostSupportCreditResponsePartnersType">
 		<xs:sequence>
 			<xs:element ref="Distributor"/>
@@ -5750,7 +5822,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CostSupportCreditResponseProperties" type="CostSupportCreditResponsePropertiesType"/>
+	<xs:element name="CostSupportCreditResponseProperties"
+		type="CostSupportCreditResponsePropertiesType"/>
 	<xs:complexType name="CostSupportCreditResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="CostSupportAgreementNumber"/>
@@ -5788,7 +5861,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestBody" type="CostSupportRequestBodyType"/>
 	<xs:complexType name="CostSupportRequestBodyType">
@@ -5848,7 +5921,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportRequestChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestChangeBody" type="CostSupportRequestChangeBodyType"/>
 	<xs:complexType name="CostSupportRequestChangeBodyType">
@@ -5884,7 +5957,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CostSupportRequestChangeProperties" type="CostSupportRequestChangePropertiesType"/>
+	<xs:element name="CostSupportRequestChangeProperties"
+		type="CostSupportRequestChangePropertiesType"/>
 	<xs:complexType name="CostSupportRequestChangePropertiesType">
 		<xs:sequence>
 			<xs:element ref="CostSupportRequestNumber"/>
@@ -5911,7 +5985,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="CostSupportResponseBody" type="CostSupportResponseBodyType"/>
 	<xs:complexType name="CostSupportResponseBodyType">
@@ -5945,7 +6019,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="LanguageCode"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CostSupportResponseStatusInformation" type="CostSupportResponseStatusInformationType"/>
+	<xs:element name="CostSupportResponseStatusInformation"
+		type="CostSupportResponseStatusInformationType"/>
 	<xs:complexType name="CostSupportResponseStatusInformationType">
 		<xs:sequence>
 			<xs:element ref="Status"/>
@@ -5998,9 +6073,10 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="CustomerSpecificCatalogUpdateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
-	<xs:element name="CustomerSpecificCatalogUpdateBody" type="CustomerSpecificCatalogUpdateBodyType"/>
+	<xs:element name="CustomerSpecificCatalogUpdateBody"
+		type="CustomerSpecificCatalogUpdateBodyType"/>
 	<xs:complexType name="CustomerSpecificCatalogUpdateBodyType">
 		<xs:sequence>
 			<xs:element ref="CustomerSpecificCatalogUpdateProperties"/>
@@ -6008,13 +6084,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="CustomerSpecificCatalogUpdateDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CustomerSpecificCatalogUpdateDetails" type="CustomerSpecificCatalogUpdateDetailsType"/>
+	<xs:element name="CustomerSpecificCatalogUpdateDetails"
+		type="CustomerSpecificCatalogUpdateDetailsType"/>
 	<xs:complexType name="CustomerSpecificCatalogUpdateDetailsType">
 		<xs:sequence>
 			<xs:element ref="CustomerSpecificCatalogUpdateProductLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CustomerSpecificCatalogUpdatePartners" type="CustomerSpecificCatalogUpdatePartnersType"/>
+	<xs:element name="CustomerSpecificCatalogUpdatePartners"
+		type="CustomerSpecificCatalogUpdatePartnersType"/>
 	<xs:complexType name="CustomerSpecificCatalogUpdatePartnersType">
 		<xs:sequence>
 			<xs:element ref="Seller"/>
@@ -6022,7 +6100,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="CustomerSpecificCatalogUpdateProductLineItem" type="CustomerSpecificCatalogUpdateProductLineItemType"/>
+	<xs:element name="CustomerSpecificCatalogUpdateProductLineItem"
+		type="CustomerSpecificCatalogUpdateProductLineItemType"/>
 	<xs:complexType name="CustomerSpecificCatalogUpdateProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -6041,7 +6120,8 @@ For support, more information, or to report implementation bugs, please contact 
 		</xs:sequence>
 		<xs:attribute name="Action" type="cidxListActionType" use="required"/>
 	</xs:complexType>
-	<xs:element name="CustomerSpecificCatalogUpdateProperties" type="CustomerSpecificCatalogUpdatePropertiesType"/>
+	<xs:element name="CustomerSpecificCatalogUpdateProperties"
+		type="CustomerSpecificCatalogUpdatePropertiesType"/>
 	<xs:complexType name="CustomerSpecificCatalogUpdatePropertiesType">
 		<xs:sequence>
 			<xs:element ref="LanguageCode"/>
@@ -6091,10 +6171,11 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryConfirmationBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationAcceptance" type="DeliveryConfirmationAcceptanceType"/>
-	<xs:element name="DeliveryConfirmationRejectionDescription" type="DeliveryConfirmationRejectionDescriptionType"/>
+	<xs:element name="DeliveryConfirmationRejectionDescription"
+		type="DeliveryConfirmationRejectionDescriptionType"/>
 	<xs:element name="DeliveryConfirmationResponse" type="DeliveryConfirmationResponseType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
@@ -6105,7 +6186,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryConfirmationResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationResponseBody" type="DeliveryConfirmationResponseBodyType"/>
 	<xs:complexType name="DeliveryConfirmationResponseBodyType">
@@ -6115,13 +6196,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="DeliveryConfirmationResponseDetails" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="DeliveryConfirmationResponseDetails" type="DeliveryConfirmationResponseDetailsType"/>
+	<xs:element name="DeliveryConfirmationResponseDetails"
+		type="DeliveryConfirmationResponseDetailsType"/>
 	<xs:complexType name="DeliveryConfirmationResponseDetailsType">
 		<xs:sequence>
 			<xs:element ref="DeliveryConfirmationResponseProductLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="DeliveryConfirmationResponsePartners" type="DeliveryConfirmationResponsePartnersType"/>
+	<xs:element name="DeliveryConfirmationResponsePartners"
+		type="DeliveryConfirmationResponsePartnersType"/>
 	<xs:complexType name="DeliveryConfirmationResponsePartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -6130,14 +6213,16 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="DeliveryConfirmationResponseProductLineItem" type="DeliveryConfirmationResponseProductLineItemType"/>
+	<xs:element name="DeliveryConfirmationResponseProductLineItem"
+		type="DeliveryConfirmationResponseProductLineItemType"/>
 	<xs:complexType name="DeliveryConfirmationResponseProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
 			<xs:element ref="PurchaseOrderLineItemNumber" minOccurs="0"/>
 			<xs:element ref="PurchaseOrderNumber" minOccurs="0"/>
 			<xs:element ref="DeliveryConfirmationAcceptance" minOccurs="0"/>
-			<xs:element ref="DeliveryConfirmationRejectionDescription" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="DeliveryConfirmationRejectionDescription" minOccurs="0"
+				maxOccurs="unbounded"/>
 			<xs:element ref="ProductIdentification" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SalesOrderIdentifier" minOccurs="0"/>
@@ -6147,11 +6232,13 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="DeliveryConfirmationResponseProperties" type="DeliveryConfirmationResponsePropertiesType"/>
+	<xs:element name="DeliveryConfirmationResponseProperties"
+		type="DeliveryConfirmationResponsePropertiesType"/>
 	<xs:complexType name="DeliveryConfirmationResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="DeliveryConfirmationAcceptance"/>
-			<xs:element ref="DeliveryConfirmationRejectionDescription" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="DeliveryConfirmationRejectionDescription" minOccurs="0"
+				maxOccurs="unbounded"/>
 			<xs:element ref="PurchaseOrderNumber"/>
 			<xs:element ref="ReleaseNumber" minOccurs="0"/>
 			<xs:element ref="PurchaseOrderIssuedDate"/>
@@ -6171,7 +6258,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryReceiptBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DeliveryReceiptBody" type="DeliveryReceiptBodyType"/>
 	<xs:complexType name="DeliveryReceiptBodyType">
@@ -6216,7 +6303,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryReceiptResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DeliveryReceiptResponseBody" type="DeliveryReceiptResponseBodyType"/>
 	<xs:complexType name="DeliveryReceiptResponseBodyType">
@@ -6240,7 +6327,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="DeliveryReceiptResponseProperties" type="DeliveryReceiptResponsePropertiesType"/>
+	<xs:element name="DeliveryReceiptResponseProperties"
+		type="DeliveryReceiptResponsePropertiesType"/>
 	<xs:complexType name="DeliveryReceiptResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="LanguageCode"/>
@@ -6260,7 +6348,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandForecastBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DemandForecastBody" type="DemandForecastBodyType"/>
 	<xs:complexType name="DemandForecastBodyType">
@@ -6303,7 +6391,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandForecastResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DemandForecastResponseBody" type="DemandForecastResponseBodyType"/>
 	<xs:complexType name="DemandForecastResponseBodyType">
@@ -6346,7 +6434,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandPlanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DemandPlanBody" type="DemandPlanBodyType"/>
 	<xs:complexType name="DemandPlanBodyType">
@@ -6389,7 +6477,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandPlanResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="DemandPlanResponseBody" type="DemandPlanResponseBodyType"/>
 	<xs:complexType name="DemandPlanResponseBodyType">
@@ -6485,7 +6573,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="FreightBillBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="FreightBillBody" type="FreightBillBodyType"/>
 	<xs:complexType name="FreightBillBodyType">
@@ -6687,7 +6775,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="InventoryActualUsageBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="InventoryActualUsageBody" type="InventoryActualUsageBodyType"/>
 	<xs:complexType name="InventoryActualUsageBodyType">
@@ -6730,7 +6818,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="InventoryActualUsageResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="InventoryActualUsageResponseBody" type="InventoryActualUsageResponseBodyType"/>
 	<xs:complexType name="InventoryActualUsageResponseBodyType">
@@ -6740,13 +6828,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="InventoryActualUsageResponseDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="InventoryActualUsageResponseDetails" type="InventoryActualUsageResponseDetailsType"/>
+	<xs:element name="InventoryActualUsageResponseDetails"
+		type="InventoryActualUsageResponseDetailsType"/>
 	<xs:complexType name="InventoryActualUsageResponseDetailsType">
 		<xs:sequence>
 			<xs:element ref="InventoryUsageLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="InventoryActualUsageResponsePartners" type="InventoryActualUsageResponsePartnersType"/>
+	<xs:element name="InventoryActualUsageResponsePartners"
+		type="InventoryActualUsageResponsePartnersType"/>
 	<xs:complexType name="InventoryActualUsageResponsePartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -6754,7 +6844,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="InventoryActualUsageResponseProperties" type="InventoryActualUsageResponsePropertiesType"/>
+	<xs:element name="InventoryActualUsageResponseProperties"
+		type="InventoryActualUsageResponsePropertiesType"/>
 	<xs:complexType name="InventoryActualUsageResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="LanguageCode"/>
@@ -6779,7 +6870,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="InvoiceBody" type="InvoiceBodyType"/>
 	<xs:complexType name="InvoiceBodyType">
@@ -6882,7 +6973,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="InvoiceResponseBody" type="InvoiceResponseBodyType"/>
 	<xs:complexType name="InvoiceResponseBodyType">
@@ -6918,7 +7009,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadBuildingMotorBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="LoadBuildingMotorBody" type="LoadBuildingMotorBodyType"/>
 	<xs:complexType name="LoadBuildingMotorBodyType">
@@ -6976,7 +7067,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadBuildingResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="LoadBuildingResponseBody" type="LoadBuildingResponseBodyType"/>
 	<xs:complexType name="LoadBuildingResponseBodyType">
@@ -7036,7 +7127,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderMotorBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderMotorBody" type="LoadTenderMotorBodyType"/>
 	<xs:complexType name="LoadTenderMotorBodyType">
@@ -7142,7 +7233,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderOceanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderOceanBody" type="LoadTenderOceanBodyType"/>
 	<xs:complexType name="LoadTenderOceanBodyType">
@@ -7208,7 +7299,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ShippingServiceLevelCode" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="LoadTenderOceanProductSubLineItem" type="LoadTenderOceanProductSubLineItemType"/>
+	<xs:element name="LoadTenderOceanProductSubLineItem"
+		type="LoadTenderOceanProductSubLineItemType"/>
 	<xs:complexType name="LoadTenderOceanProductSubLineItemType">
 		<xs:sequence>
 			<xs:element ref="SubLineItemNumber"/>
@@ -7265,7 +7357,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderRailBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderRailBody" type="LoadTenderRailBodyType"/>
 	<xs:complexType name="LoadTenderRailBodyType">
@@ -7373,7 +7465,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderResponseBody" type="LoadTenderResponseBodyType"/>
 	<xs:complexType name="LoadTenderResponseBodyType">
@@ -7399,7 +7491,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="LoadTenderResponseProductLineItem" type="LoadTenderResponseProductLineItemType"/>
+	<xs:element name="LoadTenderResponseProductLineItem"
+		type="LoadTenderResponseProductLineItemType"/>
 	<xs:complexType name="LoadTenderResponseProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -7471,7 +7564,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="OrderChangeBody" type="OrderChangeBodyType"/>
 	<xs:complexType name="OrderChangeBodyType">
@@ -7571,7 +7664,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderCreateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="OrderCreateBody" type="OrderCreateBodyType"/>
 	<xs:complexType name="OrderCreateBodyType">
@@ -7669,7 +7762,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="OrderResponseBody" type="OrderResponseBodyType"/>
 	<xs:complexType name="OrderResponseBodyType">
@@ -7785,7 +7878,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusRequestBody" type="OrderStatusRequestBodyType"/>
 	<xs:complexType name="OrderStatusRequestBodyType">
@@ -7798,7 +7891,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:element name="OrderStatusRequestDetails" type="OrderStatusRequestDetailsType"/>
 	<xs:complexType name="OrderStatusRequestDetailsType">
 		<xs:sequence>
-			<xs:element ref="OrderStatusRequestProductLineItem" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="OrderStatusRequestProductLineItem" minOccurs="0" maxOccurs="unbounded"
+			/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="OrderStatusRequestPartners" type="OrderStatusRequestPartnersType"/>
@@ -7810,7 +7904,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="OrderStatusRequestProductLineItem" type="OrderStatusRequestProductLineItemType"/>
+	<xs:element name="OrderStatusRequestProductLineItem"
+		type="OrderStatusRequestProductLineItemType"/>
 	<xs:complexType name="OrderStatusRequestProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -7839,7 +7934,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="BuyerAccountDetails" type="BuyerAccountDetailsType"/>
 	<xs:complexType name="BuyerAccountDetailsType">
@@ -7859,7 +7954,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PaymentBody" type="PaymentBodyType"/>
 	<xs:complexType name="PaymentBodyType">
@@ -7952,7 +8047,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentDetailBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PaymentDetailBody" type="PaymentDetailBodyType"/>
 	<xs:complexType name="PaymentDetailBodyType">
@@ -8036,7 +8131,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PaymentResponseBody" type="PaymentResponseBodyType"/>
 	<xs:complexType name="PaymentResponseBodyType">
@@ -8073,7 +8168,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingAcceptBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingAcceptBody" type="PostingAcceptBodyType"/>
 	<xs:complexType name="PostingAcceptBodyType">
@@ -8144,7 +8239,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingAcceptResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingAcceptResponseBody" type="PostingAcceptResponseBodyType"/>
 	<xs:complexType name="PostingAcceptResponseBodyType">
@@ -8196,7 +8291,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCancelBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingCancelBody" type="PostingCancelBodyType"/>
 	<xs:complexType name="PostingCancelBodyType">
@@ -8229,7 +8324,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCancelResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingCancelResponseBody" type="PostingCancelResponseBodyType"/>
 	<xs:complexType name="PostingCancelResponseBodyType">
@@ -8263,7 +8358,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingChangeBody" type="PostingChangeBodyType"/>
 	<xs:complexType name="PostingChangeBodyType">
@@ -8330,7 +8425,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCreateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingCreateBody" type="PostingCreateBodyType"/>
 	<xs:complexType name="PostingCreateBodyType">
@@ -8404,7 +8499,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingResponseBody" type="PostingResponseBodyType"/>
 	<xs:complexType name="PostingResponseBodyType">
@@ -8449,7 +8544,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingStatusRequestBody" type="PostingStatusRequestBodyType"/>
 	<xs:complexType name="PostingStatusRequestBodyType">
@@ -8474,7 +8569,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingStatusResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PostingStatusResponseBody" type="PostingStatusResponseBodyType"/>
 	<xs:complexType name="PostingStatusResponseBodyType">
@@ -8541,7 +8636,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceAndAvailabilityRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PriceAndAvailabilityRequestBody" type="PriceAndAvailabilityRequestBodyType"/>
 	<xs:complexType name="PriceAndAvailabilityRequestBodyType">
@@ -8551,13 +8646,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="PriceAndAvailabilityRequestDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityRequestDetails" type="PriceAndAvailabilityRequestDetailsType"/>
+	<xs:element name="PriceAndAvailabilityRequestDetails"
+		type="PriceAndAvailabilityRequestDetailsType"/>
 	<xs:complexType name="PriceAndAvailabilityRequestDetailsType">
 		<xs:sequence>
 			<xs:element ref="PriceAndAvailabilityRequestProductLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityRequestPartners" type="PriceAndAvailabilityRequestPartnersType"/>
+	<xs:element name="PriceAndAvailabilityRequestPartners"
+		type="PriceAndAvailabilityRequestPartnersType"/>
 	<xs:complexType name="PriceAndAvailabilityRequestPartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -8567,7 +8664,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityRequestProductLineItem" type="PriceAndAvailabilityRequestProductLineItemType"/>
+	<xs:element name="PriceAndAvailabilityRequestProductLineItem"
+		type="PriceAndAvailabilityRequestProductLineItemType"/>
 	<xs:complexType name="PriceAndAvailabilityRequestProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -8592,7 +8690,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityRequestProperties" type="PriceAndAvailabilityRequestPropertiesType"/>
+	<xs:element name="PriceAndAvailabilityRequestProperties"
+		type="PriceAndAvailabilityRequestPropertiesType"/>
 	<xs:complexType name="PriceAndAvailabilityRequestPropertiesType">
 		<xs:sequence>
 			<xs:element ref="RequisitionNumber"/>
@@ -8627,7 +8726,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceAndAvailabilityResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PriceAndAvailabilityResponseBody" type="PriceAndAvailabilityResponseBodyType"/>
 	<xs:complexType name="PriceAndAvailabilityResponseBodyType">
@@ -8637,13 +8736,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="PriceAndAvailabilityResponseDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityResponseDetails" type="PriceAndAvailabilityResponseDetailsType"/>
+	<xs:element name="PriceAndAvailabilityResponseDetails"
+		type="PriceAndAvailabilityResponseDetailsType"/>
 	<xs:complexType name="PriceAndAvailabilityResponseDetailsType">
 		<xs:sequence>
 			<xs:element ref="PriceAndAvailabilityResponseProductLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityResponsePartners" type="PriceAndAvailabilityResponsePartnersType"/>
+	<xs:element name="PriceAndAvailabilityResponsePartners"
+		type="PriceAndAvailabilityResponsePartnersType"/>
 	<xs:complexType name="PriceAndAvailabilityResponsePartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -8653,7 +8754,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityResponseProductLineItem" type="PriceAndAvailabilityResponseProductLineItemType"/>
+	<xs:element name="PriceAndAvailabilityResponseProductLineItem"
+		type="PriceAndAvailabilityResponseProductLineItemType"/>
 	<xs:complexType name="PriceAndAvailabilityResponseProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -8678,7 +8780,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="LineStatus" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceAndAvailabilityResponseProperties" type="PriceAndAvailabilityResponsePropertiesType"/>
+	<xs:element name="PriceAndAvailabilityResponseProperties"
+		type="PriceAndAvailabilityResponsePropertiesType"/>
 	<xs:complexType name="PriceAndAvailabilityResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="RequisitionNumber"/>
@@ -8890,7 +8993,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceSheetBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="PriceSheetBody" type="PriceSheetBodyType"/>
 	<xs:complexType name="PriceSheetBodyType">
@@ -8955,6 +9058,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="AllowanceChargeList" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="OrderingInformation" minOccurs="0"/>
+			<xs:element ref="IndustrySegment" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="Action" type="cidxListActionType" use="required"/>
 	</xs:complexType>
@@ -8970,8 +9074,10 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OrderingInformation" minOccurs="0"/>
 			<xs:element ref="PriceSheetFreightCondition" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
+			<xs:element ref="IndustrySegment" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="IndustrySegment" type="cidxListIndustrySegment"/>
 	<xs:element name="PriceSheetReason" type="cidxToken"/>
 	<xs:element name="ProductFeatures" type="ProductFeaturesType"/>
 	<xs:complexType name="ProductFeaturesType">
@@ -9018,7 +9124,8 @@ For support, more information, or to report implementation bugs, please contact 
 		<xs:sequence>
 			<xs:element ref="PriceSheetInformation"/>
 		</xs:sequence>
-		<xs:attribute name="PriceSheetReferenceType" type="cidxListPriceSheetReferenceType" use="required"/>
+		<xs:attribute name="PriceSheetReferenceType" type="cidxListPriceSheetReferenceType"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="RelativeDueDate" type="RelativeDueDateType"/>
 	<xs:complexType name="RelativeDueDateType">
@@ -9138,7 +9245,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductCatalogUpdateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ProductCatalogUpdateBody" type="ProductCatalogUpdateBodyType"/>
 	<xs:complexType name="ProductCatalogUpdateBodyType">
@@ -9160,7 +9267,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Seller"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ProductCatalogUpdateProductLineItem" type="ProductCatalogUpdateProductLineItemType"/>
+	<xs:element name="ProductCatalogUpdateProductLineItem"
+		type="ProductCatalogUpdateProductLineItemType"/>
 	<xs:complexType name="ProductCatalogUpdateProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -9275,7 +9383,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductMovementReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ProductMovementReportBody" type="ProductMovementReportBodyType"/>
 	<xs:complexType name="ProductMovementReportBodyType">
@@ -9307,13 +9415,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ProductMovementTransactionDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ProductMovementTransactionDetails" type="ProductMovementTransactionDetailsType"/>
+	<xs:element name="ProductMovementTransactionDetails"
+		type="ProductMovementTransactionDetailsType"/>
 	<xs:complexType name="ProductMovementTransactionDetailsType">
 		<xs:sequence>
 			<xs:element ref="ProductMovementProductLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ProductMovementTransactionPartners" type="ProductMovementTransactionPartnersType"/>
+	<xs:element name="ProductMovementTransactionPartners"
+		type="ProductMovementTransactionPartnersType"/>
 	<xs:complexType name="ProductMovementTransactionPartnersType">
 		<xs:sequence>
 			<xs:element ref="ShipTo"/>
@@ -9321,7 +9431,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ProductMovementTransactionProperties" type="ProductMovementTransactionPropertiesType"/>
+	<xs:element name="ProductMovementTransactionProperties"
+		type="ProductMovementTransactionPropertiesType"/>
 	<xs:complexType name="ProductMovementTransactionPropertiesType">
 		<xs:sequence>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
@@ -9389,7 +9500,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="QualificationRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="QualificationRequestBody" type="QualificationRequestBodyType"/>
 	<xs:complexType name="QualificationRequestBodyType">
@@ -9427,7 +9538,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="StandardIndustrialClassificationNumber" type="StandardIndustrialClassificationNumberType"/>
+	<xs:element name="StandardIndustrialClassificationNumber"
+		type="StandardIndustrialClassificationNumberType"/>
 	<xs:element name="Description" type="DescriptionType"/>
 	<xs:element name="QualificationResponse" type="QualificationResponseType">
 		<xs:annotation>
@@ -9439,7 +9551,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="QualificationResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="QualificationResponseBody" type="QualificationResponseBodyType"/>
 	<xs:complexType name="QualificationResponseBodyType">
@@ -9496,7 +9608,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="QualityTestingReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="QualityTestingReportBatchDetail" type="QualityTestingReportBatchDetailType"/>
 	<xs:complexType name="QualityTestingReportBatchDetailType">
@@ -9580,7 +9692,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReceiptNoticeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ReceiptNoticeBody" type="ReceiptNoticeBodyType"/>
 	<xs:complexType name="ReceiptNoticeBodyType">
@@ -9659,7 +9771,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalCancelBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalCancelBody" type="ReplenishmentProposalCancelBodyType"/>
 	<xs:complexType name="ReplenishmentProposalCancelBodyType">
@@ -9669,13 +9781,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ReplenishmentProposalCancelDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalCancelDetails" type="ReplenishmentProposalCancelDetailsType"/>
+	<xs:element name="ReplenishmentProposalCancelDetails"
+		type="ReplenishmentProposalCancelDetailsType"/>
 	<xs:complexType name="ReplenishmentProposalCancelDetailsType">
 		<xs:sequence>
 			<xs:element ref="ReplenishmentProposalLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalCancelPartners" type="ReplenishmentProposalCancelPartnersType"/>
+	<xs:element name="ReplenishmentProposalCancelPartners"
+		type="ReplenishmentProposalCancelPartnersType"/>
 	<xs:complexType name="ReplenishmentProposalCancelPartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -9683,7 +9797,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalCancelProperties" type="ReplenishmentProposalCancelPropertiesType"/>
+	<xs:element name="ReplenishmentProposalCancelProperties"
+		type="ReplenishmentProposalCancelPropertiesType"/>
 	<xs:complexType name="ReplenishmentProposalCancelPropertiesType">
 		<xs:sequence>
 			<xs:element ref="LanguageCode"/>
@@ -9703,7 +9818,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalChangeBody" type="ReplenishmentProposalChangeBodyType"/>
 	<xs:complexType name="ReplenishmentProposalChangeBodyType">
@@ -9713,13 +9828,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ReplenishmentProposalChangeDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalChangeDetails" type="ReplenishmentProposalChangeDetailsType"/>
+	<xs:element name="ReplenishmentProposalChangeDetails"
+		type="ReplenishmentProposalChangeDetailsType"/>
 	<xs:complexType name="ReplenishmentProposalChangeDetailsType">
 		<xs:sequence>
 			<xs:element ref="ReplenishmentProposalLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalChangePartners" type="ReplenishmentProposalChangePartnersType"/>
+	<xs:element name="ReplenishmentProposalChangePartners"
+		type="ReplenishmentProposalChangePartnersType"/>
 	<xs:complexType name="ReplenishmentProposalChangePartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -9727,7 +9844,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalChangeProperties" type="ReplenishmentProposalChangePropertiesType"/>
+	<xs:element name="ReplenishmentProposalChangeProperties"
+		type="ReplenishmentProposalChangePropertiesType"/>
 	<xs:complexType name="ReplenishmentProposalChangePropertiesType">
 		<xs:sequence>
 			<xs:element ref="LanguageCode"/>
@@ -9748,7 +9866,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalRequestBody" type="ReplenishmentProposalRequestBodyType"/>
 	<xs:complexType name="ReplenishmentProposalRequestBodyType">
@@ -9758,7 +9876,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ReplenishmentProposalRequestDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalRequestContent" type="ReplenishmentProposalRequestContentType"/>
+	<xs:element name="ReplenishmentProposalRequestContent"
+		type="ReplenishmentProposalRequestContentType"/>
 	<xs:complexType name="ReplenishmentProposalRequestContentType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -9767,13 +9886,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ReplenishmentSummary"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalRequestDetails" type="ReplenishmentProposalRequestDetailsType"/>
+	<xs:element name="ReplenishmentProposalRequestDetails"
+		type="ReplenishmentProposalRequestDetailsType"/>
 	<xs:complexType name="ReplenishmentProposalRequestDetailsType">
 		<xs:sequence>
 			<xs:element ref="ReplenishmentProposalRequestLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalRequestLineItem" type="ReplenishmentProposalRequestLineItemType"/>
+	<xs:element name="ReplenishmentProposalRequestLineItem"
+		type="ReplenishmentProposalRequestLineItemType"/>
 	<xs:complexType name="ReplenishmentProposalRequestLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -9781,13 +9902,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ReplenishmentProposalRequestContent" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalRequestLocation" type="ReplenishmentProposalRequestLocationType"/>
+	<xs:element name="ReplenishmentProposalRequestLocation"
+		type="ReplenishmentProposalRequestLocationType"/>
 	<xs:complexType name="ReplenishmentProposalRequestLocationType">
 		<xs:sequence>
 			<xs:element ref="PartnerInformation"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalRequestPartners" type="ReplenishmentProposalRequestPartnersType"/>
+	<xs:element name="ReplenishmentProposalRequestPartners"
+		type="ReplenishmentProposalRequestPartnersType"/>
 	<xs:complexType name="ReplenishmentProposalRequestPartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -9795,7 +9918,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalRequestProduct" type="ReplenishmentProposalRequestProductType"/>
+	<xs:element name="ReplenishmentProposalRequestProduct"
+		type="ReplenishmentProposalRequestProductType"/>
 	<xs:complexType name="ReplenishmentProposalRequestProductType">
 		<xs:sequence>
 			<xs:element ref="ProductIdentification" maxOccurs="unbounded"/>
@@ -9803,7 +9927,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="PackagingContainerInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalRequestProperties" type="ReplenishmentProposalRequestPropertiesType"/>
+	<xs:element name="ReplenishmentProposalRequestProperties"
+		type="ReplenishmentProposalRequestPropertiesType"/>
 	<xs:complexType name="ReplenishmentProposalRequestPropertiesType">
 		<xs:sequence>
 			<xs:element ref="LanguageCode"/>
@@ -9823,9 +9948,10 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalResponseBody" type="ReplenishmentProposalResponseBodyType"/>
+	<xs:element name="ReplenishmentProposalResponseBody"
+		type="ReplenishmentProposalResponseBodyType"/>
 	<xs:complexType name="ReplenishmentProposalResponseBodyType">
 		<xs:sequence>
 			<xs:element ref="ReplenishmentProposalResponseProperties"/>
@@ -9833,13 +9959,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ReplenishmentProposalResponseDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalResponseDetails" type="ReplenishmentProposalResponseDetailsType"/>
+	<xs:element name="ReplenishmentProposalResponseDetails"
+		type="ReplenishmentProposalResponseDetailsType"/>
 	<xs:complexType name="ReplenishmentProposalResponseDetailsType">
 		<xs:sequence>
 			<xs:element ref="ReplenishmentProposalLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalResponsePartners" type="ReplenishmentProposalResponsePartnersType"/>
+	<xs:element name="ReplenishmentProposalResponsePartners"
+		type="ReplenishmentProposalResponsePartnersType"/>
 	<xs:complexType name="ReplenishmentProposalResponsePartnersType">
 		<xs:sequence>
 			<xs:element ref="Buyer"/>
@@ -9847,7 +9975,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ReplenishmentProposalResponseProperties" type="ReplenishmentProposalResponsePropertiesType"/>
+	<xs:element name="ReplenishmentProposalResponseProperties"
+		type="ReplenishmentProposalResponsePropertiesType"/>
 	<xs:complexType name="ReplenishmentProposalResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="LanguageCode"/>
@@ -9899,7 +10028,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="RequestForQuoteBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="RequestForQuoteBody" type="RequestForQuoteBodyType"/>
 	<xs:complexType name="RequestForQuoteBodyType">
@@ -10005,7 +10134,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentInstructionsBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ShipmentInstructionsBody" type="ShipmentInstructionsBodyType"/>
 	<xs:complexType name="ShipmentInstructionsBodyType">
@@ -10151,7 +10280,8 @@ For support, more information, or to report implementation bugs, please contact 
 		<xs:sequence>
 			<xs:element ref="DateTime"/>
 		</xs:sequence>
-		<xs:attribute name="PerformanceIndicator" type="cidxListHandlingDateTimePerformanceIndicator"/>
+		<xs:attribute name="PerformanceIndicator"
+			type="cidxListHandlingDateTimePerformanceIndicator"/>
 	</xs:complexType>
 	<xs:element name="HandlingException" type="HandlingExceptionType"/>
 	<xs:element name="HandlingInformation" type="HandlingInformationType"/>
@@ -10168,7 +10298,8 @@ For support, more information, or to report implementation bugs, please contact 
 		<xs:sequence>
 			<xs:element ref="DateTime"/>
 		</xs:sequence>
-		<xs:attribute name="PerformanceIndicator" type="cidxListHandlingDateTimePerformanceIndicator"/>
+		<xs:attribute name="PerformanceIndicator"
+			type="cidxListHandlingDateTimePerformanceIndicator"/>
 	</xs:complexType>
 	<xs:element name="IncidentAccountabilityCode" type="IncidentAccountabilityCodeType"/>
 	<xs:element name="IncidentCategoryCode" type="IncidentCategoryCodeType"/>
@@ -10181,7 +10312,8 @@ For support, more information, or to report implementation bugs, please contact 
 		<xs:sequence>
 			<xs:element ref="DateTime"/>
 		</xs:sequence>
-		<xs:attribute name="ShipmentDateQualifier" type="cidxListShipmentDateQualifier" use="required"/>
+		<xs:attribute name="ShipmentDateQualifier" type="cidxListShipmentDateQualifier"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="ShipmentStatus" type="ShipmentStatusType">
 		<xs:annotation>
@@ -10193,7 +10325,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentStatusBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ShipmentStatusBody" type="ShipmentStatusBodyType"/>
 	<xs:complexType name="ShipmentStatusBodyType">
@@ -10269,7 +10401,8 @@ For support, more information, or to report implementation bugs, please contact 
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:element name="ShipmentStatusReasonCodeDescription" type="ShipmentStatusReasonCodeDescriptionType"/>
+	<xs:element name="ShipmentStatusReasonCodeDescription"
+		type="ShipmentStatusReasonCodeDescriptionType"/>
 	<xs:element name="ShipmentStatusRequest" type="ShipmentStatusRequestType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
@@ -10280,7 +10413,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 		<xs:attribute name="SelectionQualifier" type="cidxToken"/>
 	</xs:complexType>
 	<xs:element name="ShipmentStatusRequestBody" type="ShipmentStatusRequestBodyType"/>
@@ -10326,7 +10459,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ShipNoticeList" type="ShipNoticeListType">
 		<xs:annotation>
@@ -10338,7 +10471,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeListBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ShipNoticeListDetails" type="ShipNoticeListDetailsType"/>
 	<xs:complexType name="ShipNoticeListDetailsType">
@@ -10369,7 +10502,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="ShipmentDate" type="ShipmentDateType"/>
 	<xs:complexType name="ShipmentDateType">
@@ -10415,7 +10548,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyPlanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="SupplyPlanBody" type="SupplyPlanBodyType"/>
 	<xs:complexType name="SupplyPlanBodyType">
@@ -10458,7 +10591,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyPlanResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="SupplyPlanResponseBody" type="SupplyPlanResponseBodyType"/>
 	<xs:complexType name="SupplyPlanResponseBodyType">
@@ -10508,7 +10641,8 @@ For support, more information, or to report implementation bugs, please contact 
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="IsDrug" type="IsDrugType"/>
-	<xs:element name="ForecastedProductMovementProductLineItem" type="ForecastedProductMovementProductLineItemType"/>
+	<xs:element name="ForecastedProductMovementProductLineItem"
+		type="ForecastedProductMovementProductLineItemType"/>
 	<xs:complexType name="ForecastedProductMovementProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -10536,23 +10670,26 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="ForecastedProductMovementReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementReportBody" type="ForecastedProductMovementReportBodyType"/>
+	<xs:element name="ForecastedProductMovementReportBody"
+		type="ForecastedProductMovementReportBodyType"/>
 	<xs:complexType name="ForecastedProductMovementReportBodyType">
 		<xs:sequence>
 			<xs:element ref="ForecastedProductMovementReportProperties" minOccurs="0"/>
 			<xs:element ref="ForecastedProductMovementReportDetails" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementReportDetails" type="ForecastedProductMovementReportDetailsType"/>
+	<xs:element name="ForecastedProductMovementReportDetails"
+		type="ForecastedProductMovementReportDetailsType"/>
 	<xs:complexType name="ForecastedProductMovementReportDetailsType">
 		<xs:sequence>
 			<xs:element ref="ReportingEntity"/>
 			<xs:element ref="ForecastedProductMovementTransactions"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementReportProperties" type="ForecastedProductMovementReportPropertiesType"/>
+	<xs:element name="ForecastedProductMovementReportProperties"
+		type="ForecastedProductMovementReportPropertiesType"/>
 	<xs:complexType name="ForecastedProductMovementReportPropertiesType">
 		<xs:sequence>
 			<xs:element ref="CurrencyCode"/>
@@ -10561,7 +10698,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementTransaction" type="ForecastedProductMovementTransactionType"/>
+	<xs:element name="ForecastedProductMovementTransaction"
+		type="ForecastedProductMovementTransactionType"/>
 	<xs:complexType name="ForecastedProductMovementTransactionType">
 		<xs:sequence>
 			<xs:element ref="ForecastedProductMovementTransactionProperties"/>
@@ -10569,13 +10707,15 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="ForecastedProductMovementTransactionDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementTransactionDetails" type="ForecastedProductMovementTransactionDetailsType"/>
+	<xs:element name="ForecastedProductMovementTransactionDetails"
+		type="ForecastedProductMovementTransactionDetailsType"/>
 	<xs:complexType name="ForecastedProductMovementTransactionDetailsType">
 		<xs:sequence>
 			<xs:element ref="ForecastedProductMovementProductLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementTransactionPartners" type="ForecastedProductMovementTransactionPartnersType"/>
+	<xs:element name="ForecastedProductMovementTransactionPartners"
+		type="ForecastedProductMovementTransactionPartnersType"/>
 	<xs:complexType name="ForecastedProductMovementTransactionPartnersType">
 		<xs:sequence>
 			<xs:element ref="ShipTo"/>
@@ -10583,7 +10723,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementTransactionProperties" type="ForecastedProductMovementTransactionPropertiesType"/>
+	<xs:element name="ForecastedProductMovementTransactionProperties"
+		type="ForecastedProductMovementTransactionPropertiesType"/>
 	<xs:complexType name="ForecastedProductMovementTransactionPropertiesType">
 		<xs:sequence>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
@@ -10593,15 +10734,18 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="InvoiceTotal" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="ForecastedProductMovementType" type="cidxListForecastedProductMovementType" use="required"/>
+		<xs:attribute name="ForecastedProductMovementType"
+			type="cidxListForecastedProductMovementType" use="required"/>
 		<xs:attribute name="SaleOrReturnType" type="cidxListSaleOrReturnType" use="required"/>
 	</xs:complexType>
-	<xs:element name="ForecastedProductMovementTransactions" type="ForecastedProductMovementTransactionsType"/>
+	<xs:element name="ForecastedProductMovementTransactions"
+		type="ForecastedProductMovementTransactionsType"/>
 	<xs:complexType name="ForecastedProductMovementTransactionsType">
 		<xs:sequence>
 			<xs:element ref="ForecastedProductMovementTransaction" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="ForecastedProductMovementReportType" type="cidxListReportType" use="required"/>
+		<xs:attribute name="ForecastedProductMovementReportType" type="cidxListReportType"
+			use="required"/>
 	</xs:complexType>
 	<xs:element name="TransactionSetPurpose" type="cidxListTransactionSetPurposeType"/>
 	<xs:element name="OrderStatusListRequest" type="OrderStatusListRequestType">
@@ -10614,7 +10758,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusListRequestDetails" type="OrderStatusListRequestDetailsType"/>
 	<xs:complexType name="OrderStatusListRequestDetailsType">
@@ -10663,7 +10807,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusListResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusListResponseBody" type="OrderStatusListResponseBodyType"/>
 	<xs:complexType name="OrderStatusListResponseBodyType">
@@ -10678,7 +10822,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="OrderStatusResponseBody" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="OrderStatusListResponseProperties" type="OrderStatusListResponsePropertiesType"/>
+	<xs:element name="OrderStatusListResponseProperties"
+		type="OrderStatusListResponsePropertiesType"/>
 	<xs:complexType name="OrderStatusListResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="MarketPlaceInformation" minOccurs="0"/>
@@ -10713,13 +10858,17 @@ For support, more information, or to report implementation bugs, please contact 
 			</xs:extension>
 		</xs:simpleContent>
 	</xs:complexType>
-	<xs:element name="InvoiceList" type="InvoiceListType"/>
+	<xs:element name="InvoiceList" type="InvoiceListType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
 	<xs:complexType name="InvoiceListType">
 		<xs:sequence>
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceListBody" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" use="required" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" use="required" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="InvoiceListBody" type="InvoiceListBodyType"/>
 	<xs:complexType name="InvoiceListBodyType">
@@ -10798,7 +10947,8 @@ For support, more information, or to report implementation bugs, please contact 
 	<xs:complexType name="PriceSheetRelativeDaysType">
 		<xs:simpleContent>
 			<xs:extension base="xs:integer">
-				<xs:attribute name="PriceSheetDateType" type="cidxListPriceSheetDateType" use="required"/>
+				<xs:attribute name="PriceSheetDateType" type="cidxListPriceSheetDateType"
+					use="required"/>
 				<xs:attribute name="DateTimeQualifier" type="cidxListDateQualifier" use="required"/>
 			</xs:extension>
 		</xs:simpleContent>
@@ -10846,7 +10996,7 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyForecastBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.1.1"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="5.2"/>
 	</xs:complexType>
 	<xs:element name="SupplyForecastBody" type="SupplyForecastBodyType"/>
 	<xs:complexType name="SupplyForecastBodyType">
@@ -10889,7 +11039,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="AvailabilityClassificationType" type="cidxListVolumeDeterminationDateType"/>
+		<xs:attribute name="AvailabilityClassificationType"
+			type="cidxListVolumeDeterminationDateType"/>
 	</xs:complexType>
 	<xs:element name="ProductStage" type="ProductStageType"/>
 	<xs:complexType name="ProductStageType">
@@ -10905,7 +11056,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="VolumeDeterminationDescription"/>
 			<xs:element ref="DateTimeInformation" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="VolumeDeterminationDateType" type="cidxListVolumeDeterminationDateType"/>
+		<xs:attribute name="VolumeDeterminationDateType" type="cidxListVolumeDeterminationDateType"
+		/>
 	</xs:complexType>
 	<xs:element name="PriceSheetFreightCondition" type="PriceSheetFreightConditionType"/>
 	<xs:complexType name="PriceSheetFreightConditionType">
@@ -10925,7 +11077,8 @@ For support, more information, or to report implementation bugs, please contact 
 			<xs:element ref="FreightMethodServiceLevelDescription"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="FreightMethodServiceLevelIdentifier" type="FreightMethodServiceLevelIdentifierType"/>
+	<xs:element name="FreightMethodServiceLevelIdentifier"
+		type="FreightMethodServiceLevelIdentifierType"/>
 	<xs:complexType name="FreightMethodServiceLevelIdentifierType">
 		<xs:simpleContent>
 			<xs:extension base="cidxToken">
