@@ -12292,12 +12292,12 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="OtherComponentDescription" type="cidxToken"/>
 	<xs:element name="PriceSheetAllowanceChargeAmount" type="PriceSheetAllowanceChargeAmountType"/>
 	<xs:complexType name="PriceSheetAllowanceChargeAmountType">
-		<xs:choice>
-			<xs:element ref="PricingLumpSum"/>
-			<xs:element ref="PricingPerUnit"/>
-			<xs:element ref="PricingPercentage"/>
-			<xs:element ref="PricingDiscountLevel"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PricingLumpSum" minOccurs="0"/>
+			<xs:element ref="PricingPerUnit" minOccurs="0"/>
+			<xs:element ref="PricingPercentage" minOccurs="0"/>
+			<xs:element ref="PricingDiscountLevel" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PricingDiscountLevel" type="PricingDiscountLevelType"/>
 	<xs:complexType name="PricingDiscountLevelType">
