@@ -6397,10 +6397,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="USGoodsReturned" type="USGoodsReturnedType"/>
 	<xs:element name="VolumetricInformation" type="VolumetricInformationType"/>
 	<xs:complexType name="VolumetricInformationType">
-		<xs:choice>
-			<xs:element ref="Density"/>
-			<xs:element ref="SpecificGravity"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="Density" minOccurs="0"/>
+			<xs:element ref="SpecificGravity" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="VoyageTripNumber" type="VoyageTripNumberType"/>
 	<xs:complexType name="VoyageTripNumberType">
