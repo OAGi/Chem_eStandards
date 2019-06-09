@@ -6119,10 +6119,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 		<xs:sequence>
 			<xs:element ref="TaxTypeCode"/>
 			<xs:element ref="TaxLocation"/>
-			<xs:choice>
-				<xs:element ref="Exempt"/>
-				<xs:element ref="NonExempt" maxOccurs="unbounded"/>
-			</xs:choice>
+			<xs:element ref="Exempt" minOccurs="0"/>
+			<xs:element ref="NonExempt" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="TaxOrDutyQualifier" type="cidxListTaxOrDutyQualifier" use="required"/>
 	</xs:complexType>
