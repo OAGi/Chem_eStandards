@@ -5209,14 +5209,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="Pricing" type="PricingType"/>
 	<xs:complexType name="PricingType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="PricingLumpSum"/>
-				<xs:element ref="PricingPerUnit"/>
-				<xs:sequence>
-					<xs:element ref="PricingPercentage"/>
-					<xs:element ref="PercentageBasis"/>
-				</xs:sequence>
-			</xs:choice>
+			<xs:element ref="PricingLumpSum" minOccurs="0"/>
+			<xs:element ref="PricingPerUnit" minOccurs="0"/>
+			<xs:element ref="PricingPercentage" minOccurs="0"/>
+			<xs:element ref="PercentageBasis" minOccurs="0"/>
 			<xs:element ref="PriceReason" minOccurs="0"/>
 			<xs:element ref="QuantityConfirmationType" minOccurs="0"/>
 			<xs:element ref="CommissionInformation" minOccurs="0"/>
