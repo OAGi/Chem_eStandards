@@ -45,7 +45,6 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="PriceSheetRequestPartners"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!-- ERROR: type incorrect -->
 	<xs:element name="PriceSheetRequestProperties" type="RetailerOrderSummaryReportPropertiesType"/>
 	<xs:complexType name="PriceSheetRequestPropertiesType">
 		<xs:sequence>
