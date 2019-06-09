@@ -6162,11 +6162,11 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="TermsOfSaleDescription" type="TermsOfSaleDescriptionType"/>
 	<xs:element name="TestIdentification" type="TestIdentificationType"/>
 	<xs:complexType name="TestIdentificationType">
-		<xs:choice maxOccurs="unbounded">
-			<xs:element ref="PropertyIdentifier"/>
-			<xs:element ref="PropertyDescription"/>
-			<xs:element ref="TestMethod"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PropertyIdentifier" minOccurs="0"/>
+			<xs:element ref="PropertyDescription" minOccurs="0"/>
+			<xs:element ref="TestMethod" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="TestMethod" type="TestMethodType"/>
 	<xs:complexType name="TestMethodType">
