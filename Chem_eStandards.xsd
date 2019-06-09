@@ -4308,10 +4308,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="LineNumber"/>
 			<xs:element ref="InventoryProduct"/>
 			<xs:element ref="StorageTankIdentifier" minOccurs="0"/>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="InventoryLevel"/>
-				<xs:element ref="InventoryUsageActual"/>
-			</xs:choice>
+			<xs:element ref="InventoryLevel" minOccurs="0"/>
+			<xs:element ref="InventoryUsageActual" minOccurs="0"/>
 			<xs:element ref="InventoryType" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0"/>
 		</xs:sequence>
