@@ -23,9 +23,9 @@ For support, more information, or to report implementation bugs, please contact 
 Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 
 -->
-<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:5.4.0"
+<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:6.0"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="urn:cidx:names:specification:ces:schema:all:5.4.0">
+	targetNamespace="urn:cidx:names:specification:ces:schema:all:6.0">
 	<xs:element name="PriceSheetRequest" type="PriceSheetRequestType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
