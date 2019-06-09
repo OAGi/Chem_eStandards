@@ -88,7 +88,6 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="OrderResponseLogResponseDetails"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!-- ERROR: type incorrect -->
 	<xs:element name="OrderResponseLogResponseProperties"
 		type="OrderResponseLogResponsePropertiesType"/>
 	<xs:complexType name="OrderResponseLogResponsePropertiesType">
