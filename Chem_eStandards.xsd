@@ -4270,10 +4270,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="InventoryOnSite" type="InventoryOnSiteType"/>
 	<xs:complexType name="InventoryOnSiteType">
-		<xs:choice maxOccurs="unbounded">
-			<xs:element ref="InventoryInTank"/>
-			<xs:element ref="InventoryOther"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="InventoryInTank" minOccurs="0"/>
+			<xs:element ref="InventoryOther" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="InventoryOther" type="InventoryOtherType"/>
 	<xs:complexType name="InventoryOtherType">
