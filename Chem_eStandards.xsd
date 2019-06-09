@@ -9359,11 +9359,11 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="PostingAcceptPartners" type="PostingAcceptPartnersType"/>
 	<xs:complexType name="PostingAcceptPartnersType">
-		<xs:choice>
-			<xs:element ref="Seller"/>
-			<xs:element ref="Buyer"/>
+		<xs:sequence>
+			<xs:element ref="Seller" minOccurs="0"/>
+			<xs:element ref="Buyer" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:choice>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingAcceptProperties" type="PostingAcceptPropertiesType"/>
 	<xs:complexType name="PostingAcceptPropertiesType">
