@@ -3786,14 +3786,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="Discounts" type="DiscountsType"/>
 	<xs:complexType name="DiscountsType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="PercentDiscount"/>
-				<xs:element ref="DiscountAmount"/>
-			</xs:choice>
-			<xs:choice>
-				<xs:element ref="DaysDue"/>
-				<xs:element ref="DiscountsDueDate"/>
-			</xs:choice>
+				<xs:element ref="PercentDiscount" minOccurs="0"/>
+				<xs:element ref="DiscountAmount" minOccurs="0"/>
+				<xs:element ref="DaysDue" minOccurs="0"/>
+				<xs:element ref="DiscountsDueDate" minOccurs="0"/>	
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DiscountsDueDate" type="DiscountsDueDateType"/>
