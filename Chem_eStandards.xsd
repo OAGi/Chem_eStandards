@@ -45,10 +45,85 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	
 	<!-- BEGIN content for new LicenseZoneResponse message -->
 	
+		
+	
 	<!-- END content for new LicenseZoneResponse message -->
 	
 	
 	<!-- BEGIN content for new ProductReturnsRequest message -->
+	
+	<xs:element name="ProductReturnsRequest" type="ProductReturnsRequestType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ProductReturnsRequestType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="ProductReturnsRequestBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestBody" type="ProductReturnsRequestBodyType"/>
+	<xs:complexType name="ProductReturnsRequestBodyType">
+		<xs:sequence>
+			<xs:element ref="ProductReturnsRequestProperties"/>
+			<xs:element ref="ProductReturnsRequestPartners"/>
+			<xs:element ref="ProductReturnsRequestDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestProperties" type="ProductReturnsRequestPropertiesType"/>
+	<xs:complexType name="ProductReturnsRequestPropertiesType">
+		<xs:sequence>
+			<xs:element ref="ReportingPeriod"/>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="CurrencyCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestPartners" type="ProductReturnsRequestPartnersType"/>
+	<xs:complexType name="ProductReturnsRequestPartnersType">
+		<xs:sequence>
+            <xs:element ref="Buyer"/>
+            <xs:element ref="Seller"/>
+            <xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestDetails" type="ProductReturnsRequestDetailsType"/>
+	<xs:complexType name="ProductReturnsRequestDetailsType">
+		<xs:sequence>
+			<xs:element ref="ProductReturnsRequestProductLineItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestProductLineItem" type="ProductReturnsRequestProductLineItemType"/>
+	<xs:complexType name="ProductReturnsRequestProductLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ProductIdentification"/>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="LotInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpotPrice" minOccurs="0"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LotInformation" type="LotInformationType"/>
+	<xs:complexType name="LotInformationType">
+		<xs:sequence>
+			<xs:element ref="LotQuantity"/>
+			<xs:element ref="LotIdentifier"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LotIdentifier" type="LotIdentifierType"/>
+	<xs:simpleType name="LotIdentifierType">
+		<xs:restriction base="cidxToken"/>
+	</xs:simpleType>
+	<xs:element name="SpotPrice" type="SpotPriceType"/>
+	<xs:complexType name="SpotPriceType">
+		<xs:sequence>
+			<xs:element ref="MonetaryAmount"/>
+		</xs:sequence>
+	</xs:complexType>
 	
 	<!-- END content for new ProductReturnsRequest message -->
 	
