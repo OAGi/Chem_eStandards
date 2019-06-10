@@ -11554,10 +11554,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="ShipmentStatusRequestPartners" type="ShipmentStatusRequestPartnersType"/>
 	<xs:complexType name="ShipmentStatusRequestPartnersType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="Shipper"/>
-				<xs:element ref="Carrier"/>
-			</xs:choice>
+			<xs:element ref="Shipper" minOccurs="0"/>
+			<xs:element ref="Carrier" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
