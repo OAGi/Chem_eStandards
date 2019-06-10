@@ -10011,11 +10011,9 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:complexType name="LocationType">
 		<xs:sequence>
 			<xs:element ref="LocationType"/>
-			<xs:choice>
-				<xs:element ref="PartnerInformation" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneID" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneGeography" maxOccurs="unbounded"/>
-			</xs:choice>
+			<xs:element ref="PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ZoneID" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ZoneGeography" minOccurs="0" maxOccurs="unbounded"/>			
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="LocationType" type="cidxListLocationType"/>
