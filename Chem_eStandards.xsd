@@ -8931,10 +8931,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="PackagingQuantity" minOccurs="0"/>
 			<xs:element ref="BatchNumber" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="ScheduleLineDetails"/>
-				<xs:element ref="ScheduleDateTimeInformation"/>
-			</xs:choice>
+			<xs:element ref="ScheduleLineDetails" minOccurs="0"/>
+			<xs:element ref="ScheduleDateTimeInformation" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="DeliveryTolerances" minOccurs="0"/>
 			<xs:element ref="DeliveryTerms" minOccurs="0"/>
