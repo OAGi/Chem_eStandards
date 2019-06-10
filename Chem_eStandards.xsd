@@ -45,7 +45,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="PriceSheetRequestPartners"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceSheetRequestProperties" type="RetailerOrderSummaryReportPropertiesType"/>
+	<xs:element name="PriceSheetRequestProperties" type="PriceSheetRequestPropertiesType"/>
 	<xs:complexType name="PriceSheetRequestPropertiesType">
 		<xs:sequence>
 			<xs:element ref="CurrencyCode"/>
