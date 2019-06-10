@@ -10052,10 +10052,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="OrderFeatures" type="OrderFeaturesType"/>
 	<xs:complexType name="OrderFeaturesType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="PriceSheetEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="PriceSheetRelativeDays" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
+			<xs:element ref="PriceSheetEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PriceSheetRelativeDays" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SalesVolume" minOccurs="0"/>
 			<xs:element ref="UnitVolume" minOccurs="0"/>
 		</xs:sequence>
