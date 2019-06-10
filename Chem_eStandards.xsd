@@ -9879,10 +9879,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ProductIdentification" maxOccurs="unbounded"/>
 			<xs:element ref="ProductOptions" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element ref="ProductQuantity"/>
-				<xs:element ref="ProductQuantityInformation"/>
-			</xs:choice>
+			<xs:element ref="ProductQuantity" minOccurs="0"/>
+			<xs:element ref="ProductQuantityInformation" minOccurs="0"/>
 			<xs:element ref="PackagingQuantity" minOccurs="0"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 			<xs:element ref="ScheduleDateTimeInformation"/>
