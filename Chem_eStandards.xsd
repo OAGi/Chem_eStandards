@@ -9515,10 +9515,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ManufacturerInformation" minOccurs="0"/>
 			<xs:element ref="ProductQuantity"/>
 			<xs:element ref="PriceInformation" minOccurs="0"/>
-			<xs:choice>
-				<xs:element ref="ShippingAvailabilityDate"/>
-				<xs:element ref="RequestedDeliveryDateTime"/>
-			</xs:choice>
+			<xs:element ref="ShippingAvailabilityDate" minOccurs="0"/>
+			<xs:element ref="RequestedDeliveryDateTime" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:sequence minOccurs="0" maxOccurs="unbounded">
 				<xs:element ref="ShipFrom"/>
