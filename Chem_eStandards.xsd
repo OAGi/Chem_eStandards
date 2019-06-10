@@ -9580,10 +9580,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ShippingAvailabilityDate" minOccurs="0"/>
 			<xs:element ref="RequestedDeliveryDateTime" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:sequence minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ShipTo"/>
-				<xs:element ref="ShipFrom"/>
-			</xs:sequence>
+			<xs:element ref="ShipTo" minOccurs="0"/>
+			<xs:element ref="ShipFrom" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingCreatePartners" type="PostingCreatePartnersType"/>
