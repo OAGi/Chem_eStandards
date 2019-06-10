@@ -4614,9 +4614,9 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="ManufacturingIdentificationDetails"
 		type="ManufacturingIdentificationDetailsType"/>
 	<xs:complexType name="ManufacturingIdentificationDetailsType">
-		<xs:sequence minOccurs="0">
-			<xs:element ref="ManufacturingIdentificationType"/>
-			<xs:element ref="ManufacturingIdentificationNumber"/>
+		<xs:sequence>
+			<xs:element ref="ManufacturingIdentificationType" minOccurs="0"/>
+			<xs:element ref="ManufacturingIdentificationNumber" minOccurs="0"/>
 			<xs:element ref="ParentManufacturingIdentificationNumber" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
