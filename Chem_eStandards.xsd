@@ -7261,10 +7261,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="CustomerSpecificCatalogPriceData" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="DutyStatus" minOccurs="0"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
-			<xs:choice minOccurs="0">
-				<xs:element ref="ShipTo"/>
-				<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0"/>
-			</xs:choice>
+			<xs:element ref="ShipTo" minOccurs="0"/>
+			<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0"/>		
 			<xs:element ref="ShippingLeadTime" minOccurs="0"/>
 			<xs:element ref="ShipmentMethodOfPaymentCode" minOccurs="0"/>
 		</xs:sequence>
