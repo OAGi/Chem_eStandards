@@ -55,6 +55,93 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	
 	<!-- BEGIN content for new SeedReplantClaim message -->
 	
+	<xs:element name="SeedReplantClaim" type="SeedReplantClaimType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SeedReplantClaimType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="SeedReplantClaimBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimBody" type="SeedReplantClaimBodyType"/>
+	<xs:complexType name="SeedReplantClaimBodyType">
+		<xs:sequence>
+			<xs:element ref="SeedReplantClaimProperties"/>
+			<xs:element ref="SeedReplantClaimPartners"/>
+			<xs:element ref="SeedReplantClaimDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimProperties" type="SeedReplantClaimPropertiesType"/>
+	<xs:complexType name="SeedReplantClaimPropertiesType">
+		<xs:sequence>
+            <xs:element ref="LanguageCode"/>
+            <xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element ref="ClaimIdentifier"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimPartners" type="SeedReplantClaimPartnersType"/>
+	<xs:complexType name="SeedReplantClaimPartnersType">
+		<xs:sequence>
+            <xs:element ref="Buyer"/>
+            <xs:element ref="Seller"/>
+            <xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimDetails" type="SeedReplantClaimDetailsType"/>
+	<xs:complexType name="SeedReplantClaimDetailsType">
+		<xs:sequence>
+			<xs:element ref="SeedReplantClaimLineItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="SeedReplantClaimLineItem" type="SeedReplantClaimLineItemType"/>
+	<xs:complexType name="SeedReplantClaimLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="FailedProductInformation"/>
+			<xs:element ref="ReplantProductInformation" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="FailedProductInformation" type="FailedProductInformationType"/>
+	<xs:complexType name="FailedProductInformationType">
+		<xs:sequence>
+			<xs:element ref="ProductIdentification"/>
+			<!-- TODO: Marilyn will work with the team to determine intent.
+				       It appears that the Excel expression does not reflect all of the requirements.
+			<xs:element ref="QuantityDetails" maxOccurs="unbounded"/>
+
+			<xs:element ref="PlantedFieldArea" minOccurs="0"/>
+			<xs:element ref="PlantedDate" minOccurs="0"/>
+			<xs:element ref="LocallyAppliedTreatment"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="InceptionLossDate" minOccurs="0"/>
+			<xs:element ref="LossReason" minOccurs="0"/>
+			-->
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="ReplantProductInformation" type="ReplantProductInformationType"/>
+	<xs:complexType name="ReplantProductInformationType">
+		<xs:sequence>
+			<!-- TODO: Marilyn will work with the team to determine intent.
+				       The Excel expression may not reflect all of the requirements.
+			-->
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="ClaimIdentifier" type="ClaimIdentifierType"/>
+	<xs:simpleType name="ClaimIdentifierType">
+		<xs:restriction base="cidxToken"/>
+	</xs:simpleType>
+
+
 	<!-- END content for new SeedReplantClaim message -->
 	
 	
