@@ -26,32 +26,32 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 <xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:6.0"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="urn:cidx:names:specification:ces:schema:all:6.0">
-	
-	
-	<!-- BEGIN content for new ProductTransfersRequest message -->
-	
-	<!-- END content for new ProductTransfersRequest message -->
-	
-	
-	<!-- BEGIN content for new ProductTransfersResponse message -->
-	
-	<!-- END content for new ProductTransfersResponse message -->
-	
-	
-	<!-- BEGIN content for new LicenseZoneRequest message -->
-	
-	<!-- END content for new LicenseZoneRequest message -->
-	
-	
-	<!-- BEGIN content for new LicenseZoneResponse message -->
-	
-		
-	
-	<!-- END content for new LicenseZoneResponse message -->
-	
-	
-	<!-- BEGIN content for new ProductReturnsRequest message -->
-	
+
+
+	<!-- vvvvvv BEGIN content for new ProductTransfersRequest message vvvvvv -->
+
+	<!-- ^^^^^^ END content for new ProductTransfersRequest message ^^^^^^ -->
+
+
+	<!-- vvvvvv BEGIN content for new ProductTransfersResponse message vvvvvv -->
+
+	<!-- ^^^^^^ END content for new ProductTransfersResponse message ^^^^^^ -->
+
+
+	<!-- vvvvvv BEGIN content for new LicenseZoneRequest message vvvvvv -->
+
+	<!-- ^^^^^^ END content for new LicenseZoneRequest message ^^^^^^ -->
+
+
+	<!-- vvvvvv BEGIN content for new LicenseZoneResponse message vvvvvv -->
+
+
+
+	<!-- ^^^^^^ END content for new LicenseZoneResponse message ^^^^^^ -->
+
+
+	<!-- vvvvvv BEGIN content for new ProductReturnsRequest message vvvvvv -->
+
 	<xs:element name="ProductReturnsRequest" type="ProductReturnsRequestType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
@@ -85,9 +85,9 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="ProductReturnsRequestPartners" type="ProductReturnsRequestPartnersType"/>
 	<xs:complexType name="ProductReturnsRequestPartnersType">
 		<xs:sequence>
-            <xs:element ref="Buyer"/>
-            <xs:element ref="Seller"/>
-            <xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ProductReturnsRequestDetails" type="ProductReturnsRequestDetailsType"/>
@@ -96,7 +96,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ProductReturnsRequestProductLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="ProductReturnsRequestProductLineItem" type="ProductReturnsRequestProductLineItemType"/>
+	<xs:element name="ProductReturnsRequestProductLineItem"
+		type="ProductReturnsRequestProductLineItemType"/>
 	<xs:complexType name="ProductReturnsRequestProductLineItemType">
 		<xs:sequence>
 			<xs:element ref="LineNumber"/>
@@ -110,8 +111,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="LotInformation" type="LotInformationType"/>
 	<xs:complexType name="LotInformationType">
 		<xs:sequence>
+			<xs:element ref="LotIdentifier"/>
 			<xs:element ref="LotQuantity"/>
-			<xs:element ref="LotIdentifier"></xs:element>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="LotIdentifier" type="LotIdentifierType"/>
@@ -124,12 +125,12 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="MonetaryAmount"/>
 		</xs:sequence>
 	</xs:complexType>
-	
-	<!-- END content for new ProductReturnsRequest message -->
-	
-	
-	<!-- BEGIN content for new SeedReplantClaim message -->
-	
+
+	<!-- ^^^^^^ END content for new ProductReturnsRequest message ^^^^^^ -->
+
+
+	<!-- vvvvvv BEGIN content for new SeedReplantClaim message vvvvvv -->
+
 	<xs:element name="SeedReplantClaim" type="SeedReplantClaimType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
@@ -153,18 +154,18 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="SeedReplantClaimProperties" type="SeedReplantClaimPropertiesType"/>
 	<xs:complexType name="SeedReplantClaimPropertiesType">
 		<xs:sequence>
-            <xs:element ref="LanguageCode"/>
-            <xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-            <xs:element ref="ClaimIdentifier"/>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ClaimIdentifier"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="SeedReplantClaimPartners" type="SeedReplantClaimPartnersType"/>
 	<xs:complexType name="SeedReplantClaimPartnersType">
 		<xs:sequence>
-            <xs:element ref="Buyer"/>
-            <xs:element ref="Seller"/>
-            <xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="SeedReplantClaimDetails" type="SeedReplantClaimDetailsType"/>
@@ -173,7 +174,6 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="SeedReplantClaimLineItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:element name="SeedReplantClaimLineItem" type="SeedReplantClaimLineItemType"/>
 	<xs:complexType name="SeedReplantClaimLineItemType">
 		<xs:sequence>
@@ -183,43 +183,67 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:element name="FailedProductInformation" type="FailedProductInformationType"/>
 	<xs:complexType name="FailedProductInformationType">
 		<xs:sequence>
 			<xs:element ref="ProductIdentification"/>
-			<!-- TODO: Marilyn will work with the team to determine intent.
-				       It appears that the Excel expression does not reflect all of the requirements.
 			<xs:element ref="QuantityDetails" maxOccurs="unbounded"/>
-
 			<xs:element ref="PlantedFieldArea" minOccurs="0"/>
 			<xs:element ref="PlantedDate" minOccurs="0"/>
 			<xs:element ref="LocallyAppliedTreatment"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="InceptionLossDate" minOccurs="0"/>
-			<xs:element ref="LossReason" minOccurs="0"/>
-			-->
+			<xs:element ref="FailureReason" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-
+	<xs:element name="QuantityDetails" type="QuantityDetailsType"/>
+	<xs:complexType name="QuantityDetailsType">
+		<xs:sequence>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="LotInformation" minOccurs="0" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
 	<xs:element name="ReplantProductInformation" type="ReplantProductInformationType"/>
 	<xs:complexType name="ReplantProductInformationType">
 		<xs:sequence>
-			<!-- TODO: Marilyn will work with the team to determine intent.
-				       The Excel expression may not reflect all of the requirements.
-			-->
+			<xs:element ref="ProductIdentification"/>
+			<xs:element ref="QuantityDetails" maxOccurs="unbounded"/>
+			<xs:element ref="PlantedFieldArea" minOccurs="0"/>
+			<xs:element ref="PlantedDate" minOccurs="0"/>
+			<xs:element ref="LocallyAppliedTreatment"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	
 	<xs:element name="ClaimIdentifier" type="ClaimIdentifierType"/>
 	<xs:simpleType name="ClaimIdentifierType">
 		<xs:restriction base="cidxToken"/>
 	</xs:simpleType>
+	<xs:element name="PlantedFieldArea" type="PlantedFieldAreaType"/>
+	<xs:complexType name="PlantedFieldAreaType">
+		<xs:sequence>
+			<xs:element ref="Measurement"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PlantedDate" type="PlantedDateType"/>
+	<xs:complexType name="PlantedDateType">
+		<xs:sequence>
+			<xs:element ref="DateTime"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LocallyAppliedTreatment" type="cidxBoolean"/>
+	<xs:element name="InceptionLossDate" type="InceptionLossDateType"/>
+	<xs:complexType name="InceptionLossDateType">
+		<xs:sequence>
+			<xs:element ref="DateTime"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FailureReason" type="cidxToken"/>
+
+	<!-- ^^^^^^ END content for new SeedReplantClaim message ^^^^^^ -->
 
 
-	<!-- END content for new SeedReplantClaim message -->
-	
-	
+	<!-- BEGIN content for pre-6.0 messages (goes to end of file) -->
+
 	<xs:element name="PriceSheetRequest" type="PriceSheetRequestType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
@@ -3980,10 +4004,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="Discounts" type="DiscountsType"/>
 	<xs:complexType name="DiscountsType">
 		<xs:sequence>
-				<xs:element ref="PercentDiscount" minOccurs="0"/>
-				<xs:element ref="DiscountAmount" minOccurs="0"/>
-				<xs:element ref="DaysDue" minOccurs="0"/>
-				<xs:element ref="DiscountsDueDate" minOccurs="0"/>	
+			<xs:element ref="PercentDiscount" minOccurs="0"/>
+			<xs:element ref="DiscountAmount" minOccurs="0"/>
+			<xs:element ref="DaysDue" minOccurs="0"/>
+			<xs:element ref="DiscountsDueDate" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DiscountsDueDate" type="DiscountsDueDateType"/>
@@ -7456,7 +7480,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="DutyStatus" minOccurs="0"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 			<xs:element ref="ShipTo" minOccurs="0"/>
-			<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0"/>		
+			<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0"/>
 			<xs:element ref="ShippingLeadTime" minOccurs="0"/>
 			<xs:element ref="ShipmentMethodOfPaymentCode" minOccurs="0"/>
 		</xs:sequence>
@@ -8299,7 +8323,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ReferenceInformation" maxOccurs="unbounded"/>
 			<xs:element ref="ProductIdentification" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="Pricing" maxOccurs="unbounded"/>
-			<xs:element ref="PurchaseOrderInformation"></xs:element>
+			<xs:element ref="PurchaseOrderInformation"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="InvoiceResponsePartners" type="InvoiceResponsePartnersType"/>
@@ -8319,7 +8343,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="LanguageCode" minOccurs="0"/>
 			<xs:element ref="InvoiceDate" minOccurs="0"/>
 			<xs:element ref="InvoiceIssueDate" minOccurs="0"/>
-			<xs:element ref="PaymentTerms" minOccurs="0"></xs:element>
+			<xs:element ref="PaymentTerms" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="LoadBuildingMotor" type="LoadBuildingMotorType">
@@ -9431,7 +9455,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="PaymentIndicatorType" minOccurs="0"/>
 			<xs:element ref="InvoiceDate" minOccurs="0"/>
 			<xs:element ref="InvoiceIssueDate" minOccurs="0"/>
-			<xs:element ref="PaymentTerms" minOccurs="0"></xs:element>
+			<xs:element ref="PaymentTerms" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ReferenceIdentifier" type="ReferenceIdentifierType"/>
@@ -10207,7 +10231,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="LocationType"/>
 			<xs:element ref="PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ZoneID" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element ref="ZoneGeography" minOccurs="0" maxOccurs="unbounded"/>			
+			<xs:element ref="ZoneGeography" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="LocationType" type="cidxListLocationType"/>
