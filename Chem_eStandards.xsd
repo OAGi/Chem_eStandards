@@ -80,8 +80,17 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="CurrencyCode"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ReturnType"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="ReturnType" type="cidxListReturnType"/>
+	<xs:simpleType name="cidxListReturnType">
+	<xs:restriction base="xs:NMTOKEN">
+		<xs:enumeration value="Haulback"/>
+		<xs:enumeration value="Other"/>
+		<xs:enumeration value="Product"/>
+	</xs:restriction>
+</xs:simpleType>
 	<xs:element name="ProductReturnsRequestPartners" type="ProductReturnsRequestPartnersType"/>
 	<xs:complexType name="ProductReturnsRequestPartnersType">
 		<xs:sequence>
@@ -127,7 +136,6 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 
 	<!-- ^^^^^^ END content for new ProductReturnsRequest message ^^^^^^ -->
-
 
 	<!-- vvvvvv BEGIN content for new SeedReplantClaim message vvvvvv -->
 
@@ -241,8 +249,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 
 	<!-- ^^^^^^ END content for new SeedReplantClaim message ^^^^^^ -->
 
-
-	<!-- BEGIN content for pre-6.0 messages (goes to end of file) -->
+	<!-- BEGIN content for pre-6.0 messages (through end of file) -->
 
 	<xs:element name="PriceSheetRequest" type="PriceSheetRequestType">
 		<xs:annotation>
