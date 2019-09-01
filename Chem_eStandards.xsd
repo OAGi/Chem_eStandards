@@ -31,6 +31,80 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<!-- vvvvvv BEGIN content for new ProductTransfersResponse message vvvvvv -->
 	<!-- ^^^^^^ END content for new ProductTransfersResponse message ^^^^^^ -->
 	<!-- vvvvvv BEGIN content for new LicenseZoneResponse message vvvvvv -->
+	<xs:element name="LicenseZoneResponse" type="LicenseZoneResponseType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="LicenseZoneResponseType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="LicenseZoneResponseBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseBody" type="LicenseZoneResponseBodyType"/>
+	<xs:complexType name="LicenseZoneResponseBodyType">
+		<xs:sequence>
+			<xs:element ref="LicenseZoneResponseProperties"/>
+			<xs:element ref="LicenseZoneResponsePartners"/>
+			<xs:element ref="LicenseZoneResponseDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseProperties" type="LicenseZoneResponsePropertiesType"/>
+	<xs:complexType name="LicenseZoneResponsePropertiesType">
+		<xs:sequence>
+			<xs:element ref="PromotionalFinancialIndicator"/> 
+			<xs:element ref="PromotionalFinancialDescription" minOccurs="0"/> 
+			<xs:element ref="ValidContractFlag"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidContractFlag" type="cidxBoolean"/>
+	<xs:element name="LicenseZoneResponsePartners" type="LicenseZoneResponsePartnersType"/>
+	<xs:complexType name="LicenseZoneResponsePartnersType">
+		<xs:sequence>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseDetails" type="LicenseZoneResponseDetailsType"/>
+	<xs:complexType name="LicenseZoneResponseDetailsType">
+		<xs:sequence>
+			<xs:element ref="LicenseZoneResponseLineItem" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseLineItem" type="LicenseZoneResponseLineItemType"/>
+	<xs:complexType name="LicenseZoneResponseLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ShipTo" minOccurs="0"/>
+			<xs:element ref="AgreementList" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="AgZoneGeography" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AgreementList" type="AgreementListType"/>
+	<xs:complexType name="AgreementListType">
+		<xs:sequence>
+			<xs:element ref="AgreementIdentifier"/>
+			<xs:element ref="AgreementStatus"/>
+			<xs:element ref="AgreementLicense"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AgreementIdentifier" type="cidxToken"/>
+	<xs:element name="AgreementStatus" type="cidxToken"/>
+	<xs:element name="AgreementLicense" type="cidxToken"/>
+	<xs:element name="AgZoneGeography" type="AgZoneGeographyType"/>
+	<xs:complexType name="AgZoneGeographyType">
+		<xs:sequence>
+			<xs:element ref="ProductDescription"/>
+			<xs:element ref="ProductClassification"/>
+			<xs:element ref="ZoneID"/>
+			<xs:element ref="ZoneType"/>
+			<xs:element ref="ZoneName"/>
+		</xs:sequence>
+	</xs:complexType>
 	<!-- ^^^^^^ END content for new LicenseZoneResponse message ^^^^^^ -->
 	<!-- vvvvvv BEGIN content for new LicenseZoneRequest message vvvvvv -->
 	<xs:element name="LicenseZoneRequest" type="LicenseZoneRequestType">
