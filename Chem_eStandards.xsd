@@ -26,10 +26,92 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 <xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:6.0"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	targetNamespace="urn:cidx:names:specification:ces:schema:all:6.0">
-	<!-- vvvvvv BEGIN content for new ProductTransfersRequest message vvvvvv -->
-	<!-- ^^^^^^ END content for new ProductTransfersRequest message ^^^^^^ -->
 	<!-- vvvvvv BEGIN content for new ProductTransfersResponse message vvvvvv -->
 	<!-- ^^^^^^ END content for new ProductTransfersResponse message ^^^^^^ -->
+	<!-- vvvvvv BEGIN content for new ProductTransfersRequest message vvvvvv -->
+	<xs:element name="ProductTransfersRequest" type="ProductTransfersRequestType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ProductTransfersRequestType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="ProductTransfersRequestBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestBody" type="ProductTransfersRequestBodyType"/>
+	<xs:complexType name="ProductTransfersRequestBodyType">
+		<xs:sequence>
+			<xs:element ref="ProductTransfersRequestProperties"/>
+			<xs:element ref="ProductTransfersRequestPartners"/>
+			<xs:element ref="ProductTransfersRequestDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestProperties" type="ProductTransfersRequestPropertiesType"/>
+	<xs:complexType name="ProductTransfersRequestPropertiesType">
+		<xs:sequence>
+			<xs:element ref="TransferType"/>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="CurrencyCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TransferType" type="cidxListTransferType"/>
+	<xs:simpleType name="cidxListTransferType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="ExternalTransferPreShip"/>
+			<xs:enumeration value="ExternalTransferShipped"/>
+			<xs:enumeration value="InternalTransferPreShip"/>
+			<xs:enumeration value="InternalTransferShipped"/>
+			<xs:enumeration value="TransferQuantityAvailableShipped"/>
+			<xs:enumeration value="TransferQuantityAvailablePreShip"/>
+			<xs:enumeration value="TransferQuantityRequest"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ProductTransfersRequestPartners" type="ProductTransfersRequestPartnersType"/>
+	<xs:complexType name="ProductTransfersRequestPartnersType">
+		<xs:sequence>
+			<xs:element ref="ReportingEntity"/>
+			<xs:element ref="ReceivingEntity"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReceivingEntity" type="ReceivingEntityType"/>
+	<xs:complexType name="ReceivingEntityType">
+		<xs:sequence>
+			<xs:element ref="PartnerInformation"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestDetails" type="ProductTransfersRequestDetailsType"/>
+	<xs:complexType name="ProductTransfersRequestDetailsType">
+		<xs:sequence>
+			<xs:element ref="ProductTransfersRequestLineItem" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestLineItem" type="ProductTransfersRequestLineItemType"/>
+	<xs:complexType name="ProductTransfersRequestLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ProductIdentification"/>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="LotInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="TransferStatus" minOccurs="0"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TransferStatus" type="TransferStatusType"/>
+	<xs:complexType name="TransferStatusType">
+		<xs:sequence>
+			<xs:element ref="TransferStatusType"/>
+			<xs:element ref="TransferStatusDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TransferStatusType" type="cidxToken"/>
+	<xs:element name="TransferStatusDescription" type="cidxToken"/>
+	<!-- ^^^^^^ END content for new ProductTransfersRequest message ^^^^^^ -->
 	<!-- vvvvvv BEGIN content for new LicenseZoneResponse message vvvvvv -->
 	<xs:element name="LicenseZoneResponse" type="LicenseZoneResponseType">
 		<xs:annotation>
