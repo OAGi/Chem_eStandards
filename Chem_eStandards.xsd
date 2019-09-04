@@ -9,18 +9,21 @@ IT IS INAPPROPRIATE TO IMPLEMENT THIS XML SCHEMA IN A PRODUCTION ENVIRONMENT.
 !!!!!! WARNING !!!!!! 
 
 Schema agency: Open Applications Group 
-Chem eStandards Revision: 6.0
-Date: 2019-08-??
+Chem eStandards Revision: 6.0 DRAFT
+Date: 2019-09-04
 
 Copyright Open Applications Group (1996-2019). All Rights Reserved.
   
 This is an OAGIS Chem eStandards XML Schema (XSD) Definition.
 
-License information for this file is provided in the file OAGi_Chem_eStandards_LicenseAgreement.txt that is provided with this download package.
+License information for this file is available at
+https://oagi-public.s3.amazonaws.com/OAGi_License_Agreement_for_Chem_eStandards_2019-09-04.txt
 
-For support, more information, or to report implementation bugs, please contact the Open Applications Group at oagis@openapplications.org.
+For support, more information, or to report implementation bugs, please
+contact the Open Applications Group at member.serivces@oagi.org.
 
-Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
+Detailed release notes are available in the commit messages in GitHub.
+A summary will be made available on release.
 
 -->
 <xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:6.0"
