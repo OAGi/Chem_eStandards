@@ -1216,8 +1216,14 @@ A summary will be made available on release.
 			<xs:element ref="ThruYearMonth"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="FromYearMonth" type="xs:gYearMonth"/>
-	<xs:element name="ThruYearMonth" type="xs:gYearMonth"/>
+	<xs:element name="FromYearMonth" type="FromYearMonthType"/>
+	<xs:simpleType name="FromYearMonthType">
+		<xs:restriction base="xs:gYearMonth"/>
+	</xs:simpleType>
+	<xs:element name="ThruYearMonth" type="ThruYearMonthType"/>
+	<xs:simpleType name="ThruYearMonthType">
+		<xs:restriction base="xs:gYearMonth"/>
+	</xs:simpleType>
 	<xs:element name="SubmissionDateTime" type="SubmissionDateTimeType"/>
 	<xs:simpleType name="SubmissionDateTimeType">
 		<xs:restriction base="cidxDateTime"/>
