@@ -2,23 +2,515 @@
 <!--
 
 Schema agency: Open Applications Group 
-Chem eStandards Revision: 5.4.0
-Date: 2016-07-26
+Chem eStandards Revision: 6.0
+Date: 2019-10-13
 
-Copyright Open Applications Group (1996-2016). All Rights Reserved.
+Copyright Open Applications Group (1996-2019). All Rights Reserved.
   
 This is an OAGIS Chem eStandards XML Schema (XSD) Definition.
 
-License information for this file is provided in the file OAGi_Chem_eStandards_LicenseAgreement.txt that is provided with this download package.
+License information for this file is available at
+https://oagi-public.s3.amazonaws.com/OAGi_License_Agreement_for_Chem_eStandards_2019-09-04.txt
 
-For support, more information, or to report implementation bugs, please contact the Open Applications Group at oagis@openapplications.org.
+For support, more information, or to report implementation bugs, please
+contact the Open Applications Group at member.serivces@oagi.org.
 
-Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
+Detailed release notes are available in the commit messages in GitHub.
+A summary will be made available on release.
 
 -->
-<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:5.4.0"
+<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:6.0"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="urn:cidx:names:specification:ces:schema:all:5.4.0">
+	targetNamespace="urn:cidx:names:specification:ces:schema:all:6.0">
+	<!-- vvvvvv BEGIN content for new ProductTransfersResponse message vvvvvv -->
+	<xs:element name="ProductTransfersResponse" type="ProductTransfersResponseType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ProductTransfersResponseType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="ProductTransfersResponseBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="ProductTransfersResponseBody" type="ProductTransfersResponseBodyType"/>
+	<xs:complexType name="ProductTransfersResponseBodyType">
+		<xs:sequence>
+			<xs:element ref="ProductTransfersResponseProperties"/>
+			<xs:element ref="ProductTransfersResponsePartners"/>
+			<xs:element ref="ProductTransfersResponseDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersResponseProperties" type="ProductTransfersResponsePropertiesType"/>
+	<xs:complexType name="ProductTransfersResponsePropertiesType">
+		<xs:sequence>
+			<xs:element ref="TransferType"/>
+			<xs:element ref="TransferStatus"/>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="CurrencyCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersResponsePartners" type="ProductTransfersResponsePartnersType"/>
+	<xs:complexType name="ProductTransfersResponsePartnersType">
+		<xs:sequence>
+			<xs:element ref="ReportingEntity"/>
+			<xs:element ref="ReceivingEntity"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersResponseDetails" type="ProductTransfersResponseDetailsType"/>
+	<xs:complexType name="ProductTransfersResponseDetailsType">
+		<xs:sequence>
+			<xs:element ref="ProductTransfersResponseLineItem" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersResponseLineItem" type="ProductTransfersResponseLineItemType"/>
+	<xs:complexType name="ProductTransfersResponseLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="LotInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="TransferStatus" minOccurs="0"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ^^^^^^ END content for new ProductTransfersResponse message ^^^^^^ -->
+	<!-- vvvvvv BEGIN content for new ProductTransfersRequest message vvvvvv -->
+	<xs:element name="ProductTransfersRequest" type="ProductTransfersRequestType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ProductTransfersRequestType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="ProductTransfersRequestBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestBody" type="ProductTransfersRequestBodyType"/>
+	<xs:complexType name="ProductTransfersRequestBodyType">
+		<xs:sequence>
+			<xs:element ref="ProductTransfersRequestProperties"/>
+			<xs:element ref="ProductTransfersRequestPartners"/>
+			<xs:element ref="ProductTransfersRequestDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestProperties" type="ProductTransfersRequestPropertiesType"/>
+	<xs:complexType name="ProductTransfersRequestPropertiesType">
+		<xs:sequence>
+			<xs:element ref="TransferType"/>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="CurrencyCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TransferType" type="cidxListTransferType"/>
+	<xs:simpleType name="cidxListTransferType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="ExternalTransferPreShip"/>
+			<xs:enumeration value="ExternalTransferShipped"/>
+			<xs:enumeration value="InternalTransferPreShip"/>
+			<xs:enumeration value="InternalTransferShipped"/>
+			<xs:enumeration value="TransferQuantityAvailableShipped"/>
+			<xs:enumeration value="TransferQuantityAvailablePreShip"/>
+			<xs:enumeration value="TransferQuantityRequest"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ProductTransfersRequestPartners" type="ProductTransfersRequestPartnersType"/>
+	<xs:complexType name="ProductTransfersRequestPartnersType">
+		<xs:sequence>
+			<xs:element ref="ReportingEntity"/>
+			<xs:element ref="ReceivingEntity"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReceivingEntity" type="ReceivingEntityType"/>
+	<xs:complexType name="ReceivingEntityType">
+		<xs:sequence>
+			<xs:element ref="PartnerInformation"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestDetails" type="ProductTransfersRequestDetailsType"/>
+	<xs:complexType name="ProductTransfersRequestDetailsType">
+		<xs:sequence>
+			<xs:element ref="ProductTransfersRequestLineItem" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductTransfersRequestLineItem" type="ProductTransfersRequestLineItemType"/>
+	<xs:complexType name="ProductTransfersRequestLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ProductIdentification"/>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="LotInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="TransferStatus" minOccurs="0"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TransferStatus" type="TransferStatusType"/>
+	<xs:complexType name="TransferStatusType">
+		<xs:sequence>
+			<xs:element ref="TransferStatusType"/>
+			<xs:element ref="TransferStatusDescription" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="TransferStatusType" type="cidxToken"/>
+	<xs:element name="TransferStatusDescription" type="cidxToken"/>
+	<!-- ^^^^^^ END content for new ProductTransfersRequest message ^^^^^^ -->
+	<!-- vvvvvv BEGIN content for new LicenseZoneResponse message vvvvvv -->
+	<xs:element name="LicenseZoneResponse" type="LicenseZoneResponseType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="LicenseZoneResponseType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="LicenseZoneResponseBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseBody" type="LicenseZoneResponseBodyType"/>
+	<xs:complexType name="LicenseZoneResponseBodyType">
+		<xs:sequence>
+			<xs:element ref="LicenseZoneResponseProperties"/>
+			<xs:element ref="LicenseZoneResponsePartners"/>
+			<xs:element ref="LicenseZoneResponseDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseProperties" type="LicenseZoneResponsePropertiesType"/>
+	<xs:complexType name="LicenseZoneResponsePropertiesType">
+		<xs:sequence>
+			<xs:element ref="PromotionalFinancialIndicator"/> 
+			<xs:element ref="PromotionalFinancialDescription" minOccurs="0"/> 
+			<xs:element ref="ValidContractFlag"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ValidContractFlag" type="cidxBoolean"/>
+	<xs:element name="LicenseZoneResponsePartners" type="LicenseZoneResponsePartnersType"/>
+	<xs:complexType name="LicenseZoneResponsePartnersType">
+		<xs:sequence>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseDetails" type="LicenseZoneResponseDetailsType"/>
+	<xs:complexType name="LicenseZoneResponseDetailsType">
+		<xs:sequence>
+			<xs:element ref="LicenseZoneResponseLineItem" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneResponseLineItem" type="LicenseZoneResponseLineItemType"/>
+	<xs:complexType name="LicenseZoneResponseLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ShipTo" minOccurs="0"/>
+			<xs:element ref="AgreementList" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="AgZoneGeography" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AgreementList" type="AgreementListType"/>
+	<xs:complexType name="AgreementListType">
+		<xs:sequence>
+			<xs:element ref="AgreementIdentifier"/>
+			<xs:element ref="AgreementStatus"/>
+			<xs:element ref="AgreementLicense"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AgreementIdentifier" type="cidxToken"/>
+	<xs:element name="AgreementStatus" type="cidxToken"/>
+	<xs:element name="AgreementLicense" type="cidxToken"/>
+	<xs:element name="AgZoneGeography" type="AgZoneGeographyType"/>
+	<xs:complexType name="AgZoneGeographyType">
+		<xs:sequence>
+			<xs:element ref="ProductDescription"/>
+			<xs:element ref="ProductClassification"/>
+			<xs:element ref="ZoneID"/>
+			<xs:element ref="ZoneType"/>
+			<xs:element ref="ZoneName"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ^^^^^^ END content for new LicenseZoneResponse message ^^^^^^ -->
+	<!-- vvvvvv BEGIN content for new LicenseZoneRequest message vvvvvv -->
+	<xs:element name="LicenseZoneRequest" type="LicenseZoneRequestType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="LicenseZoneRequestType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="LicenseZoneRequestBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="LicenseZoneRequestBody" type="LicenseZoneRequestBodyType"/>
+	<xs:complexType name="LicenseZoneRequestBodyType">
+		<xs:sequence>
+			<xs:element ref="LicenseZoneRequestProperties"/>
+			<xs:element ref="LicenseZoneRequestPartners"/>
+			<xs:element ref="LicenseZoneRequestDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneRequestProperties" type="LicenseZoneRequestPropertiesType"/>
+	<xs:complexType name="LicenseZoneRequestPropertiesType">
+		<xs:sequence>
+			<xs:element ref="LicenseZoneRequestType"/>
+			<xs:element ref="LicenseZoneRequestOrderIdentifier"/>
+			<xs:element ref="LicenseZoneRequestOrderTypeCode"/>
+			<xs:element ref="LicenseZoneRequestOrderIssuedDate"/>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="CurrencyCode"/>
+			<xs:element ref="BuyerSequenceNumber" minOccurs="0"/>
+			<xs:element ref="SoftwareInformation" minOccurs="0"/>
+			<xs:element ref="ProductYear"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PromotionalFinancialIndicators" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="DirectShipFlag"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>	
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneRequestType" type="cidxToken"/>
+	<xs:element name="LicenseZoneRequestOrderIdentifier" type="cidxToken"/>
+	<xs:element name="LicenseZoneRequestOrderTypeCode" type="LicenseZoneRequestOrderTypeCodeType"/>
+	<xs:complexType name="LicenseZoneRequestOrderTypeCodeType">
+		<xs:simpleContent>
+			<xs:extension base="cidxToken">
+				<xs:attribute name="Domain" type="cidxToken" fixed="ANSI-ASC-X12-92"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:element name="LicenseZoneRequestOrderIssuedDate" type="LicenseZoneRequestOrderIssuedDateType"/>
+	<xs:complexType name="LicenseZoneRequestOrderIssuedDateType">
+		<xs:sequence>
+			<xs:element ref="DateTime"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneRequestPartners" type="LicenseZoneRequestPartnersType"/>
+	<xs:complexType name="LicenseZoneRequestPartnersType">
+		<xs:sequence>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneRequestDetails" type="LicenseZoneRequestDetailsType"/>
+	<xs:complexType name="LicenseZoneRequestDetailsType">
+		<xs:sequence>
+			<xs:element ref="LicenseZoneRequestLineItem" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LicenseZoneRequestLineItem" type="LicenseZoneRequestLineItemType"/>
+	<xs:complexType name="LicenseZoneRequestLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ShipTo" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ^^^^^^ END content for new LicenseZoneRequest message ^^^^^^ -->
+	<!-- vvvvvv BEGIN content for new ProductReturnsRequest message vvvvvv -->
+	<xs:element name="ProductReturnsRequest" type="ProductReturnsRequestType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="ProductReturnsRequestType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="ProductReturnsRequestBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestBody" type="ProductReturnsRequestBodyType"/>
+	<xs:complexType name="ProductReturnsRequestBodyType">
+		<xs:sequence>
+			<xs:element ref="ProductReturnsRequestProperties"/>
+			<xs:element ref="ProductReturnsRequestPartners"/>
+			<xs:element ref="ProductReturnsRequestDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestProperties" type="ProductReturnsRequestPropertiesType"/>
+	<xs:complexType name="ProductReturnsRequestPropertiesType">
+		<xs:sequence>
+			<xs:element ref="ReportingPeriod"/>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="CurrencyCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ReturnType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReturnType" type="cidxListReturnType"/>
+	<xs:simpleType name="cidxListReturnType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="Haulback"/>
+			<xs:enumeration value="Other"/>
+			<xs:enumeration value="Product"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="ProductReturnsRequestPartners" type="ProductReturnsRequestPartnersType"/>
+	<xs:complexType name="ProductReturnsRequestPartnersType">
+		<xs:sequence>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestDetails" type="ProductReturnsRequestDetailsType"/>
+	<xs:complexType name="ProductReturnsRequestDetailsType">
+		<xs:sequence>
+			<xs:element ref="ProductReturnsRequestProductLineItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsRequestProductLineItem"
+		type="ProductReturnsRequestProductLineItemType"/>
+	<xs:complexType name="ProductReturnsRequestProductLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="ProductIdentification"/>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="LotInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpotPrice" minOccurs="0"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LotInformation" type="LotInformationType"/>
+	<xs:complexType name="LotInformationType">
+		<xs:sequence>
+			<xs:element ref="LotIdentifier"/>
+			<xs:element ref="LotQuantity"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LotIdentifier" type="LotIdentifierType"/>
+	<xs:simpleType name="LotIdentifierType">
+		<xs:restriction base="cidxToken"/>
+	</xs:simpleType>
+	<xs:element name="SpotPrice" type="SpotPriceType"/>
+	<xs:complexType name="SpotPriceType">
+		<xs:sequence>
+			<xs:element ref="MonetaryAmount"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ^^^^^^ END content for new ProductReturnsRequest message ^^^^^^ -->
+	<!-- vvvvvv BEGIN content for new SeedReplantClaim message vvvvvv -->
+	<xs:element name="SeedReplantClaim" type="SeedReplantClaimType">
+		<xs:annotation>
+			<xs:appinfo>may_be_message_element</xs:appinfo>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="SeedReplantClaimType">
+		<xs:sequence>
+			<xs:element ref="Header"/>
+			<xs:element ref="SeedReplantClaimBody"/>
+		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimBody" type="SeedReplantClaimBodyType"/>
+	<xs:complexType name="SeedReplantClaimBodyType">
+		<xs:sequence>
+			<xs:element ref="SeedReplantClaimProperties"/>
+			<xs:element ref="SeedReplantClaimPartners"/>
+			<xs:element ref="SeedReplantClaimDetails"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimProperties" type="SeedReplantClaimPropertiesType"/>
+	<xs:complexType name="SeedReplantClaimPropertiesType">
+		<xs:sequence>
+			<xs:element ref="LanguageCode"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ClaimIdentifier"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimPartners" type="SeedReplantClaimPartnersType"/>
+	<xs:complexType name="SeedReplantClaimPartnersType">
+		<xs:sequence>
+			<xs:element ref="Buyer"/>
+			<xs:element ref="Seller"/>
+			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimDetails" type="SeedReplantClaimDetailsType"/>
+	<xs:complexType name="SeedReplantClaimDetailsType">
+		<xs:sequence>
+			<xs:element ref="SeedReplantClaimLineItem" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="SeedReplantClaimLineItem" type="SeedReplantClaimLineItemType"/>
+	<xs:complexType name="SeedReplantClaimLineItemType">
+		<xs:sequence>
+			<xs:element ref="LineNumber"/>
+			<xs:element ref="FailedProductInformation"/>
+			<xs:element ref="ReplantProductInformation" maxOccurs="unbounded"/>
+			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FailedProductInformation" type="FailedProductInformationType"/>
+	<xs:complexType name="FailedProductInformationType">
+		<xs:sequence>
+			<xs:element ref="ProductIdentification"/>
+			<xs:element ref="QuantityDetails" maxOccurs="unbounded"/>
+			<xs:element ref="PlantedFieldArea" minOccurs="0"/>
+			<xs:element ref="PlantedDate" minOccurs="0"/>
+			<xs:element ref="LocallyAppliedTreatment"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="InceptionLossDate" minOccurs="0"/>
+			<xs:element ref="FailureReason" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="QuantityDetails" type="QuantityDetailsType"/>
+	<xs:complexType name="QuantityDetailsType">
+		<xs:sequence>
+			<xs:element ref="ProductQuantity"/>
+			<xs:element ref="LotInformation" minOccurs="0" maxOccurs="unbounded"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ReplantProductInformation" type="ReplantProductInformationType"/>
+	<xs:complexType name="ReplantProductInformationType">
+		<xs:sequence>
+			<xs:element ref="ProductIdentification"/>
+			<xs:element ref="QuantityDetails" maxOccurs="unbounded"/>
+			<xs:element ref="PlantedFieldArea" minOccurs="0"/>
+			<xs:element ref="PlantedDate" minOccurs="0"/>
+			<xs:element ref="LocallyAppliedTreatment"/>
+			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ClaimIdentifier" type="ClaimIdentifierType"/>
+	<xs:simpleType name="ClaimIdentifierType">
+		<xs:restriction base="cidxToken"/>
+	</xs:simpleType>
+	<xs:element name="PlantedFieldArea" type="PlantedFieldAreaType"/>
+	<xs:complexType name="PlantedFieldAreaType">
+		<xs:sequence>
+			<xs:element ref="Measurement"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="PlantedDate" type="PlantedDateType"/>
+	<xs:complexType name="PlantedDateType">
+		<xs:sequence>
+			<xs:element ref="DateTime"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="LocallyAppliedTreatment" type="cidxBoolean"/>
+	<xs:element name="InceptionLossDate" type="InceptionLossDateType"/>
+	<xs:complexType name="InceptionLossDateType">
+		<xs:sequence>
+			<xs:element ref="DateTime"/> 
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="FailureReason" type="cidxToken"/>
+	<!-- ^^^^^^ END content for new SeedReplantClaim message ^^^^^^ -->
+	<!-- BEGIN content for pre-6.0 messages (through end of file) -->
 	<xs:element name="PriceSheetRequest" type="PriceSheetRequestType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
@@ -29,7 +521,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceSheetRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PriceSheetRequestBody" type="PriceSheetRequestBodyType"/>
 	<xs:complexType name="PriceSheetRequestBodyType">
@@ -38,7 +530,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="PriceSheetRequestPartners"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="PriceSheetRequestProperties" type="RetailerOrderSummaryReportPropertiesType"/>
+	<xs:element name="PriceSheetRequestProperties" type="PriceSheetRequestPropertiesType"/>
 	<xs:complexType name="PriceSheetRequestPropertiesType">
 		<xs:sequence>
 			<xs:element ref="CurrencyCode"/>
@@ -70,7 +562,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderResponseLogResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderResponseLogResponseBody" type="OrderResponseLogResponseBodyType"/>
 	<xs:complexType name="OrderResponseLogResponseBodyType">
@@ -81,8 +573,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="OrderResponseLogResponseProperties"
-		type="RetailerOrderSummaryReportPropertiesType"/>
-	<xs:complexType name="ROrderResponseLogResponsePropertiesType">
+		type="OrderResponseLogResponsePropertiesType"/>
+	<xs:complexType name="OrderResponseLogResponsePropertiesType">
 		<xs:sequence>
 			<xs:element ref="ProductYear"/>
 			<xs:element ref="DateTimeRange" minOccurs="0"/>
@@ -162,7 +654,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderResponseLogRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderResponseLogRequestBody" type="OrderResponseLogRequestBodyType"/>
 	<xs:complexType name="OrderResponseLogRequestBodyType">
@@ -217,7 +709,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="RetailerOrderSummaryReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="RetailerOrderSummaryReportBody" type="RetailerOrderSummaryReportBodyType"/>
 	<xs:complexType name="RetailerOrderSummaryReportBodyType">
@@ -324,7 +816,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="RetailerOrderSummaryRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="RetailerOrderSummaryRequestBody" type="RetailerOrderSummaryRequestBodyType"/>
 	<xs:complexType name="RetailerOrderSummaryRequestBodyType">
@@ -379,7 +871,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductBookingResponseBody" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ProductBookingResponseBody" type="ProductBookingResponseBodyType"/>
 	<xs:complexType name="ProductBookingResponseBodyType">
@@ -511,7 +1003,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductBookingBody" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ProductBookingBody" type="ProductBookingBodyType"/>
 	<xs:complexType name="ProductBookingBodyType">
@@ -717,8 +1209,14 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ThruYearMonth"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="FromYearMonth" type="xs:gYearMonth"/>
-	<xs:element name="ThruYearMonth" type="xs:gYearMonth"/>
+	<xs:element name="FromYearMonth" type="FromYearMonthType"/>
+	<xs:simpleType name="FromYearMonthType">
+		<xs:restriction base="xs:gYearMonth"/>
+	</xs:simpleType>
+	<xs:element name="ThruYearMonth" type="ThruYearMonthType"/>
+	<xs:simpleType name="ThruYearMonthType">
+		<xs:restriction base="xs:gYearMonth"/>
+	</xs:simpleType>
 	<xs:element name="SubmissionDateTime" type="SubmissionDateTimeType"/>
 	<xs:simpleType name="SubmissionDateTimeType">
 		<xs:restriction base="cidxDateTime"/>
@@ -733,6 +1231,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="FertilizerTonnageReportBody"/>
 		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="FertilizerTonnageReportBody" type="FertilizerTonnageReportBodyType"/>
 	<xs:complexType name="FertilizerTonnageReportBodyType">
@@ -950,6 +1449,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="FeedTonnageReportBody"/>
 		</xs:sequence>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="FeedTonnageReportBody" type="FeedTonnageReportBodyType"/>
 	<xs:complexType name="FeedTonnageReportBodyType">
@@ -2991,7 +3491,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="AcceptanceNotificationBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="AcceptanceNotificationBody" type="AcceptanceNotificationBodyType"/>
 	<xs:complexType name="AcceptanceNotificationBodyType">
@@ -3082,10 +3582,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:complexType name="AccountInformationType">
 		<xs:sequence>
 			<xs:element ref="AccountHolderName" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element ref="FinancialInstitutionIdentification" minOccurs="0"/>
-				<xs:element ref="CreditCardInformation" minOccurs="0"/>
-			</xs:choice>
+			<xs:element ref="FinancialInstitutionIdentification" minOccurs="0"/>
+			<xs:element ref="CreditCardInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="AccountNumber" type="AccountNumberType"/>
@@ -3094,10 +3592,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="AddressInformation" type="AddressInformationType"/>
 	<xs:complexType name="AddressInformationType">
 		<xs:sequence>
-			<xs:choice minOccurs="0">
-				<xs:element ref="AddressLine" maxOccurs="unbounded"/>
-				<xs:element ref="PostBoxNumber"/>
-			</xs:choice>
+			<xs:element ref="AddressLine" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PostBoxNumber" minOccurs="0"/>
 			<xs:element ref="CityName"/>
 			<xs:element ref="StateOrProvince" minOccurs="0"/>
 			<xs:element ref="PostalCode" minOccurs="0"/>
@@ -3169,10 +3665,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="Audience" type="AudienceType"/>
 	<xs:complexType name="AudienceType">
-		<xs:choice>
-			<xs:element ref="Include"/>
-			<xs:element ref="Exclude"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="Include" minOccurs="0"/>
+			<xs:element ref="Exclude" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="BalanceItemFlag" type="BalanceItemFlagType"/>
 	<xs:element name="BarCodeDataIdentifier" type="BarCodeDataIdentifierType"/>
@@ -3268,10 +3764,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="CityName" type="CityNameType"/>
 	<xs:element name="Comment" type="CommentType"/>
 	<xs:complexType name="CommentType">
-		<xs:choice>
-			<xs:element ref="Content"/>
-			<xs:element ref="ExternalReference"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="Content" minOccurs="0"/>
+			<xs:element ref="ExternalReference" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="Company" type="CompanyType"/>
 	<xs:element name="CompatibilityGroupCode" type="CompatibilityGroupCodeType"/>
@@ -3374,12 +3870,12 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="Content" type="ContentType"/>
 	<xs:element name="ContractAmount" type="ContractAmountType"/>
 	<xs:complexType name="ContractAmountType">
-		<xs:choice>
-			<xs:element ref="PricingLumpSum"/>
-			<xs:element ref="PricingPerUnit"/>
-			<xs:element ref="PricingPercentage"/>
-			<xs:element ref="PercentageBasis"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PricingLumpSum" minOccurs="0"/>
+			<xs:element ref="PricingPerUnit" minOccurs="0"/>
+			<xs:element ref="PricingPercentage" minOccurs="0"/>
+			<xs:element ref="PercentageBasis" minOccurs="0"/>
+		</xs:sequence>
 		<xs:attribute name="PriceType" type="cidxListPriceType" use="required"/>
 	</xs:complexType>
 	<xs:element name="ContractDateRanges" type="ContractDateRangesType"/>
@@ -3575,10 +4071,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="DateTimeInformation" type="DateTimeInformationType"/>
 	<xs:complexType name="DateTimeInformationType">
-		<xs:choice>
-			<xs:element ref="DateTime"/>
-			<xs:element ref="DateTimeRange"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="DateTime" minOccurs="0"/>
+			<xs:element ref="DateTimeRange" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DateTimeRange" type="DateTimeRangeType"/>
 	<xs:complexType name="DateTimeRangeType">
@@ -3781,14 +4277,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="Discounts" type="DiscountsType"/>
 	<xs:complexType name="DiscountsType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="PercentDiscount"/>
-				<xs:element ref="DiscountAmount"/>
-			</xs:choice>
-			<xs:choice>
-				<xs:element ref="DaysDue"/>
-				<xs:element ref="DiscountsDueDate"/>
-			</xs:choice>
+			<xs:element ref="PercentDiscount" minOccurs="0"/>
+			<xs:element ref="DiscountAmount" minOccurs="0"/>
+			<xs:element ref="DaysDue" minOccurs="0"/>
+			<xs:element ref="DiscountsDueDate" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="DiscountsDueDate" type="DiscountsDueDateType"/>
@@ -4269,10 +4761,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="InventoryOnSite" type="InventoryOnSiteType"/>
 	<xs:complexType name="InventoryOnSiteType">
-		<xs:choice maxOccurs="unbounded">
-			<xs:element ref="InventoryInTank"/>
-			<xs:element ref="InventoryOther"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="InventoryInTank" minOccurs="0"/>
+			<xs:element ref="InventoryOther" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="InventoryOther" type="InventoryOtherType"/>
 	<xs:complexType name="InventoryOtherType">
@@ -4307,10 +4799,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="LineNumber"/>
 			<xs:element ref="InventoryProduct"/>
 			<xs:element ref="StorageTankIdentifier" minOccurs="0"/>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="InventoryLevel"/>
-				<xs:element ref="InventoryUsageActual"/>
-			</xs:choice>
+			<xs:element ref="InventoryLevel" minOccurs="0"/>
+			<xs:element ref="InventoryUsageActual" minOccurs="0"/>
 			<xs:element ref="InventoryType" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0"/>
 		</xs:sequence>
@@ -4615,9 +5105,9 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="ManufacturingIdentificationDetails"
 		type="ManufacturingIdentificationDetailsType"/>
 	<xs:complexType name="ManufacturingIdentificationDetailsType">
-		<xs:sequence minOccurs="0">
-			<xs:element ref="ManufacturingIdentificationType"/>
-			<xs:element ref="ManufacturingIdentificationNumber"/>
+		<xs:sequence>
+			<xs:element ref="ManufacturingIdentificationType" minOccurs="0"/>
+			<xs:element ref="ManufacturingIdentificationNumber" minOccurs="0"/>
 			<xs:element ref="ParentManufacturingIdentificationNumber" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -4692,10 +5182,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="MeasurementInformation" type="MeasurementInformationType"/>
 	<xs:complexType name="MeasurementInformationType">
-		<xs:choice>
-			<xs:element ref="SpecifiedMeasurement"/>
-			<xs:element ref="MeasurementRange"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="SpecifiedMeasurement" minOccurs="0"/>
+			<xs:element ref="MeasurementRange" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="MeasurementRange" type="MeasurementRangeType"/>
 	<xs:complexType name="MeasurementRangeType">
@@ -5173,10 +5663,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="PrepaidContractInformation" type="PrepaidContractInformationType"/>
 	<xs:complexType name="PrepaidContractInformationType">
-		<xs:choice>
-			<xs:element ref="ContractAmount"/>
-			<xs:element ref="ContractProductInformation"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="ContractAmount" minOccurs="0"/>
+			<xs:element ref="ContractProductInformation" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PriceBasis" type="PriceBasisType"/>
 	<xs:complexType name="PriceBasisType">
@@ -5210,14 +5700,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="Pricing" type="PricingType"/>
 	<xs:complexType name="PricingType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="PricingLumpSum"/>
-				<xs:element ref="PricingPerUnit"/>
-				<xs:sequence>
-					<xs:element ref="PricingPercentage"/>
-					<xs:element ref="PercentageBasis"/>
-				</xs:sequence>
-			</xs:choice>
+			<xs:element ref="PricingLumpSum" minOccurs="0"/>
+			<xs:element ref="PricingPerUnit" minOccurs="0"/>
+			<xs:element ref="PricingPercentage" minOccurs="0"/>
+			<xs:element ref="PercentageBasis" minOccurs="0"/>
 			<xs:element ref="PriceReason" minOccurs="0"/>
 			<xs:element ref="QuantityConfirmationType" minOccurs="0"/>
 			<xs:element ref="CommissionInformation" minOccurs="0"/>
@@ -5525,10 +6011,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:complexType name="ReplenishmentSummaryType">
 		<xs:sequence>
 			<xs:element ref="ReceiptQuantity"/>
-			<xs:choice>
-				<xs:element ref="ShipDate"/>
-				<xs:element ref="DeliveryDateTime"/>
-			</xs:choice>
+			<xs:element ref="ShipDate" minOccurs="0"/>
+			<xs:element ref="DeliveryDateTime" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="RequestedCostSupport" type="RequestedCostSupportType"/>
@@ -6126,10 +6610,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 		<xs:sequence>
 			<xs:element ref="TaxTypeCode"/>
 			<xs:element ref="TaxLocation"/>
-			<xs:choice>
-				<xs:element ref="Exempt"/>
-				<xs:element ref="NonExempt" maxOccurs="unbounded"/>
-			</xs:choice>
+			<xs:element ref="Exempt" minOccurs="0"/>
+			<xs:element ref="NonExempt" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 		<xs:attribute name="TaxOrDutyQualifier" type="cidxListTaxOrDutyQualifier" use="required"/>
 	</xs:complexType>
@@ -6158,16 +6640,16 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 		<xs:sequence>
 			<xs:element ref="SpecifiedMeasurement"/>
 		</xs:sequence>
-		<xs:attribute name="type" type="cidxListTemperatureType"/>
+		<xs:attribute name="Type" type="cidxListTemperatureType"/>
 	</xs:complexType>
 	<xs:element name="TermsOfSaleDescription" type="TermsOfSaleDescriptionType"/>
 	<xs:element name="TestIdentification" type="TestIdentificationType"/>
 	<xs:complexType name="TestIdentificationType">
-		<xs:choice maxOccurs="unbounded">
-			<xs:element ref="PropertyIdentifier"/>
-			<xs:element ref="PropertyDescription"/>
-			<xs:element ref="TestMethod"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PropertyIdentifier" minOccurs="0"/>
+			<xs:element ref="PropertyDescription" minOccurs="0"/>
+			<xs:element ref="TestMethod" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="TestMethod" type="TestMethodType"/>
 	<xs:complexType name="TestMethodType">
@@ -6179,10 +6661,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="TestResult" type="TestResultType"/>
 	<xs:complexType name="TestResultType">
-		<xs:choice>
-			<xs:element ref="QualitativeResult"/>
-			<xs:element ref="QuantitativeResult"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="QualitativeResult" minOccurs="0"/>
+			<xs:element ref="QuantitativeResult" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="TestSpecification" type="TestSpecificationType"/>
 	<xs:complexType name="TestSpecificationType">
@@ -6398,10 +6880,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="USGoodsReturned" type="USGoodsReturnedType"/>
 	<xs:element name="VolumetricInformation" type="VolumetricInformationType"/>
 	<xs:complexType name="VolumetricInformationType">
-		<xs:choice>
-			<xs:element ref="Density"/>
-			<xs:element ref="SpecificGravity"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="Density" minOccurs="0"/>
+			<xs:element ref="SpecificGravity" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="VoyageTripNumber" type="VoyageTripNumberType"/>
 	<xs:complexType name="VoyageTripNumberType">
@@ -6522,7 +7004,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CarrierWeightsBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CarrierWeightsBody" type="CarrierWeightsBodyType"/>
 	<xs:complexType name="CarrierWeightsBodyType">
@@ -6591,7 +7073,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CertificateOfAnalysisBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CertificateOfAnalysisBatchDetail" type="CertificateOfAnalysisBatchDetailType"/>
 	<xs:complexType name="CertificateOfAnalysisBatchDetailType">
@@ -6649,7 +7131,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ContractBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ContractBody" type="ContractBodyType"/>
 	<xs:complexType name="ContractBodyType">
@@ -6739,7 +7221,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ContractResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ContractResponseBody" type="ContractResponseBodyType"/>
 	<xs:complexType name="ContractResponseBodyType">
@@ -6830,7 +7312,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportCreditRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CostSupportCreditRequestBody" type="CostSupportCreditRequestBodyType"/>
 	<xs:complexType name="CostSupportCreditRequestBodyType">
@@ -6916,7 +7398,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportCreditResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CostSupportCreditResponseBody" type="CostSupportCreditResponseBodyType"/>
 	<xs:complexType name="CostSupportCreditResponseBodyType">
@@ -6982,7 +7464,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestBody" type="CostSupportRequestBodyType"/>
 	<xs:complexType name="CostSupportRequestBodyType">
@@ -7001,10 +7483,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="CostSupportDuration"/>
 			<xs:element ref="ReviewDate" minOccurs="0"/>
 			<xs:element ref="UnitConversions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element ref="BidInformation"/>
-				<xs:element ref="CompetitiveInformation"/>
-			</xs:choice>
+			<xs:element ref="BidInformation" minOccurs="0"/>
+			<xs:element ref="CompetitiveInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestPartners" type="CostSupportRequestPartnersType"/>
@@ -7042,7 +7522,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportRequestChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestChangeBody" type="CostSupportRequestChangeBodyType"/>
 	<xs:complexType name="CostSupportRequestChangeBodyType">
@@ -7061,10 +7541,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="CostSupportDuration"/>
 			<xs:element ref="ReviewDate" minOccurs="0"/>
 			<xs:element ref="UnitConversions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element ref="BidInformation"/>
-				<xs:element ref="CompetitiveInformation"/>
-			</xs:choice>
+			<xs:element ref="BidInformation" minOccurs="0"/>
+			<xs:element ref="CompetitiveInformation" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestChangePartners" type="CostSupportRequestChangePartnersType"/>
@@ -7106,7 +7584,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CostSupportResponseBody" type="CostSupportResponseBodyType"/>
 	<xs:complexType name="CostSupportResponseBodyType">
@@ -7194,7 +7672,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="CustomerSpecificCatalogUpdateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="CustomerSpecificCatalogUpdateBody"
 		type="CustomerSpecificCatalogUpdateBodyType"/>
@@ -7274,10 +7752,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="CustomerSpecificCatalogPriceData" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="DutyStatus" minOccurs="0"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
-			<xs:choice minOccurs="0">
-				<xs:element ref="ShipTo"/>
-				<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0"/>
-			</xs:choice>
+			<xs:element ref="ShipTo" minOccurs="0"/>
+			<xs:element ref="CountryOfFinalDestinationCode" minOccurs="0"/>
 			<xs:element ref="ShippingLeadTime" minOccurs="0"/>
 			<xs:element ref="ShipmentMethodOfPaymentCode" minOccurs="0"/>
 		</xs:sequence>
@@ -7293,7 +7769,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryConfirmationBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationAcceptance" type="DeliveryConfirmationAcceptanceType"/>
 	<xs:element name="DeliveryConfirmationRejectionDescription"
@@ -7308,7 +7784,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryConfirmationResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationResponseBody" type="DeliveryConfirmationResponseBodyType"/>
 	<xs:complexType name="DeliveryConfirmationResponseBodyType">
@@ -7380,7 +7856,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryReceiptBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DeliveryReceiptBody" type="DeliveryReceiptBodyType"/>
 	<xs:complexType name="DeliveryReceiptBodyType">
@@ -7425,7 +7901,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryReceiptResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DeliveryReceiptResponseBody" type="DeliveryReceiptResponseBodyType"/>
 	<xs:complexType name="DeliveryReceiptResponseBodyType">
@@ -7470,7 +7946,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandForecastBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DemandForecastBody" type="DemandForecastBodyType"/>
 	<xs:complexType name="DemandForecastBodyType">
@@ -7513,7 +7989,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandForecastResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DemandForecastResponseBody" type="DemandForecastResponseBodyType"/>
 	<xs:complexType name="DemandForecastResponseBodyType">
@@ -7556,7 +8032,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandPlanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DemandPlanBody" type="DemandPlanBodyType"/>
 	<xs:complexType name="DemandPlanBodyType">
@@ -7599,7 +8075,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandPlanResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="DemandPlanResponseBody" type="DemandPlanResponseBodyType"/>
 	<xs:complexType name="DemandPlanResponseBodyType">
@@ -7695,7 +8171,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="FreightBillBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="FreightBillBody" type="FreightBillBodyType"/>
 	<xs:complexType name="FreightBillBodyType">
@@ -7897,7 +8373,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="InventoryActualUsageBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="InventoryActualUsageBody" type="InventoryActualUsageBodyType"/>
 	<xs:complexType name="InventoryActualUsageBodyType">
@@ -7941,7 +8417,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="InventoryActualUsageResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="InventoryActualUsageResponseBody" type="InventoryActualUsageResponseBodyType"/>
 	<xs:complexType name="InventoryActualUsageResponseBodyType">
@@ -7993,7 +8469,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="InvoiceBody" type="InvoiceBodyType"/>
 	<xs:complexType name="InvoiceBodyType">
@@ -8030,10 +8506,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ProductIdentification" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ProductQuantity"/>
 			<xs:element ref="Pricing" maxOccurs="unbounded"/>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="ReferenceInformation"/>
-				<xs:element ref="PurchaseOrderInformation"/>
-			</xs:choice>
+			<xs:element ref="ReferenceInformation" minOccurs="0"/>
+			<xs:element ref="PurchaseOrderInformation" minOccurs="0"/>
 			<xs:element ref="Allowances" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="TaxableFlag" minOccurs="0"/>
 			<xs:element ref="DeliveryTerms" minOccurs="0"/>
@@ -8100,7 +8574,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="InvoiceResponseBody" type="InvoiceResponseBodyType"/>
 	<xs:complexType name="InvoiceResponseBodyType">
@@ -8122,7 +8596,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ReferenceInformation" maxOccurs="unbounded"/>
 			<xs:element ref="ProductIdentification" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="Pricing" maxOccurs="unbounded"/>
-			<xs:element ref="PurchaseOrderInformation"></xs:element>
+			<xs:element ref="PurchaseOrderInformation"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="InvoiceResponsePartners" type="InvoiceResponsePartnersType"/>
@@ -8142,7 +8616,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="LanguageCode" minOccurs="0"/>
 			<xs:element ref="InvoiceDate" minOccurs="0"/>
 			<xs:element ref="InvoiceIssueDate" minOccurs="0"/>
-			<xs:element ref="PaymentTerms" minOccurs="0"></xs:element>
+			<xs:element ref="PaymentTerms" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="LoadBuildingMotor" type="LoadBuildingMotorType">
@@ -8155,7 +8629,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadBuildingMotorBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="LoadBuildingMotorBody" type="LoadBuildingMotorBodyType"/>
 	<xs:complexType name="LoadBuildingMotorBodyType">
@@ -8213,7 +8687,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadBuildingResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="LoadBuildingResponseBody" type="LoadBuildingResponseBodyType"/>
 	<xs:complexType name="LoadBuildingResponseBodyType">
@@ -8273,7 +8747,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderMotorBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderMotorBody" type="LoadTenderMotorBodyType"/>
 	<xs:complexType name="LoadTenderMotorBodyType">
@@ -8379,7 +8853,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderOceanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderOceanBody" type="LoadTenderOceanBodyType"/>
 	<xs:complexType name="LoadTenderOceanBodyType">
@@ -8503,7 +8977,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderRailBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderRailBody" type="LoadTenderRailBodyType"/>
 	<xs:complexType name="LoadTenderRailBodyType">
@@ -8611,7 +9085,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderResponseBody" type="LoadTenderResponseBodyType"/>
 	<xs:complexType name="LoadTenderResponseBodyType">
@@ -8710,7 +9184,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderChangeBody" type="OrderChangeBodyType"/>
 	<xs:complexType name="OrderChangeBodyType">
@@ -8810,7 +9284,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderCreateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderCreateBody" type="OrderCreateBodyType"/>
 	<xs:complexType name="OrderCreateBodyType">
@@ -8908,7 +9382,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderResponseBody" type="OrderResponseBodyType"/>
 	<xs:complexType name="OrderResponseBodyType">
@@ -8948,10 +9422,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="PackagingQuantity" minOccurs="0"/>
 			<xs:element ref="BatchNumber" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
-			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="ScheduleLineDetails"/>
-				<xs:element ref="ScheduleDateTimeInformation"/>
-			</xs:choice>
+			<xs:element ref="ScheduleLineDetails" minOccurs="0"/>
+			<xs:element ref="ScheduleDateTimeInformation" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="DeliveryTolerances" minOccurs="0"/>
 			<xs:element ref="DeliveryTerms" minOccurs="0"/>
@@ -9025,7 +9497,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusRequestBody" type="OrderStatusRequestBodyType"/>
 	<xs:complexType name="OrderStatusRequestBodyType">
@@ -9081,14 +9553,14 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="BuyerAccountDetails" type="BuyerAccountDetailsType"/>
 	<xs:complexType name="BuyerAccountDetailsType">
-		<xs:choice>
-			<xs:element ref="FinancialInstitutionIdentification"/>
-			<xs:element ref="CreditCardInformation"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="FinancialInstitutionIdentification" minOccurs="0"/>
+			<xs:element ref="CreditCardInformation" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="CreditDebitIndicator" type="CreditDebitIndicatorType"/>
 	<xs:element name="Payment" type="PaymentType">
@@ -9101,7 +9573,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PaymentBody" type="PaymentBodyType"/>
 	<xs:complexType name="PaymentBodyType">
@@ -9194,7 +9666,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentDetailBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PaymentDetailBody" type="PaymentDetailBodyType"/>
 	<xs:complexType name="PaymentDetailBodyType">
@@ -9256,7 +9728,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="PaymentIndicatorType" minOccurs="0"/>
 			<xs:element ref="InvoiceDate" minOccurs="0"/>
 			<xs:element ref="InvoiceIssueDate" minOccurs="0"/>
-			<xs:element ref="PaymentTerms" minOccurs="0"></xs:element>
+			<xs:element ref="PaymentTerms" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ReferenceIdentifier" type="ReferenceIdentifierType"/>
@@ -9282,7 +9754,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PaymentResponseBody" type="PaymentResponseBodyType"/>
 	<xs:complexType name="PaymentResponseBodyType">
@@ -9319,7 +9791,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingAcceptBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingAcceptBody" type="PostingAcceptBodyType"/>
 	<xs:complexType name="PostingAcceptBodyType">
@@ -9347,24 +9819,20 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ManufacturerInformation" minOccurs="0"/>
 			<xs:element ref="ProductQuantity"/>
 			<xs:element ref="PriceInformation" minOccurs="0"/>
-			<xs:choice>
-				<xs:element ref="ShippingAvailabilityDate"/>
-				<xs:element ref="RequestedDeliveryDateTime"/>
-			</xs:choice>
+			<xs:element ref="ShippingAvailabilityDate" minOccurs="0"/>
+			<xs:element ref="RequestedDeliveryDateTime" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:sequence minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ShipFrom"/>
-				<xs:element ref="ShipTo"/>
-			</xs:sequence>
+			<xs:element ref="ShipFrom" minOccurs="0"/>
+			<xs:element ref="ShipTo" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingAcceptPartners" type="PostingAcceptPartnersType"/>
 	<xs:complexType name="PostingAcceptPartnersType">
-		<xs:choice>
-			<xs:element ref="Seller"/>
-			<xs:element ref="Buyer"/>
+		<xs:sequence>
+			<xs:element ref="Seller" minOccurs="0"/>
+			<xs:element ref="Buyer" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:choice>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingAcceptProperties" type="PostingAcceptPropertiesType"/>
 	<xs:complexType name="PostingAcceptPropertiesType">
@@ -9390,7 +9858,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingAcceptResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingAcceptResponseBody" type="PostingAcceptResponseBodyType"/>
 	<xs:complexType name="PostingAcceptResponseBodyType">
@@ -9415,11 +9883,11 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="PostingAcceptResponsePartners" type="PostingAcceptResponsePartnersType"/>
 	<xs:complexType name="PostingAcceptResponsePartnersType">
-		<xs:choice>
-			<xs:element ref="Buyer"/>
-			<xs:element ref="Seller"/>
+		<xs:sequence>
+			<xs:element ref="Buyer" minOccurs="0"/>
+			<xs:element ref="Seller" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
-		</xs:choice>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingAcceptResponseProperties" type="PostingAcceptResponsePropertiesType"/>
 	<xs:complexType name="PostingAcceptResponsePropertiesType">
@@ -9442,7 +9910,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCancelBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingCancelBody" type="PostingCancelBodyType"/>
 	<xs:complexType name="PostingCancelBodyType">
@@ -9475,7 +9943,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCancelResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingCancelResponseBody" type="PostingCancelResponseBodyType"/>
 	<xs:complexType name="PostingCancelResponseBodyType">
@@ -9509,7 +9977,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingChangeBody" type="PostingChangeBodyType"/>
 	<xs:complexType name="PostingChangeBodyType">
@@ -9538,15 +10006,11 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ManufacturerInformation" minOccurs="0"/>
 			<xs:element ref="ProductQuantity"/>
 			<xs:element ref="PriceInformation" minOccurs="0"/>
-			<xs:choice>
-				<xs:element ref="ShippingAvailabilityDate"/>
-				<xs:element ref="RequestedDeliveryDateTime"/>
-			</xs:choice>
+			<xs:element ref="ShippingAvailabilityDate" minOccurs="0"/>
+			<xs:element ref="RequestedDeliveryDateTime" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:sequence minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ShipFrom"/>
-				<xs:element ref="ShipTo"/>
-			</xs:sequence>
+			<xs:element ref="ShipFrom" minOccurs="0"/>
+			<xs:element ref="ShipTo" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingChangePartners" type="PostingChangePartnersType"/>
@@ -9576,7 +10040,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCreateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingCreateBody" type="PostingCreateBodyType"/>
 	<xs:complexType name="PostingCreateBodyType">
@@ -9604,15 +10068,11 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ManufacturerInformation" minOccurs="0"/>
 			<xs:element ref="ProductQuantity"/>
 			<xs:element ref="PriceInformation" minOccurs="0"/>
-			<xs:choice>
-				<xs:element ref="ShippingAvailabilityDate"/>
-				<xs:element ref="RequestedDeliveryDateTime"/>
-			</xs:choice>
+			<xs:element ref="ShippingAvailabilityDate" minOccurs="0"/>
+			<xs:element ref="RequestedDeliveryDateTime" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:sequence minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ShipTo"/>
-				<xs:element ref="ShipFrom"/>
-			</xs:sequence>
+			<xs:element ref="ShipTo" minOccurs="0"/>
+			<xs:element ref="ShipFrom" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingCreatePartners" type="PostingCreatePartnersType"/>
@@ -9650,7 +10110,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingResponseBody" type="PostingResponseBodyType"/>
 	<xs:complexType name="PostingResponseBodyType">
@@ -9695,7 +10155,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingStatusRequestBody" type="PostingStatusRequestBodyType"/>
 	<xs:complexType name="PostingStatusRequestBodyType">
@@ -9720,7 +10180,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingStatusResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PostingStatusResponseBody" type="PostingStatusResponseBodyType"/>
 	<xs:complexType name="PostingStatusResponseBodyType">
@@ -9750,15 +10210,11 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ManufacturerInformation" minOccurs="0"/>
 			<xs:element ref="ProductQuantity"/>
 			<xs:element ref="PriceInformation" minOccurs="0"/>
-			<xs:choice>
-				<xs:element ref="ShippingAvailabilityDate"/>
-				<xs:element ref="RequestedDeliveryDateTime"/>
-			</xs:choice>
+			<xs:element ref="ShippingAvailabilityDate" minOccurs="0"/>
+			<xs:element ref="RequestedDeliveryDateTime" minOccurs="0"/>
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:sequence minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ShipFrom"/>
-				<xs:element ref="ShipTo"/>
-			</xs:sequence>
+			<xs:element ref="ShipFrom" minOccurs="0"/>
+			<xs:element ref="ShipTo" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PostingStatusResponsePartners" type="PostingStatusResponsePartnersType"/>
@@ -9787,7 +10243,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceAndAvailabilityRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PriceAndAvailabilityRequestBody" type="PriceAndAvailabilityRequestBodyType"/>
 	<xs:complexType name="PriceAndAvailabilityRequestBodyType">
@@ -9877,7 +10333,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceAndAvailabilityResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PriceAndAvailabilityResponseBody" type="PriceAndAvailabilityResponseBodyType"/>
 	<xs:complexType name="PriceAndAvailabilityResponseBodyType">
@@ -9914,10 +10370,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="ProductIdentification" maxOccurs="unbounded"/>
 			<xs:element ref="ProductOptions" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ReferenceInformation" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:choice>
-				<xs:element ref="ProductQuantity"/>
-				<xs:element ref="ProductQuantityInformation"/>
-			</xs:choice>
+			<xs:element ref="ProductQuantity" minOccurs="0"/>
+			<xs:element ref="ProductQuantityInformation" minOccurs="0"/>
 			<xs:element ref="PackagingQuantity" minOccurs="0"/>
 			<xs:element ref="CountryOfOriginCode" minOccurs="0"/>
 			<xs:element ref="ScheduleDateTimeInformation"/>
@@ -9998,11 +10452,11 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AllowanceChargeAmountType">
-		<xs:choice>
-			<xs:element ref="PricingLumpSum"/>
-			<xs:element ref="PricingPerUnit"/>
-			<xs:element ref="PricingPercentage"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PricingLumpSum" minOccurs="0"/>
+			<xs:element ref="PricingPerUnit" minOccurs="0"/>
+			<xs:element ref="PricingPercentage" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="AllowanceChargeID" type="cidxToken"/>
 	<xs:element name="AllowanceChargeList" type="AllowanceChargeListType"/>
@@ -10048,11 +10502,9 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:complexType name="LocationType">
 		<xs:sequence>
 			<xs:element ref="LocationType"/>
-			<xs:choice>
-				<xs:element ref="PartnerInformation" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneID" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="ZoneGeography" maxOccurs="unbounded"/>
-			</xs:choice>
+			<xs:element ref="PartnerInformation" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ZoneID" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ZoneGeography" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="LocationType" type="cidxListLocationType"/>
@@ -10091,10 +10543,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="OrderFeatures" type="OrderFeaturesType"/>
 	<xs:complexType name="OrderFeaturesType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="PriceSheetEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
-				<xs:element ref="PriceSheetRelativeDays" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:choice>
+			<xs:element ref="PriceSheetEffectiveDate" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PriceSheetRelativeDays" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="SalesVolume" minOccurs="0"/>
 			<xs:element ref="UnitVolume" minOccurs="0"/>
 		</xs:sequence>
@@ -10133,10 +10583,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:simpleType>
 	<xs:element name="PostalCodes" type="PostalCodesType"/>
 	<xs:complexType name="PostalCodesType">
-		<xs:choice>
-			<xs:element ref="PostalCode" maxOccurs="unbounded"/>
-			<xs:element ref="PostalCodeRange" maxOccurs="unbounded"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PostalCode" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="PostalCodeRange" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
 		<xs:attribute name="GeographyQualifier" type="cidxListIncludeExclude" use="required"/>
 	</xs:complexType>
 	<xs:element name="PriceApplicabilityCriteria" type="PriceApplicabilityCriteriaType"/>
@@ -10158,7 +10608,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceSheetBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="PriceSheetBody" type="PriceSheetBodyType"/>
 	<xs:complexType name="PriceSheetBodyType">
@@ -10191,10 +10641,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 		<xs:sequence>
 			<xs:element ref="PriceSheetIdentifier" minOccurs="0"/>
 			<xs:element ref="PriceSheetDescription" minOccurs="0"/>
-			<xs:choice>
-				<xs:element ref="PriceSheetEffectiveDate"/>
-				<xs:element ref="PriceSheetRelativeDays" minOccurs="0"/>
-			</xs:choice>
+			<xs:element ref="PriceSheetEffectiveDate" minOccurs="0"/>
+			<xs:element ref="PriceSheetRelativeDays" minOccurs="0"/>
 			<xs:element ref="VolumeDeterminationMethod" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -10324,11 +10772,9 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:complexType name="TermsOfSaleType">
 		<xs:sequence>
 			<xs:element ref="DiscountDeferredIndicator"/>
-			<xs:choice>
-				<xs:element ref="DaysDue"/>
-				<xs:element ref="DueDate"/>
-				<xs:element ref="RelativeDueDate"/>
-			</xs:choice>
+			<xs:element ref="DaysDue" minOccurs="0"/>
+			<xs:element ref="DueDate" minOccurs="0"/>
+			<xs:element ref="RelativeDueDate" minOccurs="0"/>
 			<xs:element ref="PercentDue" minOccurs="0"/>
 			<xs:element ref="Amount" minOccurs="0"/>
 			<xs:element ref="Percent" minOccurs="0"/>
@@ -10410,7 +10856,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductCatalogUpdateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ProductCatalogUpdateBody" type="ProductCatalogUpdateBodyType"/>
 	<xs:complexType name="ProductCatalogUpdateBodyType">
@@ -10512,10 +10958,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="CharacteristicDescription" type="CharacteristicDescriptionType"/>
 	<xs:element name="EventDateTime" type="EventDateTimeType"/>
 	<xs:complexType name="EventDateTimeType">
-		<xs:choice>
-			<xs:element ref="DateTime"/>
-			<xs:element ref="DateTimeRange"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="DateTime" minOccurs="0"/>
+			<xs:element ref="DateTimeRange" minOccurs="0"/>
+		</xs:sequence>
 		<xs:attribute name="EventDateType" type="cidxListEventDateType" use="required"/>
 	</xs:complexType>
 	<xs:element name="ProductMovementProductLineItem" type="ProductMovementProductLineItemType"/>
@@ -10548,7 +10994,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductMovementReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ProductMovementReportBody" type="ProductMovementReportBodyType"/>
 	<xs:complexType name="ProductMovementReportBodyType">
@@ -10665,7 +11111,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="QualificationRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="QualificationRequestBody" type="QualificationRequestBodyType"/>
 	<xs:complexType name="QualificationRequestBodyType">
@@ -10716,7 +11162,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="QualificationResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="QualificationResponseBody" type="QualificationResponseBodyType"/>
 	<xs:complexType name="QualificationResponseBodyType">
@@ -10773,7 +11219,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="QualityTestingReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="QualityTestingReportBatchDetail" type="QualityTestingReportBatchDetailType"/>
 	<xs:complexType name="QualityTestingReportBatchDetailType">
@@ -10857,7 +11303,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ReceiptNoticeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ReceiptNoticeBody" type="ReceiptNoticeBodyType"/>
 	<xs:complexType name="ReceiptNoticeBodyType">
@@ -10872,10 +11318,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 		<xs:sequence>
 			<xs:element ref="EquipmentDetails" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element ref="ReceiptNoticeProductLineItem" maxOccurs="unbounded"/>
-			<xs:sequence minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="ShipmentPackaging"/>
-				<xs:element ref="ReceiptCondition" minOccurs="0" maxOccurs="unbounded"/>
-			</xs:sequence>
+			<xs:element ref="ShipmentPackaging" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="ReceiptCondition" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ReceiptNoticePartners" type="ReceiptNoticePartnersType"/>
@@ -10936,7 +11380,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalCancelBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalCancelBody" type="ReplenishmentProposalCancelBodyType"/>
 	<xs:complexType name="ReplenishmentProposalCancelBodyType">
@@ -10983,7 +11427,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalChangeBody" type="ReplenishmentProposalChangeBodyType"/>
 	<xs:complexType name="ReplenishmentProposalChangeBodyType">
@@ -11031,7 +11475,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalRequestBody" type="ReplenishmentProposalRequestBodyType"/>
 	<xs:complexType name="ReplenishmentProposalRequestBodyType">
@@ -11113,7 +11557,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalResponseBody"
 		type="ReplenishmentProposalResponseBodyType"/>
@@ -11193,7 +11637,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="RequestForQuoteBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="RequestForQuoteBody" type="RequestForQuoteBodyType"/>
 	<xs:complexType name="RequestForQuoteBodyType">
@@ -11299,7 +11743,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentInstructionsBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ShipmentInstructionsBody" type="ShipmentInstructionsBodyType"/>
 	<xs:complexType name="ShipmentInstructionsBodyType">
@@ -11490,7 +11934,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentStatusBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ShipmentStatusBody" type="ShipmentStatusBodyType"/>
 	<xs:complexType name="ShipmentStatusBodyType">
@@ -11539,10 +11983,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="ShipmentStatusPartners" type="ShipmentStatusPartnersType"/>
 	<xs:complexType name="ShipmentStatusPartnersType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="Shipper"/>
-				<xs:element ref="Carrier"/>
-			</xs:choice>
+			<xs:element ref="Shipper" minOccurs="0"/>
+			<xs:element ref="Carrier" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -11578,8 +12020,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
-		<xs:attribute name="SelectionQualifier" type="cidxToken"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ShipmentStatusRequestBody" type="ShipmentStatusRequestBodyType"/>
 	<xs:complexType name="ShipmentStatusRequestBodyType">
@@ -11599,10 +12040,8 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="ShipmentStatusRequestPartners" type="ShipmentStatusRequestPartnersType"/>
 	<xs:complexType name="ShipmentStatusRequestPartnersType">
 		<xs:sequence>
-			<xs:choice>
-				<xs:element ref="Shipper"/>
-				<xs:element ref="Carrier"/>
-			</xs:choice>
+			<xs:element ref="Shipper" minOccurs="0"/>
+			<xs:element ref="Carrier" minOccurs="0"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -11624,7 +12063,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ShipNoticeList" type="ShipNoticeListType">
 		<xs:annotation>
@@ -11636,7 +12075,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeListBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ShipNoticeListDetails" type="ShipNoticeListDetailsType"/>
 	<xs:complexType name="ShipNoticeListDetailsType">
@@ -11667,7 +12106,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ShipmentDate" type="ShipmentDateType"/>
 	<xs:complexType name="ShipmentDateType">
@@ -11713,7 +12152,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyPlanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="SupplyPlanBody" type="SupplyPlanBodyType"/>
 	<xs:complexType name="SupplyPlanBodyType">
@@ -11756,7 +12195,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyPlanResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="SupplyPlanResponseBody" type="SupplyPlanResponseBodyType"/>
 	<xs:complexType name="SupplyPlanResponseBodyType">
@@ -11838,7 +12277,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="ForecastedProductMovementReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="ForecastedProductMovementReportBody"
 		type="ForecastedProductMovementReportBodyType"/>
@@ -11926,7 +12365,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusListRequestDetails" type="OrderStatusListRequestDetailsType"/>
 	<xs:complexType name="OrderStatusListRequestDetailsType">
@@ -11975,7 +12414,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusListResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusListResponseBody" type="OrderStatusListResponseBodyType"/>
 	<xs:complexType name="OrderStatusListResponseBodyType">
@@ -12036,7 +12475,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceListBody" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" use="required" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="InvoiceListBody" type="InvoiceListBodyType"/>
 	<xs:complexType name="InvoiceListBodyType">
@@ -12063,7 +12502,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" use="required" fixed="5.4"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="InvoiceListRequestBody" type="InvoiceListRequestBodyType"/>
 	<xs:complexType name="InvoiceListRequestBodyType">
@@ -12097,10 +12536,10 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	</xs:complexType>
 	<xs:element name="InvoiceDateTimeInformation" type="InvoiceDateTimeInformationType"/>
 	<xs:complexType name="InvoiceDateTimeInformationType">
-		<xs:choice>
-			<xs:element ref="DateTime"/>
-			<xs:element ref="DateTimeRange"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="DateTime" minOccurs="0"/>
+			<xs:element ref="DateTimeRange" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ProductStageStatusIdentifier" type="ProductStageStatusIdentifierType"/>
 	<xs:complexType name="ProductStageStatusIdentifierType">
@@ -12164,7 +12603,7 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyForecastBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="5.4.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="6.0"/>
 	</xs:complexType>
 	<xs:element name="SupplyForecastBody" type="SupplyForecastBodyType"/>
 	<xs:complexType name="SupplyForecastBodyType">
@@ -12293,12 +12732,12 @@ Release notes are available at https://aggateway.atlassian.net/wiki/x/tYAsAw
 	<xs:element name="OtherComponentDescription" type="cidxToken"/>
 	<xs:element name="PriceSheetAllowanceChargeAmount" type="PriceSheetAllowanceChargeAmountType"/>
 	<xs:complexType name="PriceSheetAllowanceChargeAmountType">
-		<xs:choice>
-			<xs:element ref="PricingLumpSum"/>
-			<xs:element ref="PricingPerUnit"/>
-			<xs:element ref="PricingPercentage"/>
-			<xs:element ref="PricingDiscountLevel"/>
-		</xs:choice>
+		<xs:sequence>
+			<xs:element ref="PricingLumpSum" minOccurs="0"/>
+			<xs:element ref="PricingPerUnit" minOccurs="0"/>
+			<xs:element ref="PricingPercentage" minOccurs="0"/>
+			<xs:element ref="PricingDiscountLevel" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="PricingDiscountLevel" type="PricingDiscountLevelType"/>
 	<xs:complexType name="PricingDiscountLevelType">
