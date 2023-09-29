@@ -127,6 +127,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="SpecialInstructions" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element minOccurs="0" ref="CreationDateTime"/>
 			<xs:element minOccurs="0" ref="LastModificationDateTime"/>
+			<xs:element minOccurs="0" ref="TransferStatus"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="TransferType" type="cidxListTransferType"/>
@@ -148,7 +149,6 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="ReportingEntity"/>
 			<xs:element ref="ReceivingEntity"/>
 			<xs:element ref="OtherPartner" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element minOccurs="0" ref="TransferStatus"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="ReceivingEntity" type="ReceivingEntityType"/>
@@ -4804,7 +4804,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 		<xs:sequence>
 			<xs:element ref="InventoryUsage"/>
 			<xs:element ref="DateTimeRange" minOccurs="0"/>
-			<xs:element ref="Pricing"/>
+			<xs:element ref="Pricing" minOccurs="0"/>
 			<xs:element minOccurs="0" ref="OriginalBookingQuantity"/>
 			<xs:element minOccurs="0" ref="OutstandingBookingQuantity"/>
 			<xs:element minOccurs="0" ref="BookingType"/>
