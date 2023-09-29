@@ -4793,7 +4793,7 @@ A summary will be made available on release.
 			<xs:element minOccurs="0" ref="OriginalBookingQuantity"/>
 			<xs:element minOccurs="0" ref="OutstandingBookingQuantity"/>
 			<xs:element minOccurs="0" ref="BookingType"/>
-			<xs:element minOccurs="0" ref="PrepaymentIdentification" maxOccurs="unbounded"/>
+			<xs:element minOccurs="0" ref="PrepaymentIdentification"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="OriginalBookingQuantity" type="OriginalBookingQuantityType"/>
@@ -4818,9 +4818,13 @@ A summary will be made available on release.
 	<xs:element name="PrepaymentIdentification" type="PrepaymentIdentificationType"/>
 	<xs:complexType name="PrepaymentIdentificationType">
 		<xs:sequence>
-			<xs:element maxOccurs="unbounded" name="PrepaymentIdentifier"/>
+			<xs:element maxOccurs="unbounded" ref="PrepaymentIdentifier"/>
 		</xs:sequence>
 	</xs:complexType>
+	<xs:element name="PrepaymentIdentifier" type="PrepaymentIdentifierType"/>
+	<xs:simpleType name="PrepaymentIdentifierType">
+		<xs:restriction base="xs:token"/>
+	</xs:simpleType>
 	<xs:element name="InventoryUsageInformation" type="InventoryUsageInformationType"/>
 	<xs:complexType name="InventoryUsageInformationType">
 		<xs:sequence>
@@ -4840,7 +4844,7 @@ A summary will be made available on release.
 			<xs:element ref="LineNumber"/>
 			<xs:element ref="InventoryUsageLocation"/>
 			<xs:element ref="InventoryUsageInformation" maxOccurs="unbounded"/>
-			<xs:element minOccurs="0" ref="ShipTo"/>
+			<xs:element ref="ShipTo" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="InventoryUsageLocation" type="InventoryUsageLocationType"/>
