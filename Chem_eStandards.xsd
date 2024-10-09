@@ -2,41 +2,54 @@
 <!--
 
 Schema agency: Open Applications Group 
-Chem eStandards Revision: 7.0
-Date: 2023-09-29
+Chem eStandards Revision: 7.1
+Date: 2024-10-09
 
-Copyright Open Applications Group (1996-2023). All Rights Reserved.
+Copyright Open Applications Group (1996-2024). All Rights Reserved.
 
 ==========================================================================
 
 Open Applications Group (OAGi) License Agreement
 
-Copyright (c) 1997-2023 Open Applications Group, Inc. All Rights Reserved
+Copyright (c) 1997-2024 Open Applications Group, Inc. All Rights Reserved
 
-OAGi offers the Chem eStandards XML Schema file under the following license.
+Open Applications Group, Inc. (OAGi) digital resources are provided under the following license except where another license is specifically indicated. By obtaining, using, or copying OAGi digital resources, User agrees that User has read, understands, and will comply with the following terms and conditions:
 
-Permissions to reproduce, distribute, perform, display and create derivative works of the contents of this file, in any medium for any purpose and without fee or royalty are hereby granted, provided that you include the following on or in the documentation that accompanies ALL copies of the file that you use:
+Permissions to reproduce, distribute, perform, display and create derivative works of OAGi digital resources, in any medium for any purpose and without fee or royalty is hereby granted, provided that User includes the following on or in ALL copies of ALL OAGi digital resources except where another license is specifically indicated:
 
-1. A reference to the original Open Applications Group resource (i.e., Chem eStandards)
-2. A notice of the form "Copyright (c) Open Applications Group. All Rights Reserved"
+A reference to the original OAGi digital resource (https://oagi.org is sufficient).
 
-When space permits, inclusion of the full text of this NOTICE should be provided.  Attribution is requested to be provided in any software, documentation, or other items or products that you create related to the implementation of the contents of this file.
+A notice of the form "Copyright (c) Open Applications Group, Inc. All Rights Reserved."
 
-THIS RESOURCE IS PROVIDED AS IS, AND THE COPYRIGHT HOLDER MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.  
+When referring to the term OAGIS, it must be represented as OAGIS®, for OAGIS is a registered trademark of OAGi.
 
-THE COPYRIGHT HOLDER WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF. 
+The term User shall refer to the other party entering this (OAGi) License Agreement with the OAGi.
 
-The name and trademarks of copyright holder may NOT be used in advertising or publicity pertaining to this file or its contents without specific, written prior permission. 
+When space permits, inclusion of the full text of this NOTICE should be provided. OAGi requests that User provide attribution in any software, documentation, or other items or products that User creates related to the implementation of the OAGi digital resources.
 
-Title to copyright in this document will at all times remain with copyright holders.
+THIS RESOURCE IS PROVIDED AS IS, AND OAGI MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE; THAT THE CONTENTS OF THE DOCUMENT ARE SUITABLE FOR ANY PURPOSE; NOR THAT THE IMPLEMENTATION OF SUCH CONTENTS WILL NOT INFRINGE ANY THIRD PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
 
-Please contact the Open Applications Group at member.services@oagi.org with any questions or comments regarding the usage of this material.
+OAGI WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY USE OF THE DOCUMENT OR THE PERFORMANCE OR IMPLEMENTATION OF THE CONTENTS THEREOF.
+
+OAGi’s name and trademarks may NOT be used in advertising or publicity pertaining to OAGi digital resources without specific, written prior permission.
+
+Title to copyright in this document will at all times remain with OAGi.
+
+Rights on OAGi Digital Resources - OAGi grants User a non-exclusive, non-transferable license and perpetual license to use OAGi digital resources and to make and install copies in accordance with this (OAGi) License Agreement for its business purposes in perpetuity. The Rights on OAGi Digital Resources shall survive post the termination of this (OAGi) License Agreement. For the purpose of this (OAGi) License Agreement, “Digital Resources” means OAGi-owned intellectual property in digital form licensed to User under this (OAGi) License Agreement including all fixes, patches, updates, and upgrades.
+
+Intellectual Property: OAGi hereby grants to the User a worldwide, non-exclusive, perpetual, royalty-free, irrevocable, license to use, modify, adapt and reproduce the OAGi Intellectual Property solely to the extent necessary to perform its obligations, and receive the benefits, under this (OAGi) License Agreement. OAGi warrants to the User that the provision, use and license will not infringe the intellectual property rights of any third party or breach applicable laws.
+
+In the event of a conflict between the terms and conditions of this (OAGi) License Agreement and any other agreement in pursuant to the use of documents and file, this License Agreement shall prevail.
+
+This license may be modified or enhanced, at the discretion of the OAGi without notice, at any time and any changes to this file shall be promptly communicated to the User.
+
+Please contact the OAGi at Member.Services@OAGi.org with any questions or comments regarding the usage of this material.
 
 -->
 
-<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:7.0"
+<xs:schema xmlns="urn:cidx:names:specification:ces:schema:all:7.1"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
-	targetNamespace="urn:cidx:names:specification:ces:schema:all:7.0">
+	targetNamespace="urn:cidx:names:specification:ces:schema:all:7.1">
 	<xs:element name="ProductTransfersResponse" type="ProductTransfersResponseType">
 		<xs:annotation>
 			<xs:appinfo>may_be_message_element</xs:appinfo>
@@ -47,7 +60,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductTransfersResponseBody" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ProductTransfersResponseBody" type="ProductTransfersResponseBodyType"/>
 	<xs:complexType name="ProductTransfersResponseBodyType">
@@ -106,7 +119,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductTransfersRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ProductTransfersRequestBody" type="ProductTransfersRequestBodyType"/>
 	<xs:complexType name="ProductTransfersRequestBodyType">
@@ -194,7 +207,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LicenseZoneResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LicenseZoneResponseBody" type="LicenseZoneResponseBodyType"/>
 	<xs:complexType name="LicenseZoneResponseBodyType">
@@ -268,7 +281,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LicenseZoneRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LicenseZoneRequestBody" type="LicenseZoneRequestBodyType"/>
 	<xs:complexType name="LicenseZoneRequestBodyType">
@@ -345,7 +358,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductReturnsRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ProductReturnsRequestBody" type="ProductReturnsRequestBodyType"/>
 	<xs:complexType name="ProductReturnsRequestBodyType">
@@ -427,7 +440,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="SeedReplantClaimBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="SeedReplantClaimBody" type="SeedReplantClaimBodyType"/>
 	<xs:complexType name="SeedReplantClaimBodyType">
@@ -534,7 +547,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceSheetRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PriceSheetRequestBody" type="PriceSheetRequestBodyType"/>
 	<xs:complexType name="PriceSheetRequestBodyType">
@@ -575,7 +588,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderResponseLogResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderResponseLogResponseBody" type="OrderResponseLogResponseBodyType"/>
 	<xs:complexType name="OrderResponseLogResponseBodyType">
@@ -667,7 +680,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderResponseLogRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderResponseLogRequestBody" type="OrderResponseLogRequestBodyType"/>
 	<xs:complexType name="OrderResponseLogRequestBodyType">
@@ -722,7 +735,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="RetailerOrderSummaryReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="RetailerOrderSummaryReportBody" type="RetailerOrderSummaryReportBodyType"/>
 	<xs:complexType name="RetailerOrderSummaryReportBodyType">
@@ -829,7 +842,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="RetailerOrderSummaryRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="RetailerOrderSummaryRequestBody" type="RetailerOrderSummaryRequestBodyType"/>
 	<xs:complexType name="RetailerOrderSummaryRequestBodyType">
@@ -884,7 +897,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductBookingResponseBody" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ProductBookingResponseBody" type="ProductBookingResponseBodyType"/>
 	<xs:complexType name="ProductBookingResponseBodyType">
@@ -1016,7 +1029,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductBookingBody" maxOccurs="unbounded"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ProductBookingBody" type="ProductBookingBodyType"/>
 	<xs:complexType name="ProductBookingBodyType">
@@ -1244,7 +1257,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="FertilizerTonnageReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="FertilizerTonnageReportBody" type="FertilizerTonnageReportBodyType"/>
 	<xs:complexType name="FertilizerTonnageReportBodyType">
@@ -1462,7 +1475,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="FeedTonnageReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="FeedTonnageReportBody" type="FeedTonnageReportBodyType"/>
 	<xs:complexType name="FeedTonnageReportBodyType">
@@ -3504,7 +3517,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="AcceptanceNotificationBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="AcceptanceNotificationBody" type="AcceptanceNotificationBodyType"/>
 	<xs:complexType name="AcceptanceNotificationBodyType">
@@ -7060,7 +7073,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CarrierWeightsBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CarrierWeightsBody" type="CarrierWeightsBodyType"/>
 	<xs:complexType name="CarrierWeightsBodyType">
@@ -7129,7 +7142,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CertificateOfAnalysisBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CertificateOfAnalysisBatchDetail" type="CertificateOfAnalysisBatchDetailType"/>
 	<xs:complexType name="CertificateOfAnalysisBatchDetailType">
@@ -7187,7 +7200,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ContractBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ContractBody" type="ContractBodyType"/>
 	<xs:complexType name="ContractBodyType">
@@ -7277,7 +7290,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ContractResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ContractResponseBody" type="ContractResponseBodyType"/>
 	<xs:complexType name="ContractResponseBodyType">
@@ -7368,7 +7381,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportCreditRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CostSupportCreditRequestBody" type="CostSupportCreditRequestBodyType"/>
 	<xs:complexType name="CostSupportCreditRequestBodyType">
@@ -7454,7 +7467,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportCreditResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CostSupportCreditResponseBody" type="CostSupportCreditResponseBodyType"/>
 	<xs:complexType name="CostSupportCreditResponseBodyType">
@@ -7520,7 +7533,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestBody" type="CostSupportRequestBodyType"/>
 	<xs:complexType name="CostSupportRequestBodyType">
@@ -7578,7 +7591,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportRequestChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CostSupportRequestChangeBody" type="CostSupportRequestChangeBodyType"/>
 	<xs:complexType name="CostSupportRequestChangeBodyType">
@@ -7640,7 +7653,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CostSupportResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CostSupportResponseBody" type="CostSupportResponseBodyType"/>
 	<xs:complexType name="CostSupportResponseBodyType">
@@ -7728,7 +7741,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="CustomerSpecificCatalogUpdateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="CustomerSpecificCatalogUpdateBody"
 		type="CustomerSpecificCatalogUpdateBodyType"/>
@@ -7825,7 +7838,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryConfirmationBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationAcceptance" type="DeliveryConfirmationAcceptanceType"/>
 	<xs:element name="DeliveryConfirmationRejectionDescription"
@@ -7840,7 +7853,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryConfirmationResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DeliveryConfirmationResponseBody" type="DeliveryConfirmationResponseBodyType"/>
 	<xs:complexType name="DeliveryConfirmationResponseBodyType">
@@ -7912,7 +7925,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryReceiptBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DeliveryReceiptBody" type="DeliveryReceiptBodyType"/>
 	<xs:complexType name="DeliveryReceiptBodyType">
@@ -7957,7 +7970,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DeliveryReceiptResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DeliveryReceiptResponseBody" type="DeliveryReceiptResponseBodyType"/>
 	<xs:complexType name="DeliveryReceiptResponseBodyType">
@@ -8002,7 +8015,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandForecastBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DemandForecastBody" type="DemandForecastBodyType"/>
 	<xs:complexType name="DemandForecastBodyType">
@@ -8045,7 +8058,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandForecastResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DemandForecastResponseBody" type="DemandForecastResponseBodyType"/>
 	<xs:complexType name="DemandForecastResponseBodyType">
@@ -8088,7 +8101,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandPlanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DemandPlanBody" type="DemandPlanBodyType"/>
 	<xs:complexType name="DemandPlanBodyType">
@@ -8131,7 +8144,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="DemandPlanResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="DemandPlanResponseBody" type="DemandPlanResponseBodyType"/>
 	<xs:complexType name="DemandPlanResponseBodyType">
@@ -8227,7 +8240,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="FreightBillBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="FreightBillBody" type="FreightBillBodyType"/>
 	<xs:complexType name="FreightBillBodyType">
@@ -8429,7 +8442,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="InventoryActualUsageBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="InventoryActualUsageBody" type="InventoryActualUsageBodyType"/>
 	<xs:complexType name="InventoryActualUsageBodyType">
@@ -8473,7 +8486,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="InventoryActualUsageResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="InventoryActualUsageResponseBody" type="InventoryActualUsageResponseBodyType"/>
 	<xs:complexType name="InventoryActualUsageResponseBodyType">
@@ -8525,7 +8538,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="InvoiceBody" type="InvoiceBodyType"/>
 	<xs:complexType name="InvoiceBodyType">
@@ -8630,7 +8643,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="InvoiceResponseBody" type="InvoiceResponseBodyType"/>
 	<xs:complexType name="InvoiceResponseBodyType">
@@ -8685,7 +8698,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadBuildingMotorBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LoadBuildingMotorBody" type="LoadBuildingMotorBodyType"/>
 	<xs:complexType name="LoadBuildingMotorBodyType">
@@ -8743,7 +8756,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadBuildingResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LoadBuildingResponseBody" type="LoadBuildingResponseBodyType"/>
 	<xs:complexType name="LoadBuildingResponseBodyType">
@@ -8803,7 +8816,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderMotorBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderMotorBody" type="LoadTenderMotorBodyType"/>
 	<xs:complexType name="LoadTenderMotorBodyType">
@@ -8909,7 +8922,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderOceanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderOceanBody" type="LoadTenderOceanBodyType"/>
 	<xs:complexType name="LoadTenderOceanBodyType">
@@ -9033,7 +9046,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderRailBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderRailBody" type="LoadTenderRailBodyType"/>
 	<xs:complexType name="LoadTenderRailBodyType">
@@ -9141,7 +9154,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="LoadTenderResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="LoadTenderResponseBody" type="LoadTenderResponseBodyType"/>
 	<xs:complexType name="LoadTenderResponseBodyType">
@@ -9240,7 +9253,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderChangeBody" type="OrderChangeBodyType"/>
 	<xs:complexType name="OrderChangeBodyType">
@@ -9340,7 +9353,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderCreateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderCreateBody" type="OrderCreateBodyType"/>
 	<xs:complexType name="OrderCreateBodyType">
@@ -9438,7 +9451,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderResponseBody" type="OrderResponseBodyType"/>
 	<xs:complexType name="OrderResponseBodyType">
@@ -9553,7 +9566,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusRequestBody" type="OrderStatusRequestBodyType"/>
 	<xs:complexType name="OrderStatusRequestBodyType">
@@ -9609,7 +9622,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="BuyerAccountDetails" type="BuyerAccountDetailsType"/>
 	<xs:complexType name="BuyerAccountDetailsType">
@@ -9629,7 +9642,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PaymentBody" type="PaymentBodyType"/>
 	<xs:complexType name="PaymentBodyType">
@@ -9722,7 +9735,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentDetailBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PaymentDetailBody" type="PaymentDetailBodyType"/>
 	<xs:complexType name="PaymentDetailBodyType">
@@ -9810,7 +9823,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PaymentResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PaymentResponseBody" type="PaymentResponseBodyType"/>
 	<xs:complexType name="PaymentResponseBodyType">
@@ -9847,7 +9860,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingAcceptBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingAcceptBody" type="PostingAcceptBodyType"/>
 	<xs:complexType name="PostingAcceptBodyType">
@@ -9914,7 +9927,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingAcceptResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingAcceptResponseBody" type="PostingAcceptResponseBodyType"/>
 	<xs:complexType name="PostingAcceptResponseBodyType">
@@ -9966,7 +9979,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCancelBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingCancelBody" type="PostingCancelBodyType"/>
 	<xs:complexType name="PostingCancelBodyType">
@@ -9999,7 +10012,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCancelResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingCancelResponseBody" type="PostingCancelResponseBodyType"/>
 	<xs:complexType name="PostingCancelResponseBodyType">
@@ -10033,7 +10046,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingChangeBody" type="PostingChangeBodyType"/>
 	<xs:complexType name="PostingChangeBodyType">
@@ -10096,7 +10109,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingCreateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingCreateBody" type="PostingCreateBodyType"/>
 	<xs:complexType name="PostingCreateBodyType">
@@ -10166,7 +10179,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingResponseBody" type="PostingResponseBodyType"/>
 	<xs:complexType name="PostingResponseBodyType">
@@ -10211,7 +10224,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingStatusRequestBody" type="PostingStatusRequestBodyType"/>
 	<xs:complexType name="PostingStatusRequestBodyType">
@@ -10236,7 +10249,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PostingStatusResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PostingStatusResponseBody" type="PostingStatusResponseBodyType"/>
 	<xs:complexType name="PostingStatusResponseBodyType">
@@ -10299,7 +10312,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceAndAvailabilityRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PriceAndAvailabilityRequestBody" type="PriceAndAvailabilityRequestBodyType"/>
 	<xs:complexType name="PriceAndAvailabilityRequestBodyType">
@@ -10389,7 +10402,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceAndAvailabilityResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PriceAndAvailabilityResponseBody" type="PriceAndAvailabilityResponseBodyType"/>
 	<xs:complexType name="PriceAndAvailabilityResponseBodyType">
@@ -10664,7 +10677,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="PriceSheetBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="PriceSheetBody" type="PriceSheetBodyType"/>
 	<xs:complexType name="PriceSheetBodyType">
@@ -10912,7 +10925,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductCatalogUpdateBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ProductCatalogUpdateBody" type="ProductCatalogUpdateBodyType"/>
 	<xs:complexType name="ProductCatalogUpdateBodyType">
@@ -11050,7 +11063,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ProductMovementReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ProductMovementReportBody" type="ProductMovementReportBodyType"/>
 	<xs:complexType name="ProductMovementReportBodyType">
@@ -11167,7 +11180,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="QualificationRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="QualificationRequestBody" type="QualificationRequestBodyType"/>
 	<xs:complexType name="QualificationRequestBodyType">
@@ -11218,7 +11231,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="QualificationResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="QualificationResponseBody" type="QualificationResponseBodyType"/>
 	<xs:complexType name="QualificationResponseBodyType">
@@ -11275,7 +11288,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="QualityTestingReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="QualityTestingReportBatchDetail" type="QualityTestingReportBatchDetailType"/>
 	<xs:complexType name="QualityTestingReportBatchDetailType">
@@ -11359,7 +11372,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReceiptNoticeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ReceiptNoticeBody" type="ReceiptNoticeBodyType"/>
 	<xs:complexType name="ReceiptNoticeBodyType">
@@ -11436,7 +11449,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalCancelBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalCancelBody" type="ReplenishmentProposalCancelBodyType"/>
 	<xs:complexType name="ReplenishmentProposalCancelBodyType">
@@ -11483,7 +11496,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalChangeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalChangeBody" type="ReplenishmentProposalChangeBodyType"/>
 	<xs:complexType name="ReplenishmentProposalChangeBodyType">
@@ -11531,7 +11544,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalRequestBody" type="ReplenishmentProposalRequestBodyType"/>
 	<xs:complexType name="ReplenishmentProposalRequestBodyType">
@@ -11613,7 +11626,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ReplenishmentProposalResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ReplenishmentProposalResponseBody"
 		type="ReplenishmentProposalResponseBodyType"/>
@@ -11693,7 +11706,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="RequestForQuoteBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="RequestForQuoteBody" type="RequestForQuoteBodyType"/>
 	<xs:complexType name="RequestForQuoteBodyType">
@@ -11799,7 +11812,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentInstructionsBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ShipmentInstructionsBody" type="ShipmentInstructionsBodyType"/>
 	<xs:complexType name="ShipmentInstructionsBodyType">
@@ -11990,7 +12003,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentStatusBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ShipmentStatusBody" type="ShipmentStatusBodyType"/>
 	<xs:complexType name="ShipmentStatusBodyType">
@@ -12076,7 +12089,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipmentStatusRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ShipmentStatusRequestBody" type="ShipmentStatusRequestBodyType"/>
 	<xs:complexType name="ShipmentStatusRequestBodyType">
@@ -12119,7 +12132,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ShipNoticeList" type="ShipNoticeListType">
 		<xs:annotation>
@@ -12131,7 +12144,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeListBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ShipNoticeListDetails" type="ShipNoticeListDetailsType"/>
 	<xs:complexType name="ShipNoticeListDetailsType">
@@ -12162,7 +12175,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ShipNoticeListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ShipmentDate" type="ShipmentDateType"/>
 	<xs:complexType name="ShipmentDateType">
@@ -12208,7 +12221,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyPlanBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="SupplyPlanBody" type="SupplyPlanBodyType"/>
 	<xs:complexType name="SupplyPlanBodyType">
@@ -12251,7 +12264,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyPlanResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="SupplyPlanResponseBody" type="SupplyPlanResponseBodyType"/>
 	<xs:complexType name="SupplyPlanResponseBodyType">
@@ -12333,7 +12346,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="ForecastedProductMovementReportBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="ForecastedProductMovementReportBody"
 		type="ForecastedProductMovementReportBodyType"/>
@@ -12421,7 +12434,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusListRequestDetails" type="OrderStatusListRequestDetailsType"/>
 	<xs:complexType name="OrderStatusListRequestDetailsType">
@@ -12470,7 +12483,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="OrderStatusListResponseBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="OrderStatusListResponseBody" type="OrderStatusListResponseBodyType"/>
 	<xs:complexType name="OrderStatusListResponseBodyType">
@@ -12531,7 +12544,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceListBody" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="InvoiceListBody" type="InvoiceListBodyType"/>
 	<xs:complexType name="InvoiceListBodyType">
@@ -12558,7 +12571,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="InvoiceListRequestBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="InvoiceListRequestBody" type="InvoiceListRequestBodyType"/>
 	<xs:complexType name="InvoiceListRequestBodyType">
@@ -12659,7 +12672,7 @@ Please contact the Open Applications Group at member.services@oagi.org with any 
 			<xs:element ref="Header"/>
 			<xs:element ref="SupplyForecastBody"/>
 		</xs:sequence>
-		<xs:attribute name="Version" type="cidxToken" fixed="7.0"/>
+		<xs:attribute name="Version" type="cidxToken" fixed="7.1"/>
 	</xs:complexType>
 	<xs:element name="SupplyForecastBody" type="SupplyForecastBodyType"/>
 	<xs:complexType name="SupplyForecastBodyType">
