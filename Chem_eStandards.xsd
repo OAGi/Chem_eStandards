@@ -754,6 +754,7 @@ Please contact the OAGi at Member.Services@OAGi.org with any questions or commen
 			<xs:element ref="LastRequestDate"/>
 			<xs:element ref="ZoneID"/>
 			<xs:element ref="ProductClassification"/>
+			<xs:element ref="ProductYear" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="RetailerOrderSummaryReportPartners"
@@ -786,7 +787,28 @@ Please contact the OAGi at Member.Services@OAGi.org with any questions or commen
 			<xs:element ref="PositionQuantity"/>
 			<xs:element ref="TransfersInQuantity"/>
 			<xs:element ref="TransfersOutQuantity"/>
-			<xs:element ref="ReturnsQuantity"/>
+			<xs:element ref="ReturnsQuantity" minOccurs="0"/>
+			<xs:element ref="ProductReturnsQuantity" minOccurs="0"/>
+			<xs:element ref="HaulbackReturnsQuantity" minOccurs="0"/>
+			<xs:element ref="RecallReturnsQuantity" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="ProductReturnsQuantity" type="ProductReturnsQuantityType"/>
+	<xs:complexType name="ProductReturnsQuantityType">
+		<xs:sequence>
+			<xs:element ref="Measurement"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="HaulbackReturnsQuantity" type="HaulbackReturnsQuantityType"/>
+	<xs:complexType name="HaulbackReturnsQuantityType">
+		<xs:sequence>
+			<xs:element ref="Measurement"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RecallReturnsQuantity" type="RecallReturnsQuantityType"/>
+	<xs:complexType name="RecallReturnsQuantityType">
+		<xs:sequence>
+			<xs:element ref="Measurement"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="TotalRetailerProductQuantity" type="TotalRetailerProductQuantityType"/>
@@ -858,6 +880,7 @@ Please contact the OAGi at Member.Services@OAGi.org with any questions or commen
 		<xs:sequence>
 			<xs:element ref="RetailerRequestAllType"/>
 			<xs:element ref="RetailerOrderNumber" minOccurs="0"/>
+			<xs:element ref="ProductYear" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:element name="RetailerRequestAllType" type="cidxBoolean"/>
